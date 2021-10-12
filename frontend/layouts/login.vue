@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <v-app-bar app> <AppBar /> </v-app-bar>
-    <v-main>
+    <v-app-bar app color="white" tile flat> <AppBar /> </v-app-bar>
+    <v-main style="background: #f0ebe9">
       <nuxt />
     </v-main>
-    <v-footer app> <Footer /></v-footer>
+    <v-footer style="background: #f0ebe9" app> <Footer /></v-footer>
   </v-app>
 </template>
 
