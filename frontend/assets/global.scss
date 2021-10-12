@@ -1,0 +1,49 @@
+.font_vk_mobile_h1{
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+}
+
+.font_vk_mobile_p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #626D7A;
+}
+
+.vk-image-positions {
+    position: relative;
+    display: flex;
+    margin-top: 10%;
+        &-left{
+            position: absolute;
+            left: 28%;
+          
+        }
+        &-right{
+            position: absolute;
+            left: 23%;
+            
+        }
+}
+
+.v-text-field > .v-input__control > .v-input__slot > .v-text-field__slot{
+    position: initial !important;
+}
+
+.v-input__slot {
+    text-align: center !important;
+    height: 100% !important;
+    min-height: 35px !important;
+    max-height: 35px !important;
+    .v-label{
+        top: 5px !important;
+        left: 10px !important;
+
+    }
+}
+
+
+.v-select__slot{
+
+}

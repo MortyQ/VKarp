@@ -23,7 +23,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  css: [],
+  css: ['@/assets/global.scss'],
 
   plugins: [
     { src: '~/plugins/uikit.js', ssr: false },

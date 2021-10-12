@@ -14,7 +14,7 @@
         <v-btn text color="blue"> Terms</v-btn>
         <v-btn text color="blue"> Developers</v-btn>
       </v-col>
-      <v-col cols="4" class="d-flex justify-end">
+      <v-col cols="4">
         <v-btn text color="blue"> About VK </v-btn>
         <v-btn text color="blue"> Terms</v-btn>
         <v-btn text color="blue"> Developers</v-btn>

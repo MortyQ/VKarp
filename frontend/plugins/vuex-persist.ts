@@ -1,10 +1,10 @@
 import VuexPersistence from 'vuex-persist'
 
-export default ({ store }: { store: any }) => {
+export default ({ store }) => {
   // @ts-ignore
   window.onNuxtReady(() => {
     new VuexPersistence({
-      key: 'vuex'
+      key: 'vuex',
     }).plugin(store)
   })
 }
