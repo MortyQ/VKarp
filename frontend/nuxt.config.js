@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 const strapiBaseUri = process.env.API_URL || 'http://localhost:1337'
-
+import { i18n } from './localization/i18n'
 export default {
   target: 'static',
   ssr: false,
@@ -58,7 +58,9 @@ export default {
 
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/dayjs'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/dayjs', '@nuxtjs/i18n'],
+
+  i18n,
 
   axios: {},
 

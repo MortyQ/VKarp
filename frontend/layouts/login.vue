@@ -3,10 +3,10 @@
     <v-app-bar app color="white" tile flat height="48px">
       <AppBar />
     </v-app-bar>
-    <v-main style="background: #f4f4f4">
+    <v-main style="background: #e7e8ec">
       <nuxt />
     </v-main>
-    <v-footer style="background: #f4f4f4" app> <Footer /></v-footer>
+    <v-footer style="background: #e7e8ec" app absolute> <Footer /></v-footer>
   </v-app>
 </template>
 

@@ -9,8 +9,10 @@
     max-width="320px"
   >
     <div class="d-flex flex-column" style="text-align: center">
-      <span class="font_vk_mobile_h1 mt-5"> First time here? </span>
-      <span class="font_vk_mobile_p mb-5"> Sign up for VK </span>
+      <span class="font_vk_mobile_h1 mt-5">
+        {{ $t('titleFirstTimeHere') }}
+      </span>
+      <span class="font_vk_mobile_p mb-5"> {{ $t('SignUpForVK') }} </span>
     </div>
     <v-row
       width="100%"
@@ -25,7 +27,7 @@
             <ValidationProvider rules="required">
               <v-text-field
                 v-model="firstName"
-                :label="`First Name`"
+                :label="$t('firstName')"
                 passive
                 outlined
                 class="mb-2"
@@ -34,14 +36,14 @@
             <ValidationProvider rules="required">
               <v-text-field
                 v-model="lastName"
-                :label="`Last Name`"
+                :label="$t('lastName')"
                 passive
                 outlined
                 class="mb-2"
               ></v-text-field>
             </ValidationProvider>
             <span>
-              <i class="mr-2 font_vk_mobile_p">Birthday</i>
+              <i class="mr-2 font_vk_mobile_p">{{ $t('birthday') }}</i>
               <v-tooltip right max-width="200px" color="white">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
@@ -59,12 +61,7 @@
                     <span class="font_vk_mobile_p"> ? </span>
                   </v-btn>
                 </template>
-                <span style="color: black"
-                  ><b>By providing your birthday</b>, your friends will be able
-                  to find you more easily and help us select interesting content
-                  to recommend to you.<br />You can edit your profile to manage
-                  who can view your birthday.</span
-                >
+                <span style="color: black">{{ $t('birthdayDescript') }}</span>
               </v-tooltip>
             </span>
             <v-row cols="12">
@@ -91,7 +88,7 @@
                   <v-date-picker v-model="date" no-title scrollable>
                     <v-spacer></v-spacer>
                     <v-btn text color="primary" @click="menu = false">
-                      Cancel
+                      {{ $t('cancel') }}
                     </v-btn>
                     <v-btn text color="primary" @click="$refs.menu.save(date)">
                       OK
@@ -100,32 +97,39 @@
                 </v-menu>
               </v-col>
               <v-col cols="12" class="pt-0 pb-0">
-                <span class="font_vk_mobile_p"> Your gender </span>
+                <span class="font_vk_mobile_p"> {{ $t('gender') }} </span>
                 <v-radio-group v-model="row" row class="pa-0 ma-0">
                   <v-radio
-                    label="Female"
+                    :label="$t('female')"
                     :ripple="false"
                     value="Female"
                     v-model="sex"
                   ></v-radio>
                   <v-radio
-                    label="Male"
+                    :label="$t('male')"
                     :ripple="false"
                     value="Male"
                     v-model="sex"
-                    class="ml-4 mb-0"
+                    small
+                    class="mb-0 ml-2"
                   ></v-radio>
                 </v-radio-group>
               </v-col>
               <v-col cols="12">
-                <v-btn width="262" color="#4Bb34B" class="mb-4" height="38">
+                <v-btn
+                  width="262"
+                  color="#4Bb34B"
+                  class="mb-4"
+                  height="38"
+                  depressed
+                >
                   <span style="color: white; font-size: 12px !important">
-                    Continue registration
+                    {{ $t('continRegister') }}
                   </span>
                 </v-btn>
-                <v-btn width="262" height="38" color="#1b6dd1">
+                <v-btn width="262" height="38" color="#1b6dd1" depressed>
                   <span style="color: white; font-size: 12px !important">
-                    Sign in with Facebook
+                    {{ $t('registerFacebook') }}
                   </span>
                 </v-btn>
               </v-col>

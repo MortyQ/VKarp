@@ -12,14 +12,14 @@
                 v-model="identifier"
                 outlined
                 class="input-setting"
-                label="Enter your User Name"
+                :label="$t('login')"
               ></v-text-field>
             </ValidationProvider>
             <ValidationProvider name="password" rules="required|strongPassword">
               <v-text-field
                 v-model="password"
                 outlined
-                label="Password"
+                :label="$t('password')"
                 class="mt-2"
                 hint="At least 8 characters"
                 @click:append="showPassword = !showPassword"
@@ -31,11 +31,11 @@
                 type="submit"
                 style="background: #5181b8; color: white"
               >
-                Sing In
+                {{ $t('signIn') }}
               </v-btn>
-              <v-btn text color="#2A5885" style="font-size: 11px"
-                >forget the password ?</v-btn
-              >
+              <v-btn text color="#2A5885" style="font-size: 11px">{{
+                $t('forget')
+              }}</v-btn>
             </div>
           </v-form>
         </ValidationObserver>

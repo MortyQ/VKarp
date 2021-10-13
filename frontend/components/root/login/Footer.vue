@@ -2,22 +2,46 @@
   <v-container>
     <v-row>
       <v-col cols="4">
-        <v-btn text to="/about" color="blue"
-          >VK
-          <span style="font-size: 14px; color: black" class="ml-5"
-            >2006-2021</span
-          ></v-btn
+        <nuxt-link
+          to="/login"
+          style="text-decoration: none; color: #2a5885; font-size: 14px"
+          >VK</nuxt-link
         >
-      </v-col>
-      <v-col cols="4" style="gap: 25px">
-        <v-btn text color="blue"> About VK </v-btn>
-        <v-btn text color="blue"> Terms</v-btn>
-        <v-btn text color="blue"> Developers</v-btn>
+        <span style="font-size: 14px; color: #6f7985"> © 2006–2021</span>
       </v-col>
       <v-col cols="4">
-        <v-btn text color="blue"> About VK </v-btn>
-        <v-btn text color="blue"> Terms</v-btn>
-        <v-btn text color="blue"> Developers</v-btn>
+        <nuxt-link
+          to="/login"
+          class="ml-3"
+          style="text-decoration: none; color: #2a5885; font-size: 14px"
+          >{{ $t('footerAbout') }}</nuxt-link
+        >
+        <nuxt-link
+          to="/login"
+          class="ml-3"
+          style="text-decoration: none; color: #2a5885; font-size: 14px"
+          >{{ $t('footerTerms') }}</nuxt-link
+        >
+        <nuxt-link
+          to="/login"
+          class="ml-3"
+          style="text-decoration: none; color: #2a5885; font-size: 14px"
+          >{{ $t('footerDev') }}</nuxt-link
+        >
+      </v-col>
+      <v-col cols="4">
+        <nuxt-link
+          :to="switchLocalePath('ua')"
+          class="ml-3"
+          style="text-decoration: none; color: #2a5885; font-size: 14px"
+          >Українська</nuxt-link
+        >
+        <nuxt-link
+          :to="switchLocalePath('en')"
+          class="ml-3"
+          style="text-decoration: none; color: #2a5885; font-size: 14px"
+          >English</nuxt-link
+        >
       </v-col>
     </v-row>
   </v-container>
