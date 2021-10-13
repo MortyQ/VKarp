@@ -19,7 +19,7 @@
       min-width="320px"
       max-width="320px"
       cols="12"
-      class="d-flex flex-column justify-center align-center"
+      class="d-flex flex-column align-center"
     >
       <v-col cols="10">
         <ValidationObserver ref="form">

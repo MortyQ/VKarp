@@ -1,13 +1,17 @@
 <template>
   <v-container>
-    <v-row v-if="steps === 0">
-      <v-col cols="8">
+    <v-row class="d-flex justify-center align-center" v-if="steps === 0">
+      <v-col
+        cols="6"
+        class="d-flex flex-column justify-start align-end"
+        style="height: 100vh"
+      >
         <div
-          class="d-flex flex-column justify-start align-center mt-4"
-          style="text-align: center"
+          class="d-flex flex-column justify-start align-center mr-15"
+          style="text-align: center; width: 55%"
         >
           <span class="font_vk_mobile_h1"> {{ $t('vk_mobile') }} </span>
-          <span class="mt-4" style="font_vk_mobile_p">{{
+          <span class="" style="font_vk_mobile_p mt-5">{{
             $t('vk_mobile_description')
           }}</span>
         </div>
@@ -58,7 +62,7 @@
           </span>
         </div>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="6" style="height: 100vh">
         <SignIn />
         <StepOne />
 
