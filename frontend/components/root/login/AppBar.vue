@@ -4,8 +4,8 @@
     style="position: relative"
   >
     <v-img
-      max-height="50"
-      max-width="50"
+      max-height="35"
+      max-width="35"
       src="/vklogo.png"
       style="position: absolute; left: 10%"
     >

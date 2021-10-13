@@ -22,6 +22,7 @@
             src="/phoneLeft.png"
           >
           </v-img>
+
           <v-img
             class="vk-image-positions-right"
             max-height="397"
@@ -37,6 +38,16 @@
       <v-col cols="4">
         <SignIn />
         <StepOne />
+
+        <v-card class="mt-3" width="100%" min-width="320px" max-width="320px">
+          <v-card-text style="text-align: center">
+            After registering, you'll get access to all of VK Connect's
+            features.
+            <v-card tile flat color="white" :ripple="false" to="/login">
+              <span style="color: #2a5885"> Learn more </span>
+            </v-card>
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>

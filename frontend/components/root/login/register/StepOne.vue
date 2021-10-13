@@ -1,32 +1,43 @@
 <template>
-  <v-card class="mt-10">
-    <div class="d-flex flex-column pt-10" style="text-align: center">
-      <span class="font_vk_mobile_h1"> First time here? </span>
-      <span class="font_vk_mobile_p"> Sign up for VK </span>
+  <v-card
+    class="mt-10"
+    height="100%"
+    min-height="457px"
+    max-height="457px"
+    width="100%"
+    min-width="320px"
+    max-width="320px"
+  >
+    <div class="d-flex flex-column" style="text-align: center">
+      <span class="font_vk_mobile_h1 mt-5"> First time here? </span>
+      <span class="font_vk_mobile_p mb-5"> Sign up for VK </span>
     </div>
     <v-row
+      width="100%"
+      min-width="320px"
+      max-width="320px"
       cols="12"
-      class="d-flex flex-column justify-center align-center mt-5"
+      class="d-flex flex-column justify-center align-center"
     >
       <v-col cols="10">
         <ValidationObserver ref="form">
           <v-form @submit.prevent="userLogin">
-            <ValidationProvider v-slot="{ errors }" rules="required">
+            <ValidationProvider rules="required">
               <v-text-field
                 v-model="firstName"
-                :error-messages="errors"
                 :label="`First Name`"
                 passive
                 outlined
+                class="mb-2"
               ></v-text-field>
             </ValidationProvider>
-            <ValidationProvider v-slot="{ errors }" rules="required">
+            <ValidationProvider rules="required">
               <v-text-field
                 v-model="lastName"
-                :error-messages="errors"
                 :label="`Last Name`"
                 passive
                 outlined
+                class="mb-2"
               ></v-text-field>
             </ValidationProvider>
             <span>
@@ -56,48 +67,67 @@
                 >
               </v-tooltip>
             </span>
-            <v-row cols="12" class="mt-2">
-              <v-col cols="12">
+            <v-row cols="12">
+              <v-col cols="12" class="mt-2">
                 <v-menu
-                  ref="dobMenu"
-                  v-model="dobDateMenu"
+                  ref="menu"
+                  v-model="menu"
                   :close-on-content-click="false"
-                  :nudge-right="40"
+                  :return-value.sync="date"
                   transition="scale-transition"
                   offset-y
-                  max-width="290px"
-                  min-width="290px"
+                  outlined
+                  min-width="auto"
                 >
                   <template v-slot:activator="{ on, attrs }">
-                    <ValidationProvider
-                      v-slot="{ errors, valid }"
-                      name="date of birth"
-                      :rules="{ required: true }"
-                      :debounce="250"
-                    >
-                      <v-text-field
-                        label="Date of birth"
-                        readonly
-                        outlined
-                        :value="dobDateDisplay"
-                        :error-messages="errors"
-                        :success="valid"
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </ValidationProvider>
+                    <v-text-field
+                      v-model="date"
+                      readonly
+                      outlined
+                      v-bind="attrs"
+                      v-on="on"
+                    ></v-text-field>
                   </template>
-                  <v-date-picker
-                    ref="picker"
-                    v-model="dateOfBirthString"
-                    locale="en-gb"
-                    :max="new Date().toISOString().substr(0, 10)"
-                    :first-day-of-week="1"
-                    min="1920-01-01"
-                    no-title
-                    @input="dobDateMenu = false"
-                  ></v-date-picker>
+                  <v-date-picker v-model="date" no-title scrollable>
+                    <v-spacer></v-spacer>
+                    <v-btn text color="primary" @click="menu = false">
+                      Cancel
+                    </v-btn>
+                    <v-btn text color="primary" @click="$refs.menu.save(date)">
+                      OK
+                    </v-btn>
+                  </v-date-picker>
                 </v-menu>
+              </v-col>
+              <v-col cols="12" class="pt-0 pb-0">
+                <span class="font_vk_mobile_p"> Your gender </span>
+                <v-radio-group v-model="row" row class="pa-0 ma-0">
+                  <v-radio
+                    label="Female"
+                    :ripple="false"
+                    value="Female"
+                    v-model="sex"
+                  ></v-radio>
+                  <v-radio
+                    label="Male"
+                    :ripple="false"
+                    value="Male"
+                    v-model="sex"
+                    class="ml-4 mb-0"
+                  ></v-radio>
+                </v-radio-group>
+              </v-col>
+              <v-col cols="12">
+                <v-btn width="262" color="#4Bb34B" class="mb-4" height="38">
+                  <span style="color: white; font-size: 12px !important">
+                    Continue registration
+                  </span>
+                </v-btn>
+                <v-btn width="262" height="38" color="#1b6dd1">
+                  <span style="color: white; font-size: 12px !important">
+                    Sign in with Facebook
+                  </span>
+                </v-btn>
               </v-col>
             </v-row>
           </v-form>
@@ -122,15 +152,13 @@ import {
 export default class StepOne extends Vue {
   firstName: string = ''
   lastName: string = ''
+  sex: string = ''
+  row: any = null
 
-  dateOfBirthString: string = ''
-  dobDateMenu = false
+  menu: boolean = false
 
-  get dobDateDisplay(): string {
-    if (!this.dateOfBirthString) {
-      return ''
-    }
-    return this['$dayjs'](this.dateOfBirthString).format('DD/MM/YYYY')
-  }
+  date = new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+    .toISOString()
+    .substr(0, 10)
 }
 </script>

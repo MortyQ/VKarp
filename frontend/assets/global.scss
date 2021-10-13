@@ -18,6 +18,7 @@
         &-left{
             position: absolute;
             left: 28%;
+           
           
         }
         &-right{
@@ -36,9 +37,26 @@
     height: 100% !important;
     min-height: 35px !important;
     max-height: 35px !important;
+    
     .v-label{
         top: 5px !important;
         left: 10px !important;
 
+    }
+}
+
+
+.v-input__control{
+    max-height: 40px;
+}
+
+.v-radio{
+    
+    .v-input--selection-controls__input{
+        height: 14px;
+        width: 14px;
+    }
+    label{
+        font-size: 16px !important;
     }
 }

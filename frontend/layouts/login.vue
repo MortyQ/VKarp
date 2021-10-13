@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <v-app-bar app color="white" tile flat> <AppBar /> </v-app-bar>
+    <v-app-bar app color="white" tile flat height="48px">
+      <AppBar />
+    </v-app-bar>
     <v-main style="background: #f4f4f4">
       <nuxt />
     </v-main>

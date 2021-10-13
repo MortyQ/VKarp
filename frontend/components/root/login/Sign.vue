@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="2">
+  <v-card elevation="2" width="320px">
     <v-row
       cols="12"
       class="d-flex flex-column justify-center align-center mt-5"
@@ -20,15 +20,16 @@
                 v-model="password"
                 outlined
                 label="Password"
+                class="mt-2"
                 hint="At least 8 characters"
                 @click:append="showPassword = !showPassword"
               ></v-text-field>
             </ValidationProvider>
             <div class="d-flex justify-space-between align-center">
               <v-btn
+                class="mt-2"
                 type="submit"
                 style="background: #5181b8; color: white"
-                :disabled="!formValid"
               >
                 Sing In
               </v-btn>
