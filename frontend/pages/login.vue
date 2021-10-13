@@ -7,7 +7,7 @@
         style="height: 100vh"
       >
         <div
-          class="d-flex flex-column justify-start align-center mr-15"
+          class="d-flex flex-column justify-start align-center mr-15 mt-8"
           style="text-align: center; width: 55%"
         >
           <span class="font_vk_mobile_h1"> {{ $t('vk_mobile') }} </span>
