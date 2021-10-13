@@ -36,33 +36,39 @@
     .android{
         position: absolute;
         top: 2%;
-        left: 32%;
+        left: 28%;
         
     }
     .iphone {
         position: absolute;
         top: 2%;
-        left: 55%;
+        left: 50%;
         text-align: center;
     }
     .all_product{
         margin-top: 20px;
         position: absolute;
-        left: 45%;
+        left: 38%;
     }
 
     span{
     
-        a{
+      button{
+          span{
             text-decoration: none;
             color:#2a5885;
-            font-size: 14px !important;
-            
-           
-        }
+            font-size: 12px !important;
+
+
+          }
+      }
     }
 }
 
+.nuxt-link-exact-active:hover{
+    border-bottom: 1px solid #2a5885;
+    transition: all 0.8s;
+}
 
 
 
@@ -75,6 +81,7 @@
     height: 100% !important;
     min-height: 35px !important;
     max-height: 35px !important;
+    box-shadow: none !important;
     
     .v-label{
         top: 5px !important;
@@ -90,6 +97,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.v-tooltip__content, 
+.v-tooltip__content .white ,
+.menuable__content__active,
+.menuable__content__active .white {
+
+    opacity: 1 !important;
+
 }
 
 

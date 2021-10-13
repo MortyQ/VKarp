@@ -12,7 +12,7 @@ export const i18n = {
         login: 'Phone or Email',
         password: 'Password',
         signIn: 'Sign In',
-        forget: 'forget the password ?',
+        forget: 'Forget the password ?',
         //Register StepOne
         titleFirstTimeHere: 'First time here?',
         SignUpForVK: 'Sign up for VK',

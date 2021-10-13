@@ -36,26 +36,26 @@
         </div>
         <div class="vk-image-text">
           <span class="android">
-            <nuxt-link to="/login">
+            <v-btn text depressed>
               <v-icon small color="#2a5885" class="pb-1">mdi-android</v-icon> VK
               {{ $t('forWord') }} Android
-            </nuxt-link>
+            </v-btn>
           </span>
           <span class="iphone">
-            <nuxt-link to="/login">
+            <v-btn text depressed>
               <v-icon small class="pb-1" color="#2a5885">mdi-apple</v-icon> VK
-              {{ $t('forWord') }} iOS
-            </nuxt-link></span
-          >
+              <span> {{ $t('forWord') }} iOS</span>
+            </v-btn>
+          </span>
           <br />
           <span class="all_product">
-            <nuxt-link to="/login">
+            <v-btn text depressed>
               {{ $t('allProduct') }}
               <v-icon small style="padding-top: 1px" color="#2a5885"
                 >mdi-chevron-right</v-icon
               >
-            </nuxt-link></span
-          >
+            </v-btn>
+          </span>
         </div>
       </v-col>
       <v-col cols="4">

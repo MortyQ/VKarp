@@ -11,6 +11,8 @@
               <v-text-field
                 v-model="identifier"
                 outlined
+                :placeholder="$t('login')"
+                solo
                 class="input-setting"
                 :label="$t('login')"
               ></v-text-field>
@@ -19,9 +21,10 @@
               <v-text-field
                 v-model="password"
                 outlined
+                :placeholder="$t('password')"
+                solo
                 :label="$t('password')"
                 class="mt-2"
-                hint="At least 8 characters"
                 @click:append="showPassword = !showPassword"
               ></v-text-field>
             </ValidationProvider>
@@ -33,9 +36,12 @@
               >
                 {{ $t('signIn') }}
               </v-btn>
-              <v-btn text color="#2A5885" style="font-size: 11px">{{
-                $t('forget')
-              }}</v-btn>
+              <nuxt-link
+                to="/login"
+                class="pt-3"
+                style="font-size: 16px; text-decoration: none; color: #2a5885"
+                >{{ $t('forget') }}</nuxt-link
+              >
             </div>
           </v-form>
         </ValidationObserver>

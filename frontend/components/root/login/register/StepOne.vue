@@ -29,6 +29,8 @@
                 v-model="firstName"
                 :label="$t('firstName')"
                 passive
+                :placeholder="$t('firstName')"
+                solo
                 outlined
                 class="mb-2"
               ></v-text-field>
@@ -38,13 +40,14 @@
                 v-model="lastName"
                 :label="$t('lastName')"
                 passive
+                :placeholder="$t('lastName')"
+                solo
                 outlined
-                class="mb-2"
               ></v-text-field>
             </ValidationProvider>
             <span>
               <i class="mr-2 font_vk_mobile_p">{{ $t('birthday') }}</i>
-              <v-tooltip right max-width="200px" color="white">
+              <v-tooltip right max-width="300px" color="white">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
                     color="black"
@@ -65,7 +68,7 @@
               </v-tooltip>
             </span>
             <v-row cols="12">
-              <v-col cols="12" class="mt-2">
+              <v-col cols="12">
                 <v-menu
                   ref="menu"
                   v-model="menu"
@@ -82,6 +85,8 @@
                       readonly
                       outlined
                       v-bind="attrs"
+                      :label="$t('birthday')"
+                      solo
                       v-on="on"
                     ></v-text-field>
                   </template>
@@ -161,8 +166,6 @@ export default class StepOne extends Vue {
 
   menu: boolean = false
 
-  date = new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-    .toISOString()
-    .substr(0, 10)
+  date: string | null = null
 }
 </script>
