@@ -7,7 +7,7 @@
       max-height="35"
       max-width="35"
       src="/vklogo.png"
-      style="position: absolute; left: 10%"
+      style="position: absolute; left: 10%; border-radius: 5px"
     >
     </v-img>
   </v-container>

@@ -76,6 +76,9 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-row v-else-if="steps === 1" class="d-flex justify-center align-center">
+      <StepTwo />
+    </v-row>
   </v-container>
 </template>
 
@@ -83,12 +86,12 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import SignIn from '@/components/root/login/Sign.vue'
 import StepOne from '@/components/root/login/register/StepOne.vue'
+import StepTwo from '../components/root/login/register/StepTwo.vue'
 @Component({
   layout: 'login',
-  components: { SignIn, StepOne },
-  computed: {},
+  components: { SignIn, StepOne, StepTwo },
 })
 export default class Login extends Vue {
-  public steps: number = 0
+  public steps: number = 1
 }
 </script>

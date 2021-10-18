@@ -36,6 +36,14 @@ export const i18n = {
         footerAbout: 'About VK',
         footerTerms: 'Terms',
         footerDev: 'Developers',
+        //StepTwo
+        titleManyServices: 'Many services. One account.',
+        textOneServices:
+          ' Create a VK account and use it to sign in to other online services',
+        textTwoServices:
+          ' Your data is protected. Set up 2-step verification and keep track of your activity history.',
+        textThreeServices: ' Use VK ID across all devices',
+        textServicesMoreAbout: 'More about VK ID',
       },
       ua: {
         vk_mobile: 'ВК для мобільних пристроїв',
@@ -69,6 +77,14 @@ export const i18n = {
         footerAbout: 'Про ВК',
         footerTerms: 'Умови',
         footerDev: 'Розробники',
+        //StepTwo
+        titleManyServices: 'Багато послуг. Один рахунок.',
+        textOneServices:
+          ' Створіть обліковий запис VK і використовуйте його для входу в інші онлайн -сервіси',
+        textTwoServices:
+          ' Ваші дані захищені. Налаштуйте двоетапну перевірку та відстежуйте історію своєї діяльності.',
+        textThreeServices: ' Використовуйте ідентифікатор ВК на всіх пристроях',
+        textServicesMoreAbout: 'Детальніше про VK ID',
       },
     },
   },
