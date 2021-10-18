@@ -146,3 +146,10 @@
     font-weight: 400;
     color: black;
 }
+
+.policy_register{
+    &:hover{
+        text-decoration: none !important;
+        border-bottom: none !important;
+    }
+}

@@ -31,6 +31,7 @@ export default {
     { src: '~/plugins/vuex-persist', ssr: false },
     { src: '@/plugins/axios', ssr: false },
     { src: '~/plugins/tiptap-vuetify', ssr: false },
+    { src: '@/plugins/phone-input', ssr: false },
   ],
   strapi: {
     url: strapiBaseUri,
@@ -92,6 +93,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vuetify/lib', 'tiptap-vuetify'],
+    transpile: ['vuetify/lib', 'tiptap-vuetify', 'vue-tel-input-vuetify'],
   },
 }

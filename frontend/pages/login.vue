@@ -87,11 +87,13 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import SignIn from '@/components/root/login/Sign.vue'
 import StepOne from '@/components/root/login/register/StepOne.vue'
 import StepTwo from '../components/root/login/register/StepTwo.vue'
+import { mapState } from 'vuex'
 @Component({
   layout: 'login',
   components: { SignIn, StepOne, StepTwo },
+  computed: { ...mapState('register', ['steps']) },
 })
 export default class Login extends Vue {
-  public steps: number = 1
+  steps!: number
 }
 </script>

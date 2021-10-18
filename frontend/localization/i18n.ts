@@ -44,6 +44,11 @@ export const i18n = {
           ' Your data is protected. Set up 2-step verification and keep track of your activity history.',
         textThreeServices: ' Use VK ID across all devices',
         textServicesMoreAbout: 'More about VK ID',
+        textRightTitle: 'Account validation',
+        textRightText:
+          "You'll use your phone number to sign in to your account",
+        textRightLabelCountry: 'Country/Region',
+        textRightLabelPhone: 'Mobile phone number',
       },
       ua: {
         vk_mobile: 'ВК для мобільних пристроїв',
@@ -85,6 +90,11 @@ export const i18n = {
           ' Ваші дані захищені. Налаштуйте двоетапну перевірку та відстежуйте історію своєї діяльності.',
         textThreeServices: ' Використовуйте ідентифікатор ВК на всіх пристроях',
         textServicesMoreAbout: 'Детальніше про VK ID',
+        textRightTitle: 'Валідація облікового запису',
+        textRightText:
+          'Ви будете використовувати свій номер телефону щоб увійти до свого облікового запису',
+        textRightLabelCountry: 'Країна/регіон',
+        textRightLabelPhone: 'Номер мобільного телефону',
       },
     },
   },

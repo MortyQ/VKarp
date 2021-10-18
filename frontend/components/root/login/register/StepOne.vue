@@ -127,6 +127,7 @@
                   class="mb-4"
                   height="38"
                   depressed
+                  @click="firstStep()"
                 >
                   <span style="color: white; font-size: 12px !important">
                     {{ $t('continRegister') }}
@@ -156,16 +157,19 @@ import {
 } from 'vee-validate'
 @Component({
   components: { ValidationObserver, ValidationProvider },
-  computed: {},
+  computed: { ...mapState('register', ['steps']) },
 })
 export default class StepOne extends Vue {
   firstName: string = ''
   lastName: string = ''
   sex: string = ''
   row: any = null
-
+  steps!: number
   menu: boolean = false
-
   date: string | null = null
+
+  public async firstStep() {
+    await this['$store'].dispatch('register/CHANGE_STEP_PAGE', 1)
+  }
 }
 </script>
