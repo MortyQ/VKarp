@@ -4,10 +4,13 @@ import {
   Mutation,
   Action,
   MutationAction,
+  config,
 } from 'vuex-module-decorators'
 
 import axios from 'axios'
 import { StepsPage } from '@/helpers/enum'
+
+config.rawError = true
 
 @Module({ name: 'register', stateFactory: true, namespaced: true })
 export default class Register extends VuexModule {

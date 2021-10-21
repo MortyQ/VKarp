@@ -11,19 +11,19 @@
               <v-text-field
                 v-model="identifier"
                 outlined
-                :placeholder="$t('login')"
+                placeholder="Телефон или email"
                 solo
                 class="input-setting"
-                :label="$t('login')"
+                label="Телефон или email"
               ></v-text-field>
             </ValidationProvider>
             <ValidationProvider name="password" rules="required|strongPassword">
               <v-text-field
                 v-model="password"
                 outlined
-                :placeholder="$t('password')"
+                placeholder="Пароль"
                 solo
-                :label="$t('password')"
+                label="Пароль"
                 class="mt-2"
                 @click:append="showPassword = !showPassword"
               ></v-text-field>
@@ -34,13 +34,13 @@
                 type="submit"
                 style="background: #5181b8; color: white"
               >
-                {{ $t('signIn') }}
+                Войти
               </v-btn>
               <nuxt-link
                 to="/login"
                 class="pt-3"
                 style="font-size: 16px; text-decoration: none; color: #2a5885"
-                >{{ $t('forget') }}</nuxt-link
+                >Забыл пароль ?</nuxt-link
               >
             </div>
           </v-form>

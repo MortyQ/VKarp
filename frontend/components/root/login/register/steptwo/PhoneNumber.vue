@@ -8,14 +8,14 @@
       class="d-flex flex-column justify-start align-center"
       style="text-align: center"
     >
-      <span class="h2 mt-5" style="font-size: 20px">
-        {{ $t('textRightTitle') }}
+      <span class="title_text mt-5" style="font-size: 20px">
+        Подтверждение регистрации
       </span>
       <span
         class="mt-5 mb-10"
         style="max-width: 60%; color: #656565; font-size: 14px"
       >
-        {{ $t('textRightText') }}
+        Номер вашего телефона будет использоваться для входа в аккаунт
       </span>
 
       <ValidationObserver>
@@ -24,7 +24,7 @@
           <VueTelInputVuetify
             v-model="phone"
             passive
-            :label="$t('textRightLabelCountry')"
+            label="Страна/Регион и Мобильный телефон"
             solo
             :disabledFetchingCountry="true"
             outline
@@ -32,12 +32,6 @@
             defaultCountry="Ukraine"
           ></VueTelInputVuetify>
         </ValidationProvider>
-        <!-- <v-select
-        solo
-        :label="$t('textRightLabelCountry')"
-        :placeholder="$t('textRightLabelCountry')"
-        outlined
-      ></v-select> -->
       </ValidationObserver>
     </v-col>
     <v-col cols="12" class="d-flex flex-column justify-end align-center">
@@ -51,21 +45,21 @@
           max-width: 70%;
           text-align: center;
         "
-        >By clicking Next, you accept our
+        >Нажимая кнопку «Далее», вы принимаете
         <nuxt-link
           class="policy_register"
           to="/login"
           style="color: #939393; font-size: 13px"
         >
-          <span>User Agreement</span>
+          <span>пользовательское соглашение</span>
         </nuxt-link>
-        and
+        и
         <nuxt-link
           class="policy_register"
           to="/login"
           style="color: #939393; font-size: 13px"
         >
-          <span>Privacy Policy</span>
+          <span>политику конфиденциальности.</span>
         </nuxt-link>
         .
       </span>

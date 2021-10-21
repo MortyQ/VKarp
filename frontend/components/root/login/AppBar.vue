@@ -10,6 +10,27 @@
       style="position: absolute; left: 10%; border-radius: 5px"
     >
     </v-img>
+    <span
+      v-if="steps === 3"
+      class="title_text"
+      style="position: absolute; left: 15%; border-radius: 5px"
+      >Вконтакте</span
+    >
+
+    <div style="width: 200px">
+      <v-text-field
+        flat
+        tile
+        v-if="steps === 3"
+        solo
+        hide-details
+        class="ma-0 pa-0"
+        outlined
+        style="position: absolute; left: 25%; top: -50%"
+        background-color="#edeef0"
+        prepend-inner-icon="mdi-magnify"
+      ></v-text-field>
+    </div>
 
     <v-btn text v-if="steps === 1" @click="goToHome()"> sign Out </v-btn>
   </v-container>

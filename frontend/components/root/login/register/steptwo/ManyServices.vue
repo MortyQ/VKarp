@@ -13,8 +13,8 @@
       <span>ID</span>
     </v-card-title>
     <v-card-text>
-      <span class="h2">
-        {{ $t('titleManyServices') }}
+      <span class="title_text">
+        Единая платформа для авторизации во множестве сервисов
       </span>
     </v-card-text>
     <v-row class="ml-auto mb-2" v-for="item in services" :key="item.id">
@@ -34,7 +34,7 @@
       style="text-decoration: none; color: #2a5885; font-size: 14px"
       to="/login"
     >
-      {{ $t('textServicesMoreAbout') }}
+      Подробнее о VK ID
     </nuxt-link>
   </v-card>
 </template>
@@ -46,11 +46,11 @@ import { Component, Vue } from 'nuxt-property-decorator'
   components: {},
 })
 export default class ManyServices extends Vue {
-  $t!: any
-
-  textOne = this.$t('textOneServices')
-  textTwo = this.$t('textTwoServices')
-  textThree = this.$t('textThreeServices')
+  textOne =
+    'Создайте аккаунт ВКонтакте и используйте его для входа в другие сервисы'
+  textTwo =
+    'Ваши данные под защитой: настройте подтверждение входа и следите за историей активности'
+  textThree = 'Неважно, телефон или компьютер — VK ID работает где угодно'
 
   get services() {
     return [

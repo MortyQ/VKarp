@@ -140,7 +140,7 @@
     }
 }
 
-.h2 {
+.title_text {
     font-size: 18px;
     line-height: 25px;
     font-weight: 400;
@@ -152,4 +152,21 @@
         text-decoration: none !important;
         border-bottom: none !important;
     }
+}
+
+.height_with_appbar{
+    height: calc(100vh - 48px) !important;
+}
+
+.ranks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border: 1px solid wheat;
+    background-color: wheat;
+    height: 30px;
+    color: rgb(59, 55, 55);
+
+   
 }

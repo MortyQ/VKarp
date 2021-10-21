@@ -1,6 +1,12 @@
 export const i18n = {
   locales: ['en', 'ua'],
   defaultLocale: 'en',
+  lazy: true,
+  detectBrowserLanguage: {
+    useCookie: true,
+    cookieKey: 'i18n_redirected',
+    redirectOn: 'root', // recommended
+  },
   vueI18n: {
     fallbackLocale: 'en',
     messages: {

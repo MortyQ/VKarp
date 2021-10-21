@@ -10,10 +10,13 @@
           class="d-flex flex-column justify-start align-center mr-15 mt-8"
           style="text-align: center; width: 55%"
         >
-          <span class="font_vk_mobile_h1"> {{ $t('vk_mobile') }} </span>
-          <span class="" style="font_vk_mobile_p mt-5">{{
-            $t('vk_mobile_description')
-          }}</span>
+          <span class="font_vk_mobile_h1">
+            ВКонтакте для мобильных устройств
+          </span>
+          <span class="" style="font_vk_mobile_p mt-5">
+            Установите официальное мобильное приложение ВКонтакте и оставайтесь
+            в курсе новостей ваших друзей, где бы вы ни находились.
+          </span>
         </div>
         <div class="vk-image-positions">
           <v-img
@@ -42,19 +45,19 @@
           <span class="android">
             <v-btn text depressed>
               <v-icon small color="#2a5885" class="pb-1">mdi-android</v-icon> VK
-              {{ $t('forWord') }} Android
+              для Android
             </v-btn>
           </span>
           <span class="iphone">
             <v-btn text depressed>
               <v-icon small class="pb-1" color="#2a5885">mdi-apple</v-icon> VK
-              <span> {{ $t('forWord') }} iOS</span>
+              <span> для iOS</span>
             </v-btn>
           </span>
           <br />
           <span class="all_product">
             <v-btn text depressed>
-              {{ $t('allProduct') }}
+              Все продукты
               <v-icon small style="padding-top: 1px" color="#2a5885"
                 >mdi-chevron-right</v-icon
               >
@@ -68,9 +71,9 @@
 
         <v-card class="mt-3" width="100%" min-width="320px" max-width="320px">
           <v-card-text style="text-align: center">
-            {{ $t('learnMoreRegister') }}
+            После регистрации вы получите доступ ко всем возможностям VK ID
             <v-card tile flat color="white" :ripple="false" to="/login">
-              <span style="color: #2a5885"> {{ $t('learnMoreWord') }} </span>
+              <span style="color: #2a5885"> Узнать больше </span>
             </v-card>
           </v-card-text>
         </v-card>
