@@ -6,7 +6,8 @@
       >
       <span class="opacity_nice_text">online</span>
     </div>
-    <span class="ml-4"> Слава Україні </span>
+    <span v-if="!user.statusProfile" class="ml-4"> Слава Україні </span>
+    <span v-else class="ml-4"> {{ user.statusProfile }} </span>
     <v-divider class="my-2"></v-divider>
     <v-list class="ml-6" color="transparent">
       <v-list-item
@@ -94,20 +95,21 @@ export default class UserInfo extends Vue {
   get getInfo() {
     return [
       { title: 'Дата Рождения', value: this.user.birthday },
-      { title: 'Город', value: 'Харьков' },
-      { title: 'Место работы', value: 'Shark Software' },
+      { title: 'Город', value: this.user.city },
+      { title: 'Место работы', value: this.user.work },
     ]
   }
   get moreInfo() {
     return [
       { title: 'Пол', value: this.user.sex },
-      { title: 'Семейное положение', value: 'Все серьезно' },
-      { title: 'Место учебы', value: 'Харьков' },
+      { title: 'Семейное положение', value: this.user.statuses },
+      { title: 'Место учебы', value: this.user.study },
       { title: 'Почта', value: this.user.email },
-      { title: 'Другие социальные сети', value: 'Харьков' },
-      { title: 'Увлечения', value: 'Shark Software' },
-      { title: 'Место учебы', value: 'Харьков' },
-      { title: 'Почта', value: 'Shark Software' },
+      { title: 'Другие социальные сети', value: this.user.social },
+      { title: 'Увлечения', value: this.user.hobbi },
+      { title: 'Родители', value: this.user.parents },
+      { title: 'Любимая книга', value: this.user.book },
+      { title: 'Любимая музыкальная группа', value: this.user.music },
     ]
   }
   get statistic() {

@@ -249,6 +249,7 @@
         </ValidationObserver>
         <v-btn
           class="mt-2"
+          :loading="loading"
           @click="changeUserInfo()"
           style="background: #5181b8; color: white"
         >
@@ -272,6 +273,7 @@ export default class Login extends Vue {
   steps!: number
   user!: UserType
   statuses = statuses
+  loading: boolean = false
 
   get settingUserInfo() {
     return {
@@ -293,7 +295,11 @@ export default class Login extends Vue {
   }
 
   async changeUserInfo() {
+    this.loading = true
     await this['$store'].dispatch('profile/EDIT_PROFILE', this.settingUserInfo)
+    setTimeout(() => {
+      this.loading = false
+    }, 3000)
   }
 }
 </script>

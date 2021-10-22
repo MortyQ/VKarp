@@ -6,7 +6,11 @@
     <v-main class="grey lighten-3">
       <v-container>
         <v-row>
-          <v-col v-if="$vuetify.breakpoint.width > 1000" cols="3">
+          <v-col
+            v-if="$vuetify.breakpoint.width > 1000"
+            cols="3"
+            class="d-flex justify-end"
+          >
             <v-sheet
               rounded="lg"
               class="d-flex justify-space-around"
@@ -19,6 +23,7 @@
                   v-for="item in mainNav"
                   :key="item.id"
                   link
+                  :ripple="false"
                   :to="item.to"
                 >
                   <v-list-item-content
@@ -31,7 +36,7 @@
                       <span style="font-size: 14px">
                         {{ item.name }}
                       </span>
-                      <div style="position: absolute; left: 100%; top: 25%">
+                      <div style="position: absolute; left: 80%; top: 25%">
                         <v-badge
                           v-if="item.message != ''"
                           :content="item.message"

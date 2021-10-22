@@ -12,9 +12,9 @@ export enum familyStatus {
 }
 
 export const statuses = [
-  { text: familyStatus.active, value: 'active' },
-  { text: familyStatus.passive, value: 'passive' },
-  { text: familyStatus.with, value: 'with' },
-  { text: familyStatus.difficult, value: 'difficult' },
-  { text: familyStatus.loveComin, value: 'loveComin' },
+  { text: familyStatus.active, value: 'В активном поиске' },
+  { text: familyStatus.passive, value: 'Не ищу отношения' },
+  { text: familyStatus.with, value: 'В отношениях' },
+  { text: familyStatus.difficult, value: 'Все сложно' },
+  { text: familyStatus.loveComin, value: 'Влюблен(а)' },
 ]
