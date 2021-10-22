@@ -22,7 +22,7 @@ export default class MainPage extends VuexModule {
   public async GET_USER_BY_ID(id) {
     try {
       const res = await axios.get(`http://localhost:1337/users/${id}/`)
-      console.log(res.data)
+      // console.log(res.data)
 
       return res.data
     } catch (e) {

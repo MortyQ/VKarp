@@ -19,6 +19,7 @@
                   v-for="item in mainNav"
                   :key="item.id"
                   link
+                  :to="item.to"
                 >
                   <v-list-item-content
                     class="d-flex flex-row justify-space-around"
@@ -123,7 +124,7 @@ import { UserType } from '@/helpers/userType'
   components: { AppBar, Footer },
   computed: {
     ...mapState('register', ['steps']),
-    ...mapState('main-page', ['user']),
+    ...mapState('profile', ['user']),
   },
 })
 export default class DefaultLayout extends Vue {
@@ -131,16 +132,51 @@ export default class DefaultLayout extends Vue {
   user!: UserType
   get mainNav() {
     return [
-      { icon: 'mdi-account-circle-outline', name: 'Моя страница', message: '' },
-      { icon: 'mdi-calendar-blank-outline', name: 'Новости', message: '2' },
-      { icon: 'mdi-message-outline', name: 'Мессенджер', message: '94' },
-      { icon: 'mdi-account-multiple-outline', name: 'Друзья', message: '9843' },
-      { icon: 'mdi-account-group-outline', name: 'Сообщества', message: '21' },
-      { icon: 'mdi-image-multiple-outline', name: 'Фотографии', message: '' },
-      { icon: 'mdi-music', name: 'Музыка', message: '' },
-      { icon: 'mdi-gamepad-variant-outline', name: 'Игры', message: '' },
-      { icon: 'mdi-video-input-svideo', name: 'Видео', message: '' },
-      { icon: 'mdi-video-outline', name: 'Клипы', message: '' },
+      {
+        icon: 'mdi-account-circle-outline',
+        name: 'Моя страница',
+        message: '',
+        to: `/${this.user?.id}`,
+      },
+      {
+        icon: 'mdi-calendar-blank-outline',
+        name: 'Новости',
+        message: '2',
+        to: '/',
+      },
+      {
+        icon: 'mdi-message-outline',
+        name: 'Мессенджер',
+        message: '94',
+        to: '/',
+      },
+      {
+        icon: 'mdi-account-multiple-outline',
+        name: 'Друзья',
+        message: '9843',
+        to: '/',
+      },
+      {
+        icon: 'mdi-account-group-outline',
+        name: 'Сообщества',
+        message: '21',
+        to: '/',
+      },
+      {
+        icon: 'mdi-image-multiple-outline',
+        name: 'Фотографии',
+        message: '',
+        to: '/',
+      },
+      { icon: 'mdi-music', name: 'Музыка', message: '', to: '/' },
+      {
+        icon: 'mdi-gamepad-variant-outline',
+        name: 'Игры',
+        message: '',
+        to: '/',
+      },
+      { icon: 'mdi-video-input-svideo', name: 'Видео', message: '', to: '/' },
+      { icon: 'mdi-video-outline', name: 'Клипы', message: '', to: '/' },
     ]
   }
 

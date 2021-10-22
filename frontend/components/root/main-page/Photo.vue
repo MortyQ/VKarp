@@ -20,7 +20,13 @@
     <div class="ranks mt-2 mb-2">833943</div>
     <v-row cols="12" class="d-flex justify-space-between align-center">
       <v-col cols="12" lg="8">
-        <v-btn height="35px" width="100%" depressed color="#a9d1ff">
+        <v-btn
+          height="35px"
+          width="100%"
+          depressed
+          color="#a9d1ff"
+          to="/setting"
+        >
           <span style="font-size: 10px !important"> Редактировать </span>
         </v-btn>
       </v-col>
