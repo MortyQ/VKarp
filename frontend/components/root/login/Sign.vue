@@ -11,10 +11,10 @@
               <v-text-field
                 v-model="identifier"
                 outlined
-                placeholder="Телефон или email"
+                placeholder="Ваш Логин"
                 solo
                 class="input-setting"
-                label="Телефон или email"
+                label="Ваш Логин"
               ></v-text-field>
             </ValidationProvider>
             <ValidationProvider name="password" rules="required|strongPassword">
@@ -75,6 +75,8 @@ export default class SignIn extends Vue {
       identifier: this.identifier,
       password: this.password,
     })
+    console.log(user)
+
     if (user && user.id) {
       this['$router'].push(`/${user.id}`)
     }

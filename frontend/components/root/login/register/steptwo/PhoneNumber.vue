@@ -151,9 +151,10 @@ import {
 } from 'vee-validate'
 @Component({
   components: { ValidationObserver, ValidationProvider, VueTelInputVuetify },
-  computed: {},
+  computed: { ...mapState('register', ['steps']) },
 })
 export default class PhoneNumber extends Vue {
+  steps!: number
   phone: string = ''
   email: string = ''
   password: string = ''
@@ -171,6 +172,7 @@ export default class PhoneNumber extends Vue {
       username: this.username,
     })
     await this['$store'].dispatch('register/REGISTER')
+    await this['$store'].dispatch('register/CHANGE_STEP_PAGE', 0)
   }
 }
 </script>

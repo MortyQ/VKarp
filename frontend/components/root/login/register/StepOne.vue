@@ -124,13 +124,13 @@
                     <v-radio
                       label="Женский"
                       :ripple="false"
-                      value="Female"
+                      value="Женский"
                       passive
                     ></v-radio>
                     <v-radio
                       label="Мужской"
                       :ripple="false"
-                      value="Male"
+                      value="Мужской"
                       passive
                       small
                       class="mb-0 ml-2"

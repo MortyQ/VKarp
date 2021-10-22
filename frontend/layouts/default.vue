@@ -6,7 +6,7 @@
     <v-main class="grey lighten-3">
       <v-container>
         <v-row>
-          <v-col cols="2">
+          <v-col v-if="$vuetify.breakpoint.width > 1000" cols="3">
             <v-sheet
               rounded="lg"
               class="d-flex justify-space-around"
@@ -14,7 +14,7 @@
             >
               <v-list color="transparent">
                 <v-list-item
-                  style="height: 20px; width: 90%"
+                  style="height: 20px; width: 100%"
                   class="ma-0 pa-0"
                   v-for="item in mainNav"
                   :key="item.id"
@@ -103,7 +103,7 @@
             </v-sheet>
           </v-col>
 
-          <v-col cols="8">
+          <v-col cols="12" md="9">
             <nuxt />
           </v-col>
         </v-row>
@@ -160,10 +160,6 @@ export default class DefaultLayout extends Vue {
       { icon: 'mdi-file-outline', name: 'Файлы', message: '' },
       { icon: 'mdi-bullhorn-outline', name: 'Реклама', message: '' },
     ]
-  }
-
-  test() {
-    console.log(this.user)
   }
 }
 </script>

@@ -1,13 +1,24 @@
 <template>
   <v-container>
     <v-row v-if="user">
-      <v-col cols="4">
+      <v-col
+        md="3"
+        cols="12"
+        class="
+          d-flex
+          flex-column
+          justify-md-start
+          align-md-start
+          justify-center
+          align-center
+        "
+      >
         <Photo />
         <Gifts />
       </v-col>
-      <v-col cols="8">
+      <v-col cols="12" md="9">
         <UserInfo />
-        <Gelery />
+        <!-- <Gelery /> -->
       </v-col>
     </v-row>
   </v-container>
