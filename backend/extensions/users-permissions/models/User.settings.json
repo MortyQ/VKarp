@@ -58,57 +58,6 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "username",
-      "required": true
-    },
-    "posts": {
-      "via": "user",
-      "collection": "posts"
-    },
-    "firstName": {
-      "type": "string"
-    },
-    "lastName": {
-      "type": "string"
-    },
-    "avatar": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
-    },
-    "background": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
-    },
-    "description": {
-      "type": "text"
-    },
-    "socialSite": {
-      "type": "string"
-    },
-    "webSite": {
-      "type": "string"
-    },
-    "phoneNumber": {
-      "type": "string"
     }
   }
 }
