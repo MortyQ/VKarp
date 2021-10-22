@@ -1,7 +1,7 @@
 import { Store } from 'vuex'
 import { getModule } from 'vuex-module-decorators'
 import Register from '@/store/register'
-import MainPage from './main-page'
+import MainPage from './profile'
 
 export interface AppSuperstore {
   register: Register

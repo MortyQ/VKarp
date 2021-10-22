@@ -6,7 +6,7 @@
     >
       <v-col cols="10" class="pt-5 pt-5 pb-5 mt-2">
         <ValidationObserver ref="form" v-slot="{ valid: formValid }">
-          <v-form @submit.prevent="userLogin">
+          <v-form @submit.prevent="signIn">
             <ValidationProvider rules="required">
               <v-text-field
                 v-model="identifier"
@@ -23,6 +23,7 @@
                 outlined
                 placeholder="Пароль"
                 solo
+                type="password"
                 label="Пароль"
                 class="mt-2"
                 @click:append="showPassword = !showPassword"
@@ -32,6 +33,8 @@
               <v-btn
                 class="mt-2"
                 type="submit"
+                :disabled="!formValid"
+                :loading="loading"
                 style="background: #5181b8; color: white"
               >
                 Войти
@@ -66,8 +69,16 @@ export default class SignIn extends Vue {
 
   showPassword: boolean = false
   loading: boolean = false
-  public async userLogin() {
-    console.log('LOGIN')
+  public async signIn() {
+    this.loading = true
+    const { user } = await this['$store'].dispatch('register/LOGIN', {
+      identifier: this.identifier,
+      password: this.password,
+    })
+    if (user && user.id) {
+      this['$router'].push(`/${user.id}`)
+    }
+    this.loading = false
   }
 }
 </script>

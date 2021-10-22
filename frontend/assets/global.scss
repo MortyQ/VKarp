@@ -170,3 +170,20 @@
 
    
 }
+
+.secondStep_register-input{
+    
+    max-width: 270px !important;
+    min-width: 270px !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 35px !important;
+    min-height: 35px !important;
+}
+
+.v-messages__message{
+    border-radius: 5px;
+    padding: 10px;
+    background-color:#2a5885;;
+    color: rgb(229, 226, 226);
+}

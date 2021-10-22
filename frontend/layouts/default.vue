@@ -3,11 +3,10 @@
     <v-app-bar app color="white" tile flat height="48px">
       <AppBar />
     </v-app-bar>
-
     <v-main class="grey lighten-3">
       <v-container>
         <v-row>
-          <v-col cols="3">
+          <v-col cols="2">
             <v-sheet
               rounded="lg"
               class="d-flex justify-space-around"
@@ -118,14 +117,18 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import AppBar from '@/components/root/login/AppBar.vue'
 import Footer from '@/components/root/login/Footer.vue'
 import { mapState } from 'vuex'
+import { UserType } from '@/helpers/userType'
 
 @Component({
   components: { AppBar, Footer },
-  computed: { ...mapState('register', ['steps']) },
+  computed: {
+    ...mapState('register', ['steps']),
+    ...mapState('main-page', ['user']),
+  },
 })
 export default class DefaultLayout extends Vue {
   steps!: number
-
+  user!: UserType
   get mainNav() {
     return [
       { icon: 'mdi-account-circle-outline', name: 'Моя страница', message: '' },
@@ -160,7 +163,7 @@ export default class DefaultLayout extends Vue {
   }
 
   test() {
-    this['$store'].dispatch('register/CHANGE_STEP_PAGE', 3)
+    console.log(this.user)
   }
 }
 </script>

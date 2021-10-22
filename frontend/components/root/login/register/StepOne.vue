@@ -20,24 +20,26 @@
       class="d-flex flex-column align-center"
     >
       <v-col cols="10">
-        <ValidationObserver ref="form">
+        <ValidationObserver ref="form" v-slot="{ valid: formValid }">
           <v-form @submit.prevent="userLogin">
-            <ValidationProvider rules="required">
+            <ValidationProvider rules="required|alpha" v-slot="{ errors }">
               <v-text-field
                 v-model="firstName"
                 label="Ваше имя"
                 passive
+                :error-messages="errors"
                 placeholder="Ваше имя"
                 solo
                 outlined
                 class="mb-2"
               ></v-text-field>
             </ValidationProvider>
-            <ValidationProvider rules="required">
+            <ValidationProvider rules="required|alpha" v-slot="{ errors }">
               <v-text-field
                 v-model="lastName"
                 label="Ваша фамилия"
                 passive
+                :error-messages="errors"
                 placeholder="Ваша фамилия"
                 solo
                 outlined
@@ -83,15 +85,19 @@
                   min-width="auto"
                 >
                   <template v-slot:activator="{ on, attrs }">
-                    <v-text-field
-                      v-model="date"
-                      readonly
-                      outlined
-                      v-bind="attrs"
-                      label="Дата рождения"
-                      solo
-                      v-on="on"
-                    ></v-text-field>
+                    <ValidationProvider v-slot="{ errors }" rules="required">
+                      <v-text-field
+                        v-model="date"
+                        readonly
+                        passive
+                        outlined
+                        :error-messages="errors"
+                        v-bind="attrs"
+                        label="Дата рождения"
+                        solo
+                        v-on="on"
+                      ></v-text-field>
+                    </ValidationProvider>
                   </template>
                   <v-date-picker v-model="date" no-title scrollable>
                     <v-spacer></v-spacer>
@@ -106,22 +112,31 @@
               </v-col>
               <v-col cols="12" class="pt-0 pb-0">
                 <span class="font_vk_mobile_p">Пол </span>
-                <v-radio-group v-model="row" row class="pa-0 ma-0">
-                  <v-radio
-                    label="Женский"
-                    :ripple="false"
-                    value="Female"
+                <ValidationProvider v-slot="{ errors }" rules="required">
+                  <v-radio-group
                     v-model="sex"
-                  ></v-radio>
-                  <v-radio
-                    label="Мужской"
-                    :ripple="false"
-                    value="Male"
-                    v-model="sex"
-                    small
-                    class="mb-0 ml-2"
-                  ></v-radio>
-                </v-radio-group>
+                    :error-messages="errors"
+                    row
+                    passive
+                    class="pa-0 ma-0"
+                    @keyup.enter="submit(formValid)"
+                  >
+                    <v-radio
+                      label="Женский"
+                      :ripple="false"
+                      value="Female"
+                      passive
+                    ></v-radio>
+                    <v-radio
+                      label="Мужской"
+                      :ripple="false"
+                      value="Male"
+                      passive
+                      small
+                      class="mb-0 ml-2"
+                    ></v-radio>
+                  </v-radio-group>
+                </ValidationProvider>
               </v-col>
               <v-col cols="12">
                 <v-btn
@@ -130,6 +145,7 @@
                   class="mb-4"
                   height="38"
                   depressed
+                  :disabled="!formValid"
                   @click="firstStep()"
                 >
                   <span style="color: white; font-size: 12px !important">
@@ -173,6 +189,12 @@ export default class StepOne extends Vue {
 
   public async firstStep() {
     await this['$store'].dispatch('register/CHANGE_STEP_PAGE', 1)
+    await this['$store'].dispatch('register/FIRST_STEP_REGISTER', {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      birthday: this.date,
+      sex: this.sex,
+    })
   }
 }
 </script>

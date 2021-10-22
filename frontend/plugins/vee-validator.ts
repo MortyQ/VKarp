@@ -1,7 +1,13 @@
 import Vue from 'vue'
 import { extend } from 'vee-validate'
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
-import { required, email, confirmed, numeric } from 'vee-validate/dist/rules'
+import {
+  required,
+  email,
+  confirmed,
+  numeric,
+  alpha,
+} from 'vee-validate/dist/rules'
 import $t from '@nuxtjs/i18n'
 
 Vue.component('ValidationObserver', ValidationObserver)
@@ -18,13 +24,18 @@ extend('numeric', {
   message: 'Must be only intager',
 })
 
+extend('alpha', {
+  ...alpha,
+  message: 'Не может быть пробелов',
+})
+
 extend('required', {
   ...required,
-  message: 'Must be required ',
+  message: 'Обязательное поле ! Пожалуйста заполните его ',
 })
 extend('email', {
   ...email,
-  message: 'Must be required ',
+  message: 'Пожалуйста введите свою почту в формате почта@сервис.домен ',
 })
 
 extend('confirmed', {
@@ -44,5 +55,5 @@ extend('strongPassword', {
 
 extend('phone', {
   validate: (value: any) => mobile.test(value),
-  message: `Please entery normal Mobile phone number`,
+  message: `Пожалуйста введите действующий мобильный номер. Так вы сможете всегда иметь доступ к своему аккаунту`,
 })
