@@ -85,6 +85,39 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "motherLastName": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "study": {
+      "type": "string"
+    },
+    "work": {
+      "type": "string"
+    },
+    "statuses": {
+      "type": "string"
+    },
+    "parents": {
+      "type": "string"
+    },
+    "social": {
+      "type": "string"
+    },
+    "hobbi": {
+      "type": "string"
+    },
+    "book": {
+      "type": "string"
+    },
+    "music": {
+      "type": "string"
+    },
+    "statusProfile": {
+      "type": "string"
     }
   }
 }
