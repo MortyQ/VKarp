@@ -26,7 +26,7 @@ extend('numeric', {
 
 extend('alpha', {
   ...alpha,
-  message: 'Не может быть пробелов',
+  message: 'Не может быть пробелов, символов и цифр ',
 })
 
 extend('required', {

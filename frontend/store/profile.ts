@@ -29,4 +29,25 @@ export default class MainPage extends VuexModule {
       console.log(e)
     }
   }
+
+  @Mutation
+  private _EDIT_PROFILE(newInfo: UserType) {
+    this.user = newInfo
+  }
+  @Action({ commit: '_EDIT_PROFILE' })
+  public async EDIT_PROFILE(newInfo: UserType) {
+    try {
+      let { data } = await axios.put(
+        `http://localhost:1337/users/${newInfo.id}`,
+        newInfo
+      )
+      console.log(newInfo)
+      console.log(data)
+      // console.log(this.user)
+
+      return data
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
