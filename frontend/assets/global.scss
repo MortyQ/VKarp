@@ -258,3 +258,14 @@
         }
     }
 }
+
+.photo_gallery{
+    position: relative !important;
+    width: 100%;
+        .text_gallery{
+            position: absolute;
+            bottom: 99%;
+            right: 2%;
+    }    
+      
+}
