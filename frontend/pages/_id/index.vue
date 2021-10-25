@@ -18,7 +18,8 @@
       </v-col>
       <v-col cols="12" md="9">
         <UserInfo />
-        <!-- <Gelery /> -->
+        <Gelery />
+        <CreatePost />
       </v-col>
     </v-row>
   </v-container>
@@ -30,11 +31,12 @@ import Photo from '@/components/root/main-page/Photo.vue'
 import UserInfo from '@/components/root/main-page/UserInfo.vue'
 import Gifts from '@/components/root/main-page/Gifts.vue'
 import Gelery from '~/components/root/main-page/Gallery.vue'
+import CreatePost from '@/components/root/main-page/CreatePost.vue'
 import { UserType } from '@/helpers/userType'
 import { mapState } from 'vuex'
 
 @Component({
-  components: { Photo, UserInfo, Gifts, Gelery },
+  components: { Photo, UserInfo, Gifts, Gelery, CreatePost },
   computed: {
     ...mapState('register', ['steps']),
     ...mapState('profile', ['user']),

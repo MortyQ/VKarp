@@ -12,6 +12,7 @@ import { UserType } from '@/helpers/userType'
 @Module({ name: 'mainPage', stateFactory: true, namespaced: true })
 export default class MainPage extends VuexModule {
   public user: UserType | null = null
+  userGallery: File[] | null = null
 
   @Mutation
   private _GET_USER_BY_ID(payload) {
@@ -33,6 +34,7 @@ export default class MainPage extends VuexModule {
   @Mutation
   private _EDIT_PROFILE(newInfo: UserType) {
     this.user = newInfo
+    console.log(this.user)
   }
   @Action({ commit: '_EDIT_PROFILE' })
   public async EDIT_PROFILE(newInfo: UserType) {
@@ -41,13 +43,77 @@ export default class MainPage extends VuexModule {
         `http://localhost:1337/users/${newInfo.id}`,
         newInfo
       )
-      console.log(newInfo)
-      console.log(data)
-      // console.log(this.user)
 
       return data
     } catch (e) {
       console.log(e)
+    }
+  }
+
+  @Mutation
+  private _UPDATE_USER(payload) {
+    console.log(payload)
+    if (payload) {
+      this.user = payload
+    }
+  }
+
+  @Action({ commit: '_UPDATE_USER' })
+  public async UPDATE_AVATAR(payload) {
+    console.log(payload)
+
+    try {
+      let resp = await axios.post(
+        `http://localhost:1337/upload`,
+        payload.formdata
+      )
+      console.log('resp', resp)
+      if (resp.data) {
+        let { data } = await axios.put(
+          `http://localhost:1337/users/${payload.id}`,
+          {
+            avatar: {
+              id: resp.data[0].id,
+            },
+          }
+        )
+        return data
+      }
+      return null
+    } catch (e) {
+      return null
+      console.log(e)
+    }
+  }
+
+  @Mutation
+  private _ADD_PHOTO_TO_GALLERY(payload) {
+    console.log(payload)
+    if (payload) {
+      this.user = payload
+    }
+  }
+
+  @Action({ commit: '_ADD_PHOTO_TO_GALLERY', rawError: true })
+  public async ADD_PHOTO_TO_GALLERY(payload) {
+    try {
+      let resp = await axios.post(
+        `http://localhost:1337/upload`,
+        payload.formdata
+      )
+      let { data } = await axios.put(
+        `http://localhost:1337/users/${payload.id}`,
+        {
+          gallery: [
+            ...this.context.state.user.gallery,
+            { id: resp.data[0].id },
+          ],
+        }
+      )
+      return await undefined
+    } catch (e) {
+      console.log(e)
+      return null
     }
   }
 }

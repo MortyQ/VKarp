@@ -202,9 +202,5 @@ export default class DefaultLayout extends Vue {
       { icon: 'mdi-bullhorn-outline', name: 'Реклама', message: '' },
     ]
   }
-
-  mounted() {
-    console.log(this.user)
-  }
 }
 </script>
