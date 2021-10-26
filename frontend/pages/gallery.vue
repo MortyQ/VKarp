@@ -1,14 +1,14 @@
 <template>
-  <v-card style="min-height: 70%">
+  <v-card style="min-height: 70%" v-if="signUser">
     <v-card-title>
-      Моя галерея <span class="ml-4"> ({{ user.gallery.length }})</span>
+      Моя галерея <span class="ml-4"> ({{ signUser.gallery.length }})</span>
     </v-card-title>
     <v-divider class="my-2"></v-divider>
     <v-row>
       <v-col cols="12">
-        <v-carousel v-if="user && user.gallery">
+        <v-carousel v-if="signUser && signUser.gallery">
           <v-carousel-item
-            v-for="item in this.user.gallery"
+            v-for="item in this.signUser.gallery"
             :key="item.id"
             :src="getStrapiMedia(item.url)"
             :lazy-src="getStrapiMedia(item.url)"
@@ -32,11 +32,13 @@ import { mapState } from 'vuex'
   components: {},
   computed: {
     ...mapState('profile', ['user']),
+    ...mapState('register', ['signUser']),
   },
   middleware: 'redirect',
 })
 export default class GalleryPage extends Vue {
   user!: UserType
+  signUser!: UserType
   @Prop() process
   getStrapiMedia = getStrapiMedia
   image = ''

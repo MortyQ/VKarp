@@ -87,7 +87,6 @@
         </v-row>
       </v-card>
     </v-dialog>
-    sign ID: {{ signUser.id }} user ID :{{ user.id }}
 
     <div class="ranks mt-2 mb-2">833943</div>
     <v-row
