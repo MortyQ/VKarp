@@ -15,6 +15,7 @@
       >
         <Photo />
         <Gifts />
+        <Friends />
       </v-col>
       <v-col cols="12" md="9">
         <UserInfo />
@@ -33,11 +34,12 @@ import UserInfo from '@/components/root/main-page/UserInfo.vue'
 import Gifts from '@/components/root/main-page/Gifts.vue'
 import Gelery from '~/components/root/main-page/Gallery.vue'
 import CreatePost from '@/components/root/main-page/CreatePost.vue'
+import Friends from '@/components/root/main-page/Friends.vue'
 import { UserType } from '@/helpers/userType'
 import { mapState } from 'vuex'
 
 @Component({
-  components: { Photo, UserInfo, Gifts, Gelery, CreatePost },
+  components: { Photo, UserInfo, Gifts, Gelery, CreatePost, Friends },
   computed: {
     ...mapState('register', ['signUser']),
     ...mapState('profile', ['user']),

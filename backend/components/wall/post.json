@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_wall_posts",
+  "info": {
+    "name": "post",
+    "icon": "copy"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "like": {
+      "type": "integer"
+    }
+  }
+}

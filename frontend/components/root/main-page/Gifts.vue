@@ -1,5 +1,8 @@
 <template>
-  <v-card style="max-width: 100%" class="mt-5 pa-2">
+  <v-card
+    style="max-width: 215px; min-width: 160px; width: 100%"
+    class="mt-5 pa-2"
+  >
     <v-card-title>
       <span>Подарки <span class="vk_user-info_statistic">3432</span> </span>
     </v-card-title>
