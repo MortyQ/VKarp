@@ -39,20 +39,20 @@
     .android{
         position: absolute;
         top: -50%;
-        right: 32%;
+        right: 52%;
         
     }
     .iphone {
         position: absolute;
         top: -50%;
-        right: 15%;
+        right: 22%;
         text-align: center;
     }
     .all_product{
         margin-top: 20px;
         top: -20%;
         position: absolute;
-        right: 23%;
+        right: 33%;
     }
 
     span{
@@ -257,15 +257,4 @@
             }
         }
     }
-}
-
-.photo_gallery{
-    position: relative !important;
-    width: 100%;
-        .text_gallery{
-            position: absolute;
-            bottom: 99%;
-            right: 2%;
-    }    
-      
 }

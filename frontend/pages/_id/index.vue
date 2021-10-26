@@ -22,6 +22,7 @@
         <CreatePost />
       </v-col>
     </v-row>
+    <v-row v-else> ClickHere </v-row>
   </v-container>
 </template>
 
@@ -45,7 +46,9 @@ import { mapState } from 'vuex'
 export default class IndexPage extends Vue {
   user!: UserType
   mounted() {
-    this.$store.dispatch('profile/GET_USER_BY_ID', this.$route.params.id)
+    console.log(this.user)
+
+    this.$store.dispatch('profile/GET_USER_BY_ID', this.user.id)
   }
 }
 </script>

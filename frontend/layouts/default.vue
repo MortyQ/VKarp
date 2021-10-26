@@ -135,6 +135,13 @@ import { UserType } from '@/helpers/userType'
 export default class DefaultLayout extends Vue {
   steps!: number
   user!: UserType
+
+  get photoCount() {
+    if (this.user && this.user.gallery) {
+      return this.user.gallery.length
+    } else return 7
+  }
+
   get mainNav() {
     return [
       {
@@ -170,8 +177,8 @@ export default class DefaultLayout extends Vue {
       {
         icon: 'mdi-image-multiple-outline',
         name: 'Фотографии',
-        message: '',
-        to: '/',
+        message: this.photoCount,
+        to: '/gallery',
       },
       { icon: 'mdi-music', name: 'Музыка', message: '', to: '/' },
       {

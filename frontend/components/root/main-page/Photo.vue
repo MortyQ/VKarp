@@ -90,7 +90,7 @@
 
     <div class="ranks mt-2 mb-2">833943</div>
     <v-row cols="12" class="d-flex justify-space-between align-center">
-      <v-col cols="12" lg="8">
+      <v-col cols="12" lg="8" v-if="user && user.id">
         <v-btn
           height="35px"
           width="100%"
