@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mt-8">
+  <v-card class="mt-8" v-if="signUser">
     <v-card-title> Основные </v-card-title>
 
     <v-divider class="my-2"></v-divider>
@@ -267,30 +267,35 @@ import { mapState } from 'vuex'
 import { statuses } from '@/helpers/enum'
 @Component({
   components: {},
-  computed: { ...mapState('profile', ['user']) },
+  computed: {
+    ...mapState('profile', ['user']),
+    ...mapState('register', ['signUser']),
+  },
+  middleware: 'redirect',
 })
 export default class Login extends Vue {
   steps!: number
   user!: UserType
+  signUser!: UserType
   statuses = statuses
   loading: boolean = false
 
   get settingUserInfo() {
     return {
-      id: this.user.id,
-      firstName: this.user.firstName,
-      lastName: this.user.lastName,
-      city: this.user.city,
-      motherLastName: this.user.motherLastName,
-      study: this.user.study,
-      work: this.user.work,
-      statuses: this.user.statuses,
-      parents: this.user.parents,
-      social: this.user.social,
-      hobbi: this.user.hobbi,
-      book: this.user.book,
-      music: this.user.music,
-      statusProfile: this.user.statusProfile,
+      id: this.signUser.id,
+      firstName: this.signUser.firstName,
+      lastName: this.signUser.lastName,
+      city: this.signUser.city,
+      motherLastName: this.signUser.motherLastName,
+      study: this.signUser.study,
+      work: this.signUser.work,
+      statuses: this.signUser.statuses,
+      parents: this.signUser.parents,
+      social: this.signUser.social,
+      hobbi: this.signUser.hobbi,
+      book: this.signUser.book,
+      music: this.signUser.music,
+      statusProfile: this.signUser.statusProfile,
     }
   }
 

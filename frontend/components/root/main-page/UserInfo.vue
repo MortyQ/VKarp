@@ -2,8 +2,9 @@
   <v-card width="100%" min-width="100%" max-width="100%" class="pa-3">
     <div class="d-flex justify-space-between align-center">
       <v-card-title
-        >{{ user.firstName }} {{ user.lastName }} (это Вы)</v-card-title
-      >
+        >{{ user.firstName }} {{ user.lastName }}
+        <span v-if="user.id === signUser.id">(это Вы)</span>
+      </v-card-title>
       <span class="opacity_nice_text">online</span>
     </div>
     <span v-if="!user.statusProfile" class="ml-4"> Слава Україні </span>
@@ -87,10 +88,14 @@ import { mapState } from 'vuex'
 import { UserType } from '@/helpers/userType'
 @Component({
   components: {},
-  computed: { ...mapState('profile', ['user']) },
+  computed: {
+    ...mapState('profile', ['user']),
+    ...mapState('register', ['signUser']),
+  },
 })
 export default class UserInfo extends Vue {
   user!: UserType
+  signUser!: UserType
 
   get getInfo() {
     return [

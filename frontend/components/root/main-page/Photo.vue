@@ -87,9 +87,14 @@
         </v-row>
       </v-card>
     </v-dialog>
+    sign ID: {{ signUser.id }} user ID :{{ user.id }}
 
     <div class="ranks mt-2 mb-2">833943</div>
-    <v-row cols="12" class="d-flex justify-space-between align-center">
+    <v-row
+      cols="12"
+      class="d-flex justify-space-between align-center"
+      v-if="signUser.id === user.id"
+    >
       <v-col cols="12" lg="8" v-if="user && user.id">
         <v-btn
           height="35px"
@@ -114,6 +119,19 @@
         </v-btn>
       </v-col>
     </v-row>
+    <v-row v-else>
+      <v-col cols="12">
+        <v-btn
+          height="35px"
+          width="100%"
+          depressed
+          color="#a9d1ff"
+          to="/setting"
+        >
+          <span style="font-size: 10px !important"> Написать </span>
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 
@@ -124,11 +142,13 @@ import { mapState } from 'vuex'
 import { UserType } from '@/helpers/userType'
 @Component({
   computed: {
+    ...mapState('register', ['signUser']),
     ...mapState('profile', ['user']),
   },
 })
 export default class Photo extends Vue {
   user!: UserType
+  signUser!: UserType
   @Prop() process
   getStrapiMedia = getStrapiMedia
   image = ''
@@ -153,7 +173,7 @@ export default class Photo extends Vue {
     }
     this.$store.dispatch('profile/UPDATE_AVATAR', {
       formdata,
-      id: this.$route.params.id,
+      id: this.signUser.id,
     })
 
     setTimeout(() => {

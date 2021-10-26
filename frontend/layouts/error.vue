@@ -5,7 +5,7 @@
       class="d-flex justify-center flex-column align-center"
     >
       <v-card-title>
-        <v-icon> mdi-arrow-left </v-icon> Упс вышла ошибка. Зайди снова на свою
+        <v-icon> mdi-arrow-left </v-icon> Упс, вышла ошибка. Зайди снова на свою
         страницу
       </v-card-title>
       {{ pageNotFound }}

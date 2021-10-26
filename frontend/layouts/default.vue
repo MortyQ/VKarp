@@ -128,17 +128,22 @@ import { UserType } from '@/helpers/userType'
 @Component({
   components: { AppBar, Footer },
   computed: {
-    ...mapState('register', ['steps']),
+    ...mapState('register', ['signUser']),
     ...mapState('profile', ['user']),
   },
 })
 export default class DefaultLayout extends Vue {
   steps!: number
   user!: UserType
+  signUser!: UserType
+
+  test() {
+    console.log(this.signUser)
+  }
 
   get photoCount() {
-    if (this.user && this.user.gallery) {
-      return this.user.gallery.length
+    if (this.signUser && this.signUser.gallery) {
+      return this.signUser.gallery.length
     } else return 7
   }
 
@@ -148,7 +153,7 @@ export default class DefaultLayout extends Vue {
         icon: 'mdi-account-circle-outline',
         name: 'Моя страница',
         message: '',
-        to: `/${this.user?.id}`,
+        to: `/${this.signUser?.id}`,
       },
       {
         icon: 'mdi-calendar-blank-outline',

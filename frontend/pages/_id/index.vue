@@ -39,16 +39,16 @@ import { mapState } from 'vuex'
 @Component({
   components: { Photo, UserInfo, Gifts, Gelery, CreatePost },
   computed: {
-    ...mapState('register', ['steps']),
+    ...mapState('register', ['signUser']),
     ...mapState('profile', ['user']),
   },
+  middleware: 'redirect',
 })
 export default class IndexPage extends Vue {
   user!: UserType
+  signUser!: UserType
   mounted() {
-    console.log(this.user)
-
-    this.$store.dispatch('profile/GET_USER_BY_ID', this.user.id)
+    this.$store.dispatch('profile/GET_USER_BY_ID', this.$route.params.id)
   }
 }
 </script>

@@ -33,6 +33,7 @@ import { mapState } from 'vuex'
   computed: {
     ...mapState('profile', ['user']),
   },
+  middleware: 'redirect',
 })
 export default class GalleryPage extends Vue {
   user!: UserType
@@ -42,25 +43,19 @@ export default class GalleryPage extends Vue {
   imageUrl = ''
   files: File | null = null
 
-  galleryStatus: boolean = false
-  changeStatus() {
-    this.galleryStatus = !this.galleryStatus
-    console.log('now status', this.galleryStatus)
-  }
-
   test() {
     console.log(this.user)
   }
 
-  load() {
-    let formdata = new FormData()
-    if (this.files) {
-      formdata.append('files', this.files)
-    }
-    this.$store.dispatch('profile/ADD_PHOTO_TO_GALLERY', {
-      formdata,
-      id: this.$route.params.id,
-    })
-  }
+  //   load() {
+  //     let formdata = new FormData()
+  //     if (this.files) {
+  //       formdata.append('files', this.files)
+  //     }
+  //     this.$store.dispatch('profile/ADD_PHOTO_TO_GALLERY', {
+  //       formdata,
+  //       id: this.$route.params.id,
+  //     })
+  //   }
 }
 </script>

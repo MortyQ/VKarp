@@ -13,7 +13,11 @@
       </div>
     </div>
     <v-row cols="10" class="mt-3 pa-0 ma-0" v-if="user && !galleryStatus">
-      <v-col cols="3" class="d-flex justify-center align-center mt-3">
+      <v-col
+        cols="3"
+        class="d-flex justify-center align-center mt-3"
+        v-if="signUser.id === user.id"
+      >
         <v-file-input
           v-model="files"
           label="+"
@@ -93,10 +97,12 @@ import { mapState } from 'vuex'
   components: {},
   computed: {
     ...mapState('profile', ['user']),
+    ...mapState('register', ['signUser']),
   },
 })
 export default class Gallery extends Vue {
   user!: UserType
+  signUser!: UserType
   @Prop() process
   getStrapiMedia = getStrapiMedia
   image = ''
@@ -120,7 +126,7 @@ export default class Gallery extends Vue {
     }
     this.$store.dispatch('profile/ADD_PHOTO_TO_GALLERY', {
       formdata,
-      id: this.$route.params.id,
+      id: this.signUser.id,
     })
   }
 }
