@@ -1,9 +1,7 @@
 <template>
   <v-card tile flat>
     <v-row>
-      <span class="ml-8">
-        {{ id }}
-      </span>
+      <span class="ml-8"> </span>
       <v-col cols="2">
         <!-- <v-img
           v-if="user.avatar"
@@ -33,7 +31,11 @@
         </v-img> -->
       </v-col>
       <v-col cols="6" class="ml-2">
-        <span class="d-flex post_user_name">
+        <span class="d-flex post_user_name" v-if="signUser.id === user.id">
+          {{ signUser.firstName }}
+          {{ signUser.lastName }}
+        </span>
+        <span class="d-flex post_user_name" v-else>
           {{ user.firstName }}
           {{ user.lastName }}
         </span>
@@ -63,6 +65,7 @@ import { UserType } from '@/helpers/userType'
 })
 export default class PostBody extends Vue {
   user!: UserType
+  signUser!: UserType
   @Prop() process
   getStrapiMedia = getStrapiMedia
   image = ''

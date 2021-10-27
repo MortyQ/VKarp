@@ -96,6 +96,7 @@ export default class CreatePost extends Vue {
     this.$store.dispatch('profile/CREATE_POST', {
       user: this.signUser.id,
       post: this.post,
+      forWho: this.$route.params.id,
     })
   }
 }

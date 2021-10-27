@@ -139,8 +139,6 @@ export default class MainPage extends VuexModule {
         post: payload.post,
       })
 
-      console.log('ACTION')
-
       console.log(data)
 
       return data
