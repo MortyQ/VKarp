@@ -55,6 +55,12 @@ export default {
     ],
   },
 
+  dayjs: {
+    locales: ['en-gb'],
+    defaultLocale: 'en-gb',
+    plugins: ['relativeTime', 'localizedFormat'],
+  },
+
   components: true,
 
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],

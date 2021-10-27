@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row v-if="user">
+    <v-row v-if="user" :key="user.id">
       <v-col
         md="3"
         cols="12"
@@ -21,6 +21,7 @@
         <UserInfo />
         <Gelery />
         <CreatePost />
+        <Posts />
       </v-col>
     </v-row>
     <v-row v-else> ClickHere </v-row>
@@ -35,11 +36,12 @@ import Gifts from '@/components/root/main-page/Gifts.vue'
 import Gelery from '~/components/root/main-page/Gallery.vue'
 import CreatePost from '@/components/root/main-page/CreatePost.vue'
 import Friends from '@/components/root/main-page/Friends.vue'
+import Posts from '@/components/root/posts/PostBody.vue'
 import { UserType } from '@/helpers/userType'
 import { mapState } from 'vuex'
 
 @Component({
-  components: { Photo, UserInfo, Gifts, Gelery, CreatePost, Friends },
+  components: { Photo, UserInfo, Gifts, Gelery, CreatePost, Friends, Posts },
   computed: {
     ...mapState('register', ['signUser']),
     ...mapState('profile', ['user']),

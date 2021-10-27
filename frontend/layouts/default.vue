@@ -159,25 +159,25 @@ export default class DefaultLayout extends Vue {
         icon: 'mdi-calendar-blank-outline',
         name: 'Новости',
         message: '2',
-        to: '/',
+        to: `/setting`,
       },
       {
         icon: 'mdi-message-outline',
         name: 'Мессенджер',
         message: '94',
-        to: '/',
+        to: `/setting`,
       },
       {
         icon: 'mdi-account-multiple-outline',
         name: 'Друзья',
         message: '9843',
-        to: '/',
+        to: `/setting`,
       },
       {
         icon: 'mdi-account-group-outline',
         name: 'Сообщества',
         message: '21',
-        to: '/',
+        to: `/setting`,
       },
       {
         icon: 'mdi-image-multiple-outline',
@@ -185,15 +185,25 @@ export default class DefaultLayout extends Vue {
         message: this.photoCount,
         to: '/gallery',
       },
-      { icon: 'mdi-music', name: 'Музыка', message: '', to: '/' },
+      { icon: 'mdi-music', name: 'Музыка', message: '', to: `/setting` },
       {
         icon: 'mdi-gamepad-variant-outline',
         name: 'Игры',
         message: '',
-        to: '/',
+        to: `/setting`,
       },
-      { icon: 'mdi-video-input-svideo', name: 'Видео', message: '', to: '/' },
-      { icon: 'mdi-video-outline', name: 'Клипы', message: '', to: '/' },
+      {
+        icon: 'mdi-video-input-svideo',
+        name: 'Видео',
+        message: '',
+        to: `/setting`,
+      },
+      {
+        icon: 'mdi-video-outline',
+        name: 'Клипы',
+        message: '',
+        to: `/setting`,
+      },
     ]
   }
 

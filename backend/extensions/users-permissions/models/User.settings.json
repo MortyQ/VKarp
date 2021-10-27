@@ -129,11 +129,9 @@
       "required": false,
       "pluginOptions": {}
     },
-    "Posts": {
-      "type": "dynamiczone",
-      "components": [
-        "wall.post"
-      ]
+    "posts": {
+      "via": "user",
+      "collection": "posts"
     }
   }
 }

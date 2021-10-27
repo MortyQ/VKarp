@@ -88,7 +88,10 @@ export default class MainPage extends VuexModule {
   private _ADD_PHOTO_TO_GALLERY(payload) {
     console.log(payload)
     if (payload) {
-      this.user = payload
+      this.user = {
+        ...this.user,
+        gallery: [payload, this.user?.gallery],
+      }
     }
   }
 
@@ -112,6 +115,37 @@ export default class MainPage extends VuexModule {
     } catch (e) {
       console.log(e)
       return null
+    }
+  }
+
+  @Mutation
+  private _CREATE_POST(payload) {
+    console.log('MUTATOT')
+
+    if (payload) {
+      this.user = {
+        ...this.user,
+        posts: [payload, ...this.user.posts],
+      }
+    }
+    console.log(this.user)
+  }
+
+  @Action({ commit: '_CREATE_POST' })
+  public async CREATE_POST(payload) {
+    try {
+      let { data } = await axios.post(`http://localhost:1337/posts`, {
+        user: payload.user,
+        post: payload.post,
+      })
+
+      console.log('ACTION')
+
+      console.log(data)
+
+      return data
+    } catch (e) {
+      console.log(e)
     }
   }
 }

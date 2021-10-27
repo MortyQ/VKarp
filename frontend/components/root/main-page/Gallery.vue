@@ -1,6 +1,6 @@
 <template>
   <v-card class="mt-5 pa-1">
-    <div class="d-flex justify-space-between align-start">
+    <div class="d-flex justify-space-between align-start" v-if="user.gallery">
       <span class="ml-3 d-flex justify-start" style="gap: 10px"
         >Мои фотографии
         <span style="color: #cccccc">{{ this.user.gallery.length }}</span></span
@@ -29,59 +29,27 @@
         >
         </v-file-input>
       </v-col>
-      <v-col cols="3">
-        <v-img
-          v-if="user.gallery && user.gallery[0]"
-          height="190px"
-          width="100%"
-          :src="getStrapiMedia(this.user.gallery[0].url)"
-          :lazy-src="getStrapiMedia(this.user.gallery[0].url)"
-        >
-        </v-img>
-        <v-img
-          v-else
-          height="190px"
-          width="100%"
-          src="/default-image.jpeg"
-          lazy-src="/default-image.jpeg"
-        >
-        </v-img>
-      </v-col>
-      <v-col cols="3">
-        <v-img
-          v-if="user.gallery && user.gallery[1]"
-          height="190px"
-          width="100%"
-          :src="getStrapiMedia(this.user.gallery[1].url)"
-          :lazy-src="getStrapiMedia(this.user.gallery[1].url)"
-        >
-        </v-img>
-        <v-img
-          v-else
+      <v-col
+        cols="3"
+        v-for="(item, index) in user.gallery.slice().reverse()"
+        :key="item.id"
+      >
+        <div v-if="index <= 2">
+          <v-img
+            height="190px"
+            width="100%"
+            :src="getStrapiMedia(item.url)"
+            :lazy-src="getStrapiMedia(item.url)"
+          >
+          </v-img>
+          <!-- <v-img
           height="190px"
           width="100%"
           src="/default-image.jpeg"
           lazy-src="/default-image.jpeg"
         >
-        </v-img>
-      </v-col>
-      <v-col cols="3">
-        <v-img
-          v-if="user.gallery && user.gallery[2]"
-          height="190px"
-          width="100%"
-          :src="getStrapiMedia(this.user.gallery[2].url)"
-          :lazy-src="getStrapiMedia(this.user.gallery[2].url)"
-        >
-        </v-img>
-        <v-img
-          v-else
-          height="190px"
-          width="100%"
-          src="/default-image.jpeg"
-          lazy-src="/default-image.jpeg"
-        >
-        </v-img>
+        </v-img> -->
+        </div>
       </v-col>
     </v-row>
   </v-card>

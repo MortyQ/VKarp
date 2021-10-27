@@ -1,5 +1,10 @@
 import { RegisterType } from './loginType'
 
+export interface Post {
+  // id?: number
+  post: string
+}
+
 export interface UserType extends RegisterType {
   id: number | string
   motherLastName: string
@@ -15,4 +20,5 @@ export interface UserType extends RegisterType {
   statusProfile: string
   avatar: File | null
   gallery: File[]
+  posts: Post[]
 }

@@ -30,18 +30,22 @@
         </v-img
       ></v-col>
       <v-col cols="5">
-        <v-text-field full-width label="Что у вас нового ?"></v-text-field
+        <v-text-field
+          full-width
+          v-model="post"
+          label="Что у вас нового ?"
+        ></v-text-field
       ></v-col>
       <v-col cols="5" class="d-flex justify-center align-center">
         <v-row class="d-flex justify-center align-center">
           <v-col cols="2">
-            <v-btn icon>
-              <v-icon> mdi-camera-outline </v-icon>
+            <v-btn icon @click="createPost()">
+              <v-icon> mdi-send </v-icon>
             </v-btn>
           </v-col>
           <v-col cols="2">
             <v-btn icon>
-              <v-icon> mdi-webcam </v-icon>
+              <v-icon> mdi-camera-outline </v-icon>
             </v-btn>
           </v-col>
           <v-col cols="2">
@@ -74,13 +78,25 @@ import { UserType } from '@/helpers/userType'
 @Component({
   computed: {
     ...mapState('profile', ['user']),
+    ...mapState('register', ['signUser']),
   },
 })
 export default class CreatePost extends Vue {
   user!: UserType
+  signUser!: UserType
   @Prop() process
   getStrapiMedia = getStrapiMedia
   image = ''
   imageUrl = ''
+
+  post: string = ''
+
+  createPost() {
+    console.log(this.signUser.id, this.post)
+    this.$store.dispatch('profile/CREATE_POST', {
+      user: this.signUser.id,
+      post: this.post,
+    })
+  }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-card style="min-height: 70%" v-if="signUser">
+  <v-card style="min-height: 70%" v-if="signUser && signUser.gallery">
     <v-card-title>
       Моя галерея <span class="ml-4"> ({{ signUser.gallery.length }})</span>
     </v-card-title>
@@ -46,7 +46,7 @@ export default class GalleryPage extends Vue {
   files: File | null = null
 
   test() {
-    console.log(this.user)
+    console.log(this.signUser)
   }
 
   //   load() {
