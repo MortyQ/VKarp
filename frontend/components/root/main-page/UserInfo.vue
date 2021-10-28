@@ -10,13 +10,8 @@
     <span v-if="!user.statusProfile" class="ml-4"> Слава Україні </span>
     <span v-else class="ml-4"> {{ user.statusProfile }} </span>
     <v-divider class="my-2"></v-divider>
-    <v-list class="ml-6" color="transparent">
-      <v-list-item
-        style="height: 20px; width: 90%"
-        class="ma-0 pa-0"
-        v-for="item in getInfo"
-        :key="item.value"
-      >
+    <v-list color="transparent">
+      <v-list-item v-for="item in getInfo" :key="item.value" v-if="item.value">
         <v-list-item-content class="d-flex flex-row justify-space-around">
           <v-row>
             <v-col class="d-flex justify-start align-center" cols="5">
@@ -45,6 +40,7 @@
               class="ma-0 pa-0"
               v-for="item in moreInfo"
               :key="item.id"
+              v-if="item.value"
             >
               <v-list-item-content class="d-flex flex-row justify-space-around">
                 <v-row>

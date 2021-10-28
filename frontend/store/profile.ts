@@ -7,6 +7,8 @@ import {
 } from 'vuex-module-decorators'
 
 import axios from 'axios'
+import $axios from '@nuxtjs/axios'
+
 import { UserType } from '@/helpers/userType'
 
 @Module({ name: 'mainPage', stateFactory: true, namespaced: true })
@@ -126,18 +128,24 @@ export default class MainPage extends VuexModule {
         posts: [payload, ...this.user.posts],
       }
     }
-    console.log('this.user-------:', this.user)
   }
 
   @Action({ commit: '_CREATE_POST' })
   public async CREATE_POST(payload) {
-    try {
-      let { data } = await axios.post(`http://localhost:1337/posts`, {
-        user: payload.user,
-        post: payload.post,
-      })
+    let url = 'http://localhost:1337/posts'
+    let token = localStorage.getItem('jwt')
 
-      console.log('data-----:', data)
+    // this['axios'].setHeader('Authorization', token)
+
+    try {
+      let { data } = await axios.post(
+        `http://localhost:1337/posts`,
+        {
+          user: payload.user,
+          post: payload.post,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
 
       return data
     } catch (e) {
