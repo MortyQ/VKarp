@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 const strapiBaseUri = process.env.API_URL || 'http://localhost:1337'
-
+// import { i18n } from './localization/i18n'
 export default {
   target: 'static',
   ssr: false,
@@ -23,7 +23,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  css: [],
+  css: ['@/assets/global.scss'],
 
   plugins: [
     { src: '~/plugins/uikit.js', ssr: false },
@@ -31,6 +31,7 @@ export default {
     { src: '~/plugins/vuex-persist', ssr: false },
     { src: '@/plugins/axios', ssr: false },
     { src: '~/plugins/tiptap-vuetify', ssr: false },
+    { src: '@/plugins/phone-input', ssr: false },
   ],
   strapi: {
     url: strapiBaseUri,
@@ -54,11 +55,23 @@ export default {
     ],
   },
 
+  dayjs: {
+    locales: ['en-gb'],
+    defaultLocale: 'en-gb',
+    plugins: ['relativeTime', 'localizedFormat'],
+  },
+
   components: true,
 
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
 
-  modules: ['@nuxtjs/axios'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/dayjs',
+    //  '@nuxtjs/i18n'
+  ],
+
+  // i18n,
 
   axios: {},
 
@@ -90,6 +103,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vuetify/lib', 'tiptap-vuetify'],
+    transpile: ['vuetify/lib', 'tiptap-vuetify', 'vue-tel-input-vuetify'],
   },
 }

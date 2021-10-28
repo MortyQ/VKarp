@@ -59,19 +59,19 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "username",
-      "required": true
-    },
-    "posts": {
-      "via": "user",
-      "collection": "posts"
-    },
     "firstName": {
       "type": "string"
     },
     "lastName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string"
+    },
+    "birthday": {
       "type": "string"
     },
     "avatar": {
@@ -86,29 +86,52 @@
       "required": false,
       "pluginOptions": {}
     },
-    "background": {
-      "model": "file",
+    "motherLastName": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "study": {
+      "type": "string"
+    },
+    "work": {
+      "type": "string"
+    },
+    "statuses": {
+      "type": "string"
+    },
+    "parents": {
+      "type": "string"
+    },
+    "social": {
+      "type": "string"
+    },
+    "hobbi": {
+      "type": "string"
+    },
+    "book": {
+      "type": "string"
+    },
+    "music": {
+      "type": "string"
+    },
+    "statusProfile": {
+      "type": "string"
+    },
+    "gallery": {
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
     },
-    "description": {
-      "type": "text"
-    },
-    "socialSite": {
-      "type": "string"
-    },
-    "webSite": {
-      "type": "string"
-    },
-    "phoneNumber": {
-      "type": "string"
+    "posts": {
+      "via": "user",
+      "collection": "posts"
     }
   }
 }

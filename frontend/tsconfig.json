@@ -14,7 +14,7 @@
     "sourceMap": true,
     "suppressImplicitAnyIndexErrors": true,
     "strict": true,
-    
+    "resolveJsonModule": true,
     "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
@@ -28,8 +28,11 @@
     },
     "types": [
       "@nuxt/types",
+      // "@nuxtjs/i18n",
       "@nuxtjs/axios",
-      "@types/node"
+      "@types/node",
+      "@nuxtjs/dayjs",
+      "dayjs/plugin/relativeTime"
     ]
   },
   "exclude": [

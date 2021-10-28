@@ -1,6 +1,6 @@
 export default function ({ store, redirect }) {
   setTimeout(() => {
-    if (!store?.state?.login?.jwt) {
+    if (!store?.state?.register?.jwt) {
       return redirect('/login')
     }
   }, 0)
