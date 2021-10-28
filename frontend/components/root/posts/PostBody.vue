@@ -14,9 +14,17 @@
         <v-tab-item v-for="item in 2" :key="item.id">
           <v-card flat v-if="item === 1" item>
             <v-row v-if="user.posts" :key="item.id">
-              <v-col cols="12" v-for="item in user.posts" :key="item.id">
+              <v-col
+                cols="12"
+                v-for="item in user.posts.slice().reverse()"
+                :key="item.id"
+              >
                 <v-card class="mt-3" flat>
-                  <PostMain :post="item.post" :time="item.created_at" />
+                  <PostMain
+                    :post="item.post"
+                    :time="item.created_at"
+                    :id="item.user"
+                  />
                 </v-card>
               </v-col>
             </v-row>
@@ -37,7 +45,9 @@
           </v-card>
         </v-tab-item>
       </v-tabs-items>
+      <v-col cols="12"> </v-col>
     </v-row>
+
     <v-row v-else class="mt-4">
       <v-col cols="12" class="d-flex justify-center align-center">
         <h1>НЭМА ПОСТОВ</h1>
@@ -58,6 +68,7 @@ import { UserType } from '~/helpers/userType'
 })
 export default class PostComponent extends Vue {
   user!: UserType
+
   public tab: null = null
   public tabs = ['Все записи', 'Мои записи']
 }

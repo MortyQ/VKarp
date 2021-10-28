@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app v-if="signUser">
     <v-app-bar app color="white" tile flat height="48px">
       <AppBar />
     </v-app-bar>
@@ -116,6 +116,15 @@
       </v-container>
     </v-main>
   </v-app>
+  <v-row v-else class="d-flex justify-center align-center">
+    <v-col
+      cols="12"
+      class="d-flex justify-center align-center"
+      style="height: 100vh; border: 1px solid"
+    >
+      <v-btn text to="/login"> Зайти в Систему </v-btn>
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts">

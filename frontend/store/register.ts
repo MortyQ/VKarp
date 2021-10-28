@@ -85,4 +85,13 @@ export default class Register extends VuexModule {
       console.log(e)
     }
   }
+
+  @MutationAction({ mutate: ['signUser', 'jwt'] })
+  public async LOGOUT() {
+    localStorage.removeItem('jwt')
+    return {
+      signUser: null,
+      jwt: null,
+    }
+  }
 }

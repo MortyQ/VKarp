@@ -33,6 +33,8 @@
     </div>
 
     <v-btn text v-if="steps === 1" @click="goToHome()"> sign Out </v-btn>
+
+    <v-btn @click="logout()" text> Выйти </v-btn>
   </v-container>
 </template>
 
@@ -48,6 +50,11 @@ export default class AppBar extends Vue {
 
   goToHome() {
     this['$store'].dispatch('register/CHANGE_STEP_PAGE', 0)
+  }
+
+  logout() {
+    this['$store'].dispatch('register/LOGOUT')
+    this.$router.push('/login')
   }
 }
 </script>

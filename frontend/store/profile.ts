@@ -120,15 +120,13 @@ export default class MainPage extends VuexModule {
 
   @Mutation
   private _CREATE_POST(payload) {
-    console.log('MUTATOT')
-
     if (payload) {
       this.user = {
         ...this.user,
         posts: [payload, ...this.user.posts],
       }
     }
-    console.log(this.user)
+    console.log('this.user-------:', this.user)
   }
 
   @Action({ commit: '_CREATE_POST' })
@@ -139,7 +137,7 @@ export default class MainPage extends VuexModule {
         post: payload.post,
       })
 
-      console.log(data)
+      console.log('data-----:', data)
 
       return data
     } catch (e) {

@@ -3,21 +3,7 @@
     <v-row>
       <span class="ml-8"> </span>
       <v-col cols="2">
-        <!-- <v-img
-          v-if="user.avatar"
-          height="100%"
-          width="100%"
-          max-height="50px"
-          max-width="50px"
-          min-height="50px"
-          min-width="50px"
-          :src="getStrapiMedia(user.avatar.url)"
-          :lazy-src="getStrapiMedia(user.avatar.url)"
-          style="border-radius: 50%"
-        >
-        </v-img>
         <v-img
-          v-else
           height="100%"
           width="100%"
           max-height="50px"
@@ -25,22 +11,15 @@
           min-height="50px"
           min-width="50px"
           lazy-src="/default-image.jpeg"
-          src="/default-image.jpeg"
+          src="/vklogo.png"
           style="border-radius: 50%"
         >
-        </v-img> -->
+        </v-img>
       </v-col>
       <v-col cols="6" class="ml-2">
-        <span class="d-flex post_user_name" v-if="signUser.id === user.id">
-          {{ signUser.firstName }}
-          {{ signUser.lastName }}
-        </span>
-        <span class="d-flex post_user_name" v-else>
-          {{ user.firstName }}
-          {{ user.lastName }}
-        </span>
+        Новый пост
         <span class="d-flex post_time_message">
-          {{ $dayjs(time).format('YYYY-MM-DD в HH:MM') }}
+          добавлен: {{ $dayjs(time).format('YYYY-MM-DD в h:mm') }}
         </span>
       </v-col>
     </v-row>

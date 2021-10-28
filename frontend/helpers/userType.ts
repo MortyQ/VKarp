@@ -3,6 +3,7 @@ import { RegisterType } from './loginType'
 export interface Post {
   // id?: number
   post: string
+  user?: UserType
 }
 
 export interface UserType extends RegisterType {
