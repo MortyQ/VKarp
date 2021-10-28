@@ -39,7 +39,7 @@
       <v-col cols="5" class="d-flex justify-center align-center">
         <v-row class="d-flex justify-center align-center">
           <v-col cols="2">
-            <v-btn icon @click="createPost()">
+            <v-btn icon @click="createPost()" :loading="loading">
               <v-icon> mdi-send </v-icon>
             </v-btn>
           </v-col>
@@ -89,13 +89,19 @@ export default class CreatePost extends Vue {
   image = ''
   imageUrl = ''
 
+  loading: boolean = false
   post: string = ''
 
   createPost() {
+    this.loading = true
     this.$store.dispatch('profile/CREATE_POST', {
       user: this.$route.params.id,
       post: this.post,
     })
+    setTimeout(() => {
+      this.loading = false
+      this.post = ''
+    }, 2000)
   }
 }
 </script>
