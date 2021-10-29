@@ -1,9 +1,10 @@
 <template>
   <v-container>
-    <v-row v-if="user" :key="user.id">
+    <v-row cols="12" v-if="user" :key="user.id">
       <v-col
         md="3"
-        cols="12"
+        xl="3"
+        cols="3"
         class="
           d-flex
           flex-column
@@ -12,14 +13,14 @@
           justify-center
           align-center
         "
+        style="max-width: 210px"
       >
         <Photo />
         <Gifts />
         <Friends />
       </v-col>
-      <v-col cols="12" md="9">
+      <v-col cols="8" md="8" xl="9" style="max-width: 655px">
         <UserInfo />
-        <Gelery />
         <CreatePost />
         <Posts />
       </v-col>

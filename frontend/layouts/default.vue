@@ -8,7 +8,9 @@
         <v-row>
           <v-col
             v-if="$vuetify.breakpoint.width > 1000"
-            cols="3"
+            cols="2"
+            md="2"
+            lg="4"
             class="d-flex justify-end"
           >
             <v-sheet
@@ -109,22 +111,19 @@
             </v-sheet>
           </v-col>
 
-          <v-col cols="12" md="9">
+          <v-col
+            cols="12"
+            md="10"
+            lg="8"
+            class="d-flex justify-center align-center"
+          >
             <nuxt />
           </v-col>
         </v-row>
       </v-container>
     </v-main>
+    <v-footer style="background: #edeef0" app absolute> <Footer /></v-footer>
   </v-app>
-  <v-row v-else class="d-flex justify-center align-center">
-    <v-col
-      cols="12"
-      class="d-flex justify-center align-center"
-      style="height: 100vh; border: 1px solid"
-    >
-      <v-btn text to="/login"> Зайти в Систему </v-btn>
-    </v-col>
-  </v-row>
 </template>
 
 <script lang="ts">

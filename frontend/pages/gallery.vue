@@ -1,10 +1,11 @@
 <template>
-  <v-card style="min-height: 70%" v-if="signUser && signUser.gallery">
+  <v-card class="pa-8" v-if="signUser && signUser.gallery">
     <v-card-title>
-      Моя галерея <span class="ml-4"> ({{ signUser.gallery.length }})</span>
+      Моя галерея
+      <span class="ml-4"> ({{ signUser.gallery.length }} фото) </span>
     </v-card-title>
     <v-divider class="my-2"></v-divider>
-    <v-row>
+    <!-- <v-row>
       <v-col cols="12">
         <v-carousel v-if="signUser && signUser.gallery">
           <v-carousel-item
@@ -16,6 +17,30 @@
             transition="fade-transition"
           ></v-carousel-item>
         </v-carousel>
+      </v-col>
+    </v-row> -->
+    <v-row>
+      <v-col
+        v-for="item in this.signUser.gallery"
+        :key="item.id"
+        class="d-flex child-flex"
+        cols="4"
+      >
+        <v-img
+          :src="getStrapiMedia(item.url)"
+          :lazy-src="getStrapiMedia(item.url)"
+          aspect-ratio="1"
+          class="grey lighten-2"
+        >
+          <template v-slot:placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular
+                indeterminate
+                color="grey lighten-5"
+              ></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
       </v-col>
     </v-row>
   </v-card>

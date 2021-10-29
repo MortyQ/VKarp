@@ -1,5 +1,5 @@
 <template>
-  <v-card tile class="pa-2" style="max-width: 100%" v-if="user">
+  <v-card tile class="pa-2" v-if="user">
     <v-dialog
       v-model="dialog"
       min-width="500px"
@@ -102,10 +102,16 @@
           color="#a9d1ff"
           to="/setting"
         >
-          <span style="font-size: 10px !important"> Редактировать </span>
+          <span style="font-size: 8px !important"> Редактировать </span>
         </v-btn>
       </v-col>
-      <v-col v-if="$vuetify.breakpoint.width > 1300" cols="12" lg="4">
+      <v-col
+        v-if="$vuetify.breakpoint.width > 1300"
+        cols="12"
+        lg="4"
+        xl="4"
+        class="d-flex justify-center align-center"
+      >
         <v-btn
           max-width="40px"
           width="100%"
@@ -176,8 +182,9 @@ export default class Photo extends Vue {
     })
 
     setTimeout(() => {
+      window.location.reload()
       this.loading = false
-    }, 2000)
+    }, 1000)
   }
 
   mounted() {}
