@@ -32,6 +32,7 @@ export default {
     { src: '@/plugins/axios', ssr: false },
     { src: '~/plugins/tiptap-vuetify', ssr: false },
     { src: '@/plugins/phone-input', ssr: false },
+    { src: '~/plugins/infiniteloading', ssr: false },
   ],
   strapi: {
     url: strapiBaseUri,

@@ -186,9 +186,7 @@ export default class MainPage extends VuexModule {
     console.log(payload)
 
     try {
-      let res = await axios.get(
-        `http://localhost:1337/posts?${query}&_limit=${payload.limit}`
-      )
+      let res = await axios.get(`http://localhost:1337/posts?${query}`)
       return res.data
     } catch (e) {
       console.log(e)

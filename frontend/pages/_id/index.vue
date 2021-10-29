@@ -19,8 +19,9 @@
         <Gifts />
         <Friends />
       </v-col>
-      <v-col cols="8" md="8" xl="9" style="max-width: 655px">
+      <v-col cols="8" md="8" xl="9">
         <UserInfo />
+        <Gelery />
         <CreatePost />
         <Posts />
       </v-col>
