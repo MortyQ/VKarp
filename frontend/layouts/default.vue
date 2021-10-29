@@ -132,6 +132,7 @@ import AppBar from '@/components/root/login/AppBar.vue'
 import Footer from '@/components/root/login/Footer.vue'
 import { mapState } from 'vuex'
 import { UserType } from '@/helpers/userType'
+import axios from 'axios'
 
 @Component({
   components: { AppBar, Footer },

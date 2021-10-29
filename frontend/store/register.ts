@@ -15,7 +15,7 @@ config.rawError = true
 
 @Module({ name: 'register', stateFactory: true, namespaced: true })
 export default class Register extends VuexModule {
-  public steps: 0 | 1 = 0
+  public steps: 0 | 1 | 2 = 0
   public registerInfo: RegisterType | null = null
   signUser: LoginSignIn | null = null
   jwt: string | null = null

@@ -8,18 +8,14 @@
     <v-row
       cols="12"
       class="d-flex justify-center align-center"
-      v-if="user.posts.length != 0"
+      v-if="posts.length != 0"
     >
       <v-tabs-items class="mt-8" v-model="tab" style="width: 80% !important">
         <v-tab-item v-for="item in 2" :key="item.id">
           <v-card flat v-if="item === 1" item>
-            <v-row v-if="user.posts" :key="item.id">
-              <v-col
-                cols="12"
-                v-for="item in user.posts.slice().reverse()"
-                :key="item.id"
-              >
-                <v-card class="mt-3" flat>
+            <v-row v-if="posts" :key="item.id">
+              <v-col cols="12" v-for="item in posts" :key="item.id">
+                <v-card class="mt-3" flat :key="item.id">
                   <PostMain
                     :post="item.post"
                     :time="item.created_at"
@@ -59,17 +55,66 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import PostMain from './PostsMain.vue'
+import trottle from '@/helpers/trottle'
 import { mapState } from 'vuex'
-import { UserType } from '~/helpers/userType'
+import { UserType, Post } from '~/helpers/userType'
 
 @Component({
   components: { PostMain },
-  computed: { ...mapState('profile', ['user']) },
+  computed: {
+    ...mapState('profile', ['user']),
+    ...mapState('profile', ['posts']),
+  },
 })
 export default class PostComponent extends Vue {
   user!: UserType
+  posts!: Post[] | Post
+  offsetTop: number = 0
+  customPagin: number = 3
+
+  // get trottledSave() {
+  //   let DELAY = 1000
+  //   return trottle(this.onScroll, DELAY)
+  // }
+
+  // public onScroll(e) {
+  //   this.offsetTop = e.target.scrollTop
+  //   console.log(this.offsetTop)
+  //   if (this.offsetTop > 30 && this.offsetTop < 40) {
+  //     console.log('max-5')
+
+  //     this.customPagin = 5
+  //     this.$store.dispatch('profile/TAKE_POST_BY_USER', {
+  //       id: this.$route.params.id,
+  //       limit: this.customPagin,
+  //     })
+  //   } else if (this.offsetTop > 250 && this.offsetTop < 300) {
+  //     console.log('max-10')
+
+  //     this.customPagin = 10
+  //     this.$store.dispatch('profile/TAKE_POST_BY_USER', {
+  //       id: this.$route.params.id,
+  //       limit: this.customPagin,
+  //     })
+  //   } else if (this.offsetTop > 900 && this.offsetTop < 1000) {
+  //     console.log('max-30')
+
+  //     this.customPagin = 30
+  //     this.$store.dispatch('profile/TAKE_POST_BY_USER', {
+  //       id: this.$route.params.id,
+  //       limit: this.customPagin,
+  //     })
+  //   }
+  // }
 
   public tab: null = null
   public tabs = ['Все записи', 'Мои записи']
+
+  mounted() {
+    this.$store.dispatch('profile/TAKE_POST_BY_USER', {
+      id: this.$route.params.id,
+      limit: this.customPagin,
+    })
+  }
 }
 </script>

@@ -61,11 +61,14 @@ import { mapState } from 'vuex'
 
 @Component({
   components: { ValidationObserver, ValidationProvider },
-  computed: {},
+  computed: {
+    ...mapState('register', ['steps']),
+  },
 })
 export default class SignIn extends Vue {
   identifier: string | null = ''
   password: string | null = ''
+  steps!: number
 
   showPassword: boolean = false
   loading: boolean = false
@@ -81,6 +84,7 @@ export default class SignIn extends Vue {
       this['$router'].push(`/${user.id}`)
     }
     this.loading = false
+    this['$store'].dispatch('register/CHANGE_STEP_PAGE', 2)
   }
 }
 </script>

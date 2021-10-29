@@ -1,10 +1,10 @@
 export default function throttle(callback, limit) {
   let wait = false
-  return function() {
+  return function () {
     if (!wait) {
       callback.call()
       wait = true
-      setTimeout(function() {
+      setTimeout(function () {
         wait = false
       }, limit)
     }
