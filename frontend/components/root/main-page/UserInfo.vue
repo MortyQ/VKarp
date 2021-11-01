@@ -47,7 +47,7 @@
                   <v-col class="d-flex justify-start align-center" cols="5">
                     <span class="opacity_nice_text">{{ item.title }}</span>
                   </v-col>
-                  <v-col cols="7">
+                  <v-col cols="6">
                     <span class="vk_style_blue_text">
                       {{ item.value }}
                     </span>

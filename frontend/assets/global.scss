@@ -18,14 +18,22 @@
         &-left{
             position: absolute;
             bottom: 10%;
-            right: 20%;
+            left: 20%;
            
         }
         &-right{
             position: absolute;
             bottom: 10%;
-            right: 25%;
+            left: 10%;
             
+        }
+        @media (max-width: 1250px) {
+            .vk-image-positions{
+                &-left{
+                    display: none;
+                   
+                }
+            }
         }
 }
 
@@ -38,21 +46,21 @@
     
     .android{
         position: absolute;
-        top: -50%;
-        right: 52%;
+        top: -25%;
+        left: 34%;
         
     }
     .iphone {
         position: absolute;
-        top: -50%;
-        right: 22%;
-        text-align: center;
+        top: -25%;
+        left: 60%;
+        
     }
     .all_product{
         margin-top: 20px;
-        top: -20%;
+        top: 10%;
         position: absolute;
-        right: 33%;
+        left: 49%;
     }
 
     span{
@@ -66,6 +74,34 @@
 
           }
       }
+    }
+
+    @media (max-width: 1700px) {
+        .android {
+            left: 25%;
+        }  
+    }
+    
+    @media (max-width: 1250px) {
+        .android {
+            left: 30%;
+        }
+    }
+    @media (max-width: 999px) {
+        .android {
+            display: none;
+        }  
+        .iphone {
+            display: none;
+            
+        }
+        .all_product{
+           
+            left: 35%;
+        }
+
+
+     
     }
 }
 
@@ -190,10 +226,13 @@
 
 .opacity_nice_text {
     color: #aaaaaa;
-    font-size: 14px;
+    font-size: 12px;
     opacity: 0.8;
     text-align: center;
 }
+
+
+
 
 .vk_style_blue_text {
      color: #6488b1;

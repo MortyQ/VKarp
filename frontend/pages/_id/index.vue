@@ -5,21 +5,14 @@
         md="3"
         xl="3"
         cols="3"
-        class="
-          d-flex
-          flex-column
-          justify-md-start
-          align-md-start
-          justify-center
-          align-center
-        "
+        class="d-flex flex-column justify-md-start align-md-start"
         style="max-width: 210px"
       >
         <Photo />
         <Gifts />
         <Friends />
       </v-col>
-      <v-col cols="8" md="8" xl="8" style="max-width: 510px">
+      <v-col cols="8" md="8" xl="8">
         <UserInfo />
         <Gelery />
         <CreatePost />

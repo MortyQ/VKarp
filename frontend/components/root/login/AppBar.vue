@@ -17,7 +17,7 @@
       >Вконтакте</span
     >
 
-    <v-row class="search_user">
+    <v-row class="search_user" v-if="signUser && users">
       <v-col cols="12">
         <v-text-field
           flat
@@ -33,9 +33,9 @@
           @input="trottledSave()"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" class="search_user-list" v-if="users.length >= 1">
+      <v-col cols="12" class="search_user-list">
         <v-card tile flat>
-          <v-list v-if="users && users.length != 0">
+          <v-list v-if="users && signUser && users.length != 0">
             <v-list-item
               v-for="item in users"
               :key="item.id"
@@ -80,12 +80,14 @@ import trottle from '@/helpers/trottle'
   layout: 'login',
   computed: {
     ...mapState('register', ['steps']),
+    ...mapState('register', ['signUser']),
     ...mapState('profile', ['users']),
   },
 })
 export default class AppBar extends Vue {
   steps!: number
   users!: UserType[]
+  signUser!: UserType
   search: string | null = ''
 
   @Prop() process
@@ -103,14 +105,17 @@ export default class AppBar extends Vue {
   }
 
   async searchUser() {
-    await this['$store'].dispatch(
-      'profile/SEARCH_USER_BY_FIRST_NAME',
-      this.search
-    )
+    if (this.users) {
+      await this['$store'].dispatch(
+        'profile/SEARCH_USER_BY_FIRST_NAME',
+        this.search
+      )
+    }
   }
 
   logout() {
     this['$store'].dispatch('register/LOGOUT')
+    this['$store'].dispatch('register/CHANGE_STEP_PAGE', 0)
     this.$router.push('/login')
   }
 

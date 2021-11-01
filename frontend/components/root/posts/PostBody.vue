@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mt-4 pa-5">
+  <v-card class="mt-4 pa-5" v-if="user.posts && posts">
     <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
       <v-tab v-for="item in tabs" :key="item.id">
         {{ item }}
@@ -8,7 +8,7 @@
     <v-row
       cols="12"
       class="d-flex justify-center align-center"
-      v-if="posts.length != 0"
+      v-if="posts.length"
     >
       <v-tabs-items class="mt-8" v-model="tab">
         <v-tab-item v-for="item in 2" :key="item.id">
@@ -16,14 +16,8 @@
             <v-row cols="10" class="pa-4 ml-3 mt-2">
               <v-card flat tile>
                 <v-row>
-                  <v-col
-                    cols="12"
-                    v-for="(title, index) in titles"
-                    :key="index"
-                    class="mt-4"
-                    style="box-shadow: 0 4px 2px -2px gray"
-                  >
-                    <v-card tile flat>
+                  <v-col cols="12" v-for="title in titles" :key="title.id">
+                    <v-card elevation="4" class="pa-4">
                       <v-row>
                         <v-col cols="2">
                           <v-img
@@ -82,7 +76,9 @@
       </v-col>
     </v-row>
     <infinite-loading spinner="spiral" @infinite="infiniteScroll">
-      <div slot="no-more">Больше постов нет</div></infinite-loading
+      <div slot="no-more">
+        <v-btn @click="$vuetify.goTo(0)"> =></v-btn>
+      </div></infinite-loading
     >
   </v-card>
 </template>
@@ -121,6 +117,7 @@ export default class PostComponent extends Vue {
   created() {
     this.fetchData()
   }
+
   public async fetchData() {
     const resp = await this.$axios.get(this.url)
 

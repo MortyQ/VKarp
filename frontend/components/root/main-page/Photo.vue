@@ -174,11 +174,6 @@ export default class Photo extends Vue {
       formdata,
       id: this.signUser.id,
     })
-
-    setTimeout(() => {
-      window.location.reload()
-      this.loading = false
-    }, 1000)
   }
 
   mounted() {}

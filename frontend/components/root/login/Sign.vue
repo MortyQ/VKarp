@@ -4,6 +4,7 @@
       cols="12"
       class="d-flex flex-column justify-center align-center mt-5"
     >
+      <h1 v-if="errorLogin">Error</h1>
       <v-col cols="10" class="pt-5 pt-5 pb-5 mt-2">
         <ValidationObserver ref="form" v-slot="{ valid: formValid }">
           <v-form @submit.prevent="signIn">
@@ -69,22 +70,31 @@ export default class SignIn extends Vue {
   identifier: string | null = ''
   password: string | null = ''
   steps!: number
+  errorLogin: boolean = false
 
   showPassword: boolean = false
   loading: boolean = false
   public async signIn() {
     this.loading = true
-    const { user } = await this['$store'].dispatch('register/LOGIN', {
-      identifier: this.identifier,
-      password: this.password,
-    })
-    console.log(user)
+    try {
+      const { user } = await this['$store'].dispatch('register/LOGIN', {
+        identifier: this.identifier,
+        password: this.password,
+      })
+      console.log('user', user)
 
-    if (user && user.id) {
-      this['$router'].push(`/${user.id}`)
+      if (user && user.id) {
+        this['$router'].push(`/${user.id}`)
+      }
+      this.loading = false
+      this['$store'].dispatch('register/CHANGE_STEP_PAGE', 2)
+    } catch (e) {
+      this.errorLogin = true
+      console.log(e)
+      setTimeout(() => {
+        this.loading = false
+      }, 2000)
     }
-    this.loading = false
-    this['$store'].dispatch('register/CHANGE_STEP_PAGE', 2)
   }
 }
 </script>

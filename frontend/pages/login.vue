@@ -1,16 +1,21 @@
 <template>
-  <v-container>
-    <v-row class="d-flex justify-center align-center" v-if="steps === 0">
+  <v-card flat tile color="#edeef0" class="ma-0 pa-0">
+    <v-row
+      class="d-flex justify-center align-center"
+      v-if="steps === 0"
+      cols="12"
+    >
       <v-col
         cols="6"
-        class="d-flex flex-column justify-start align-end"
-        style="height: 100vh"
+        lg="4"
+        class="d-flex flex-column justify-center align-center login_images"
+        style="height: 100%"
       >
         <div
-          class="d-flex flex-column justify-start align-center mr-15 mt-8"
-          style="text-align: center; width: 55%"
+          class="d-flex flex-column justify-end align-end ml-15"
+          style="text-align: center; width: 60%"
         >
-          <span class="font_vk_mobile_h1">
+          <span class="font_vk_mobile_h1" style="width: 100%">
             ВКонтакте для мобильных устройств
           </span>
           <span class="" style="font_vk_mobile_p mt-5">
@@ -65,7 +70,7 @@
           </span>
         </div>
       </v-col>
-      <v-col cols="6" style="height: 100vh">
+      <v-col cols="6" lg="4" style="height: 100%">
         <SignIn />
         <StepOne />
 
@@ -82,7 +87,7 @@
     <v-row v-else-if="steps === 1" class="d-flex justify-center align-center">
       <StepTwo />
     </v-row>
-  </v-container>
+  </v-card>
 </template>
 
 <script lang="ts">
