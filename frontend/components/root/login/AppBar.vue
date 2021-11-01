@@ -1,6 +1,6 @@
 <template>
   <v-container
-    class="d-flex justify-space-between align-center"
+    class="d-flex justify-end align-center"
     style="position: relative"
   >
     <v-img

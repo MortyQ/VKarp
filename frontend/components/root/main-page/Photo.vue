@@ -126,13 +126,7 @@
     </v-row>
     <v-row v-else>
       <v-col cols="12">
-        <v-btn
-          height="35px"
-          width="100%"
-          depressed
-          color="#a9d1ff"
-          to="/setting"
-        >
+        <v-btn height="35px" width="100%" depressed color="#a9d1ff">
           <span style="font-size: 10px !important"> Написать </span>
         </v-btn>
       </v-col>

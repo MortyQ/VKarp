@@ -10,20 +10,21 @@
       class="d-flex justify-center align-center"
       v-if="posts.length != 0"
     >
-      <v-tabs-items class="mt-8" v-model="tab" style="width: 80% !important">
+      <v-tabs-items class="mt-8" v-model="tab">
         <v-tab-item v-for="item in 2" :key="item.id">
           <v-card flat v-if="item === 1" item>
-            <v-row cols="10" class="pa-6 ma-5" style="border: 3px solid black">
+            <v-row cols="10" class="pa-4 ml-3 mt-2">
               <v-card flat tile>
                 <v-row>
                   <v-col
                     cols="12"
                     v-for="(title, index) in titles"
                     :key="index"
+                    class="mt-4"
+                    style="box-shadow: 0 4px 2px -2px gray"
                   >
                     <v-card tile flat>
                       <v-row>
-                        <span class="ml-8"> </span>
                         <v-col cols="2">
                           <v-img
                             height="100%"
@@ -81,7 +82,7 @@
       </v-col>
     </v-row>
     <infinite-loading spinner="spiral" @infinite="infiniteScroll">
-      <div slot="no-more">Пока нету постов</div></infinite-loading
+      <div slot="no-more">Больше постов нет</div></infinite-loading
     >
   </v-card>
 </template>
@@ -114,7 +115,7 @@ export default class PostComponent extends Vue {
     const query = qs.stringify({
       _where: [{ user: this.$route.params.id }],
     })
-    return `http://localhost:1337/posts?${query}&_start=1&_limit=${this.page}`
+    return `http://localhost:1337/posts?${query}&_start=0&_limit=${this.page}`
   }
 
   created() {
@@ -139,7 +140,7 @@ export default class PostComponent extends Vue {
           ) {
             response.data.forEach((i, index, array) => {
               if (index === array.length - 1) {
-                this.titles = array
+                this.titles = array.reverse()
               } else if (this.page > array.length) {
                 console.log('end')
                 $state.complete()
