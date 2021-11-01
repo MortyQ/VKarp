@@ -13,17 +13,6 @@
       <v-tabs-items class="mt-8" v-model="tab" style="width: 80% !important">
         <v-tab-item v-for="item in 2" :key="item.id">
           <v-card flat v-if="item === 1" item>
-            <!-- <v-row v-if="posts" :key="item.id">
-              <v-col cols="12" v-for="item in posts" :key="item.id">
-                <v-card class="mt-3" flat :key="item.id">
-                  <PostMain
-                    :post="item.post"
-                    :time="item.created_at"
-                    :id="item.user"
-                  />
-                </v-card>
-              </v-col>
-            </v-row> -->
             <v-row cols="10" class="pa-6 ma-5" style="border: 3px solid black">
               <v-card flat tile>
                 <v-row>
@@ -71,11 +60,6 @@
                 </v-row>
               </v-card>
             </v-row>
-            <!-- <v-row>
-              <v-col cols="12">
-                <v-card-title> Нету постов </v-card-title>
-              </v-col>
-            </v-row> -->
           </v-card>
 
           <v-card flat v-if="item === 2" :key="item.id">
@@ -96,10 +80,9 @@
         <h1>НЭМА ПОСТОВ</h1>
       </v-col>
     </v-row>
-    <infinite-loading
-      spinner="spiral"
-      @infinite="infiniteScroll"
-    ></infinite-loading>
+    <infinite-loading spinner="spiral" @infinite="infiniteScroll">
+      <div slot="no-more">Пока нету постов</div></infinite-loading
+    >
   </v-card>
 </template>
 
@@ -110,7 +93,6 @@ import trottle from '@/helpers/trottle'
 import { mapState } from 'vuex'
 import qs from 'qs'
 import { UserType, Post } from '~/helpers/userType'
-import func from '~/vue-temp/vue-editor-bridge'
 
 @Component({
   components: { PostMain },
@@ -126,21 +108,20 @@ export default class PostComponent extends Vue {
   customPagin: number = 3
 
   titles = []
-  page = 1
+  page = 5
 
   get url() {
     const query = qs.stringify({
       _where: [{ user: this.$route.params.id }],
     })
-    return `http://localhost:1337/posts?${query}&_limit=` + this.page
+    return `http://localhost:1337/posts?${query}&_start=1&_limit=${this.page}`
   }
 
-  // created() {
-  //   this.fetchData()
-  // }
+  created() {
+    this.fetchData()
+  }
   public async fetchData() {
     const resp = await this.$axios.get(this.url)
-    console.log('resp', resp)
 
     this.titles = resp.data
     console.log('titles(items)', this.titles)
@@ -148,7 +129,7 @@ export default class PostComponent extends Vue {
 
   public infiniteScroll($state) {
     setTimeout(() => {
-      this.page++
+      this.page += 5
       this.$axios
         .get(this.url)
         .then((response) => {
@@ -158,15 +139,12 @@ export default class PostComponent extends Vue {
           ) {
             response.data.forEach((i, index, array) => {
               if (index === array.length - 1) {
-                // this.titles.push(item)
-                console.log('array', array)
-                console.log('index', index)
-                this.titles.push(i)
-              } else if (index === response.data.length) {
+                this.titles = array
+              } else if (this.page > array.length) {
                 console.log('end')
+                $state.complete()
               }
             })
-            console.log(response.data)
 
             $state.loaded()
           } else {
@@ -178,41 +156,6 @@ export default class PostComponent extends Vue {
         })
     }, 500)
   }
-
-  // get trottledSave() {
-  //   let DELAY = 1000
-  //   return trottle(this.onScroll, DELAY)
-  // }
-
-  // public onScroll(e) {
-  //   this.offsetTop = e.target.scrollTop
-  //   console.log(this.offsetTop)
-  //   if (this.offsetTop > 30 && this.offsetTop < 40) {
-  //     console.log('max-5')
-
-  //     this.customPagin = 5
-  //     this.$store.dispatch('profile/TAKE_POST_BY_USER', {
-  //       id: this.$route.params.id,
-  //       limit: this.customPagin,
-  //     })
-  //   } else if (this.offsetTop > 250 && this.offsetTop < 300) {
-  //     console.log('max-10')
-
-  //     this.customPagin = 10
-  //     this.$store.dispatch('profile/TAKE_POST_BY_USER', {
-  //       id: this.$route.params.id,
-  //       limit: this.customPagin,
-  //     })
-  //   } else if (this.offsetTop > 900 && this.offsetTop < 1000) {
-  //     console.log('max-30')
-
-  //     this.customPagin = 30
-  //     this.$store.dispatch('profile/TAKE_POST_BY_USER', {
-  //       id: this.$route.params.id,
-  //       limit: this.customPagin,
-  //     })
-  //   }
-  // }
 
   public tab: null = null
   public tabs = ['Все записи', 'Мои записи']
