@@ -112,7 +112,7 @@ export default class AppBar extends Vue {
   }
 
   updatePage() {
-    window.location.reload()
+    this['$store'].dispatch('profile/SEARCH_USER_BY_FIRST_NAME', null)
   }
 
   mounted() {
