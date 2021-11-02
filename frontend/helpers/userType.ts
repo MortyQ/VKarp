@@ -4,6 +4,7 @@ export interface Post {
   // id?: number
   post: string
   user?: UserType
+  created_at?: string
 }
 
 export interface UserType extends RegisterType {

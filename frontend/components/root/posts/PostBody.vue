@@ -4,7 +4,6 @@
       <v-tab v-for="item in tabs" :key="item.id">
         {{ item }}
       </v-tab>
-      <v-btn @click="test()"> TEST </v-btn>
     </v-tabs>
     <v-row
       cols="12"
@@ -13,7 +12,7 @@
     >
       <v-tabs-items class="mt-8" v-model="tab">
         <v-tab-item v-for="item in 2" :key="item.id">
-          <v-card flat v-if="item === 1" item>
+          <v-card flat v-if="item === 1">
             <v-row cols="10" class="pa-4 ml-3 mt-2">
               <v-card flat tile>
                 <v-row>
@@ -57,15 +56,6 @@
               </v-card>
             </v-row>
           </v-card>
-
-          <v-card flat v-if="item === 2" :key="item.id">
-            <span
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              rerum, laborum, possimus facere exercitationem repellat
-              dignissimos praesentium consequuntur quos molestias iusto et
-              impedit ducimus sequi?
-            </span>
-          </v-card>
         </v-tab-item>
       </v-tabs-items>
       <v-col cols="12"> </v-col>
@@ -78,7 +68,9 @@
     </v-row>
     <infinite-loading spinner="spiral" @infinite="infiniteScroll">
       <div slot="no-more">
-        <v-btn @click="$vuetify.goTo(0)"> =></v-btn>
+        <v-btn @click="$vuetify.goTo(0)" icon :ripple="false">
+          <v-icon large> mdi-arrow-up-bold-circle</v-icon>
+        </v-btn>
       </div></infinite-loading
     >
   </v-card>
@@ -108,21 +100,18 @@ export default class PostComponent extends Vue {
   page = 5
   $route: any
 
-  test() {
-    console.log(this.sortDate)
-  }
-
   get sortDate() {
-    console.log('SORT')
-    return this.posts.sort(function (a, b) {
-      if (a.created_at > b.created_at) {
-        return -1
-      }
-      if (a.created_at < b.created_at) {
-        return 1
-      }
-      return 0
-    })
+    if (this.posts && this.user.posts && this.user) {
+      return this.posts.sort(function (a, b) {
+        if (a.created_at > b.created_at) {
+          return -1
+        }
+        if (a.created_at < b.created_at) {
+          return 1
+        }
+        return 0
+      })
+    }
   }
 
   public async infiniteScroll($state) {
@@ -131,7 +120,6 @@ export default class PostComponent extends Vue {
       id: this.$route.params.id,
       limit: this.page,
     })
-    console.log(response)
 
     if (response.length > 1 && response.length <= this.posts.length) {
       response.forEach((i, index, array) => {
@@ -148,7 +136,7 @@ export default class PostComponent extends Vue {
   }
 
   public tab: null = null
-  public tabs = ['Все записи', 'Мои записи']
+  public tabs = ['Все записи']
 
   mounted() {
     this.$store.dispatch('profile/TAKE_POST_BY_USER', {
