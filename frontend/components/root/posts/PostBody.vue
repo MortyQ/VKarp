@@ -4,6 +4,7 @@
       <v-tab v-for="item in tabs" :key="item.id">
         {{ item }}
       </v-tab>
+      <v-btn @click="test()"> TEST </v-btn>
     </v-tabs>
     <v-row
       cols="12"
@@ -16,7 +17,7 @@
             <v-row cols="10" class="pa-4 ml-3 mt-2">
               <v-card flat tile>
                 <v-row>
-                  <v-col cols="12" v-for="title in titles" :key="title.id">
+                  <v-col cols="12" v-for="title in sortDate" :key="title.id">
                     <v-card elevation="4" class="pa-4">
                       <v-row>
                         <v-col cols="2">
@@ -100,59 +101,50 @@ import { UserType, Post } from '~/helpers/userType'
 })
 export default class PostComponent extends Vue {
   user!: UserType
-  posts!: Post[] | Post
+  posts!: Post[]
   offsetTop: number = 0
   customPagin: number = 3
 
-  titles = []
   page = 5
+  $route: any
 
-  get url() {
-    const query = qs.stringify({
-      _where: [{ user: this.$route.params.id }],
+  test() {
+    console.log(this.sortDate)
+  }
+
+  get sortDate() {
+    console.log('SORT')
+    return this.posts.sort(function (a, b) {
+      if (a.created_at > b.created_at) {
+        return -1
+      }
+      if (a.created_at < b.created_at) {
+        return 1
+      }
+      return 0
     })
-    return `http://localhost:1337/posts?${query}&_start=0&_limit=${this.page}`
   }
 
-  created() {
-    this.fetchData()
-  }
+  public async infiniteScroll($state) {
+    this.page += 3
+    const response = await this.$store.dispatch('profile/TAKE_POST_BY_USER', {
+      id: this.$route.params.id,
+      limit: this.page,
+    })
+    console.log(response)
 
-  public async fetchData() {
-    const resp = await this.$axios.get(this.url)
-
-    this.titles = resp.data
-    console.log('titles(items)', this.titles)
-  }
-
-  public infiniteScroll($state) {
-    setTimeout(() => {
-      this.page += 5
-      this.$axios
-        .get(this.url)
-        .then((response) => {
-          if (
-            response.data.length > 1 &&
-            response.data.length <= this.posts.length
-          ) {
-            response.data.forEach((i, index, array) => {
-              if (index === array.length - 1) {
-                this.titles = array.reverse()
-              } else if (this.page > array.length) {
-                console.log('end')
-                $state.complete()
-              }
-            })
-
-            $state.loaded()
-          } else {
-            $state.complete()
-          }
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }, 500)
+    if (response.length > 1 && response.length <= this.posts.length) {
+      response.forEach((i, index, array) => {
+        if (index === array.length - 1) {
+          $state.loaded()
+        } else if (this.page > array.length) {
+          $state.complete()
+        }
+      })
+      $state.loaded()
+    } else {
+      $state.complete()
+    }
   }
 
   public tab: null = null
@@ -161,7 +153,7 @@ export default class PostComponent extends Vue {
   mounted() {
     this.$store.dispatch('profile/TAKE_POST_BY_USER', {
       id: this.$route.params.id,
-      limit: this.customPagin,
+      limit: this.page,
     })
   }
 }

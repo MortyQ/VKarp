@@ -125,11 +125,13 @@ export default class MainPage extends VuexModule {
 
   @Mutation
   private _CREATE_POST(payload) {
-    if (payload) {
+    console.log(payload)
+    if (payload && this.user) {
       this.user = {
         ...this.user,
         posts: [payload, ...this.user.posts],
       }
+      console.log(this.user)
     }
   }
 
@@ -175,7 +177,9 @@ export default class MainPage extends VuexModule {
 
   @Mutation
   private _TAKE_POST_BY_USER(payload) {
-    this.posts = payload
+    if (payload) {
+      this.posts = payload
+    }
   }
 
   @Action({ commit: '_TAKE_POST_BY_USER' })
@@ -183,10 +187,11 @@ export default class MainPage extends VuexModule {
     const query = qs.stringify({
       _where: [{ user: payload.id }],
     })
-    console.log(payload)
-
     try {
-      let res = await axios.get(`http://localhost:1337/posts?${query}`)
+      let res = await axios.get(
+        `http://localhost:1337/posts?${query}&_start=0&_limit=${payload.limit}`
+      )
+
       return res.data
     } catch (e) {
       console.log(e)
