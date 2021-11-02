@@ -1,5 +1,5 @@
 <template>
-  <v-card style="height: 80%" class="mt-4">
+  <v-card class="mt-4">
     <h1
       v-if="error.statusCode === 404"
       class="d-flex justify-center flex-column align-center"

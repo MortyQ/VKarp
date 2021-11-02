@@ -12,7 +12,7 @@
           min-width="50px"
           lazy-src="/default-image.jpeg"
           src="/vklogo.png"
-          style="border-radius: 50%"
+          class="border_50"
         >
         </v-img>
       </v-col>

@@ -8,17 +8,30 @@
       <v-col
         cols="6"
         lg="4"
-        class="d-flex flex-column justify-center align-center login_images"
-        style="height: 100%"
+        class="
+          d-flex
+          flex-column
+          justify-center
+          align-center
+          login_images
+          height_100
+        "
       >
         <div
-          class="d-flex flex-column justify-end align-end ml-15"
-          style="text-align: center; width: 60%"
+          class="
+            d-flex
+            flex-column
+            justify-end
+            align-end
+            ml-15
+            text_center
+            width_60
+          "
         >
-          <span class="font_vk_mobile_h1" style="width: 100%">
+          <span class="font_vk_mobile_h1 width_100">
             ВКонтакте для мобильных устройств
           </span>
-          <span class="" style="font_vk_mobile_p mt-5">
+          <span class="font_vk_mobile_p mt-5">
             Установите официальное мобильное приложение ВКонтакте и оставайтесь
             в курсе новостей ваших друзей, где бы вы ни находились.
           </span>
@@ -63,22 +76,25 @@
           <span class="all_product">
             <v-btn text depressed>
               Все продукты
-              <v-icon small style="padding-top: 1px" color="#2a5885"
-                >mdi-chevron-right</v-icon
-              >
+              <v-icon small color="#2a5885">mdi-chevron-right</v-icon>
             </v-btn>
           </span>
         </div>
       </v-col>
-      <v-col cols="6" lg="4" style="height: 100%">
+      <v-col cols="6" lg="4" class="height_100">
         <SignIn />
         <StepOne />
 
-        <v-card class="mt-3" width="100%" min-width="320px" max-width="320px">
-          <v-card-text style="text-align: center">
+        <v-card
+          class="mt-3 mb-3"
+          width="100%"
+          min-width="320px"
+          max-width="320px"
+        >
+          <v-card-text class="text_center">
             После регистрации вы получите доступ ко всем возможностям VK ID
             <v-card tile flat color="white" :ripple="false" to="/login">
-              <span style="color: #2a5885"> Узнать больше </span>
+              <span class="forget_password"> Узнать больше </span>
             </v-card>
           </v-card-text>
         </v-card>

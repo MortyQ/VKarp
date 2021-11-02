@@ -1,14 +1,11 @@
 <template>
   <v-card class="mt-5 pa-1">
     <div class="d-flex justify-space-between align-start" v-if="user.gallery">
-      <span class="ml-3 d-flex justify-start" style="gap: 10px"
+      <span class="ml-3 d-flex justify-start gap_10px"
         >Мои фотографии
-        <span style="color: #cccccc">{{ this.user.gallery.length }}</span></span
+        <span class="color_ccc">{{ this.user.gallery.length }}</span></span
       >
-      <div
-        class="d-flex justify-end align-end text_gallery"
-        style="color: #cccccc"
-      >
+      <div class="d-flex justify-end align-end text_gallery color_ccc">
         Показать на карте
       </div>
     </div>

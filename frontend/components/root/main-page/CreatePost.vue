@@ -12,7 +12,7 @@
           min-width="50px"
           :src="getStrapiMedia(user.avatar.url)"
           :lazy-src="getStrapiMedia(user.avatar.url)"
-          style="border-radius: 50%"
+          class="register_info_btn"
         >
         </v-img>
         <v-img
@@ -25,7 +25,7 @@
           min-width="50px"
           lazy-src="/default-image.jpeg"
           src="/default-image.jpeg"
-          style="border-radius: 50%"
+          class="register_info_btn"
         >
         </v-img
       ></v-col>

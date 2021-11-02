@@ -1,21 +1,14 @@
 <template>
-  <v-row
-    class="d-flex"
-    style="min-height: 633px; max-height: 633px; height: 100%"
-  >
+  <v-row class="d-flex step_two_component-right">
     <ValidationObserver ref="form" v-slot="{ valid: formValid }">
       <v-col
         cols="12"
-        class="d-flex flex-column justify-start align-center"
-        style="text-align: center"
+        class="d-flex flex-column justify-start align-center text_center"
       >
-        <span class="title_text mt-5" style="font-size: 20px">
+        <span class="title_text mt-5 font-size-20">
           Подтверждение регистрации
         </span>
-        <span
-          class="mt-5 mb-10"
-          style="max-width: 60%; color: #656565; font-size: 14px"
-        >
+        <span class="mt-5 mb-10 step_two_phone-number">
           Номер вашего телефона будет использоваться для входа в аккаунт
         </span>
 
@@ -107,28 +100,20 @@
           width="280px"
           color="#5181b8"
           :loading="loading"
-          ><span style="color: white">Дальше</span></v-btn
+          ><span class="font-white">Дальше</span></v-btn
         >
-        <span
-          style="
-            font-size: 13px;
-            color: #939393;
-            max-width: 70%;
-            text-align: center;
-          "
+        <span class="step_two-policy-text"
           >Нажимая кнопку «Далее», вы принимаете
           <nuxt-link
-            class="policy_register"
+            class="policy_register step_two-policy-text-link"
             to="/login"
-            style="color: #939393; font-size: 13px"
           >
             <span>пользовательское соглашение</span>
           </nuxt-link>
           и
           <nuxt-link
-            class="policy_register"
+            class="policy_register step_two-policy-text-link"
             to="/login"
-            style="color: #939393; font-size: 13px"
           >
             <span>политику конфиденциальности.</span>
           </nuxt-link>

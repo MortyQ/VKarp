@@ -15,13 +15,11 @@
           >
             <v-sheet
               rounded="lg"
-              class="d-flex justify-space-around"
-              style="background: #edeef0"
+              class="d-flex justify-space-around background_main"
             >
               <v-list color="transparent">
                 <v-list-item
-                  style="height: 20px; width: 100%"
-                  class="ma-0 pa-0"
+                  class="ma-0 pa-0 user_info-list"
                   v-for="item in mainNav"
                   :key="item.id"
                   link
@@ -35,10 +33,10 @@
                       <v-icon class="mr-3" small color="#5181b8">{{
                         item.icon
                       }}</v-icon>
-                      <span style="font-size: 14px">
+                      <span class="post_user_name">
                         {{ item.name }}
                       </span>
-                      <div style="position: absolute; left: 80%; top: 25%">
+                      <div class="position_dots_nav-message">
                         <v-badge
                           v-if="item.message != ''"
                           :content="item.message"
@@ -52,8 +50,7 @@
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
-                  style="height: 20px; width: 100%"
-                  class="ma-0 pa-0"
+                  class="ma-0 pa-0 user_info-list"
                   v-for="item in secondNav"
                   :key="item.id"
                   link
@@ -65,10 +62,10 @@
                       <v-icon class="mr-3" color="#5181b8" small>{{
                         item.icon
                       }}</v-icon>
-                      <span style="font-size: 14px">
+                      <span class="post_user_name">
                         {{ item.name }}
                       </span>
-                      <div style="position: absolute; left: 100%">
+                      <div class="position_dots_nav">
                         <v-badge
                           v-if="item.message != ''"
                           :content="item.message"
@@ -81,8 +78,7 @@
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
-                  style="height: 20px; width: 90%"
-                  class="ma-0 pa-0"
+                  class="ma-0 pa-0 user_info-list"
                   v-for="item in lastNav"
                   :key="item.id"
                   link
@@ -94,10 +90,10 @@
                       <v-icon class="mr-3" color="#5181b8" small>{{
                         item.icon
                       }}</v-icon>
-                      <span style="font-size: 14px">
+                      <span class="post_user_name">
                         {{ item.name }}
                       </span>
-                      <div style="position: absolute; left: 100%">
+                      <div class="position_dots_nav">
                         <v-badge
                           v-if="item.message != ''"
                           :content="item.message"
@@ -122,7 +118,7 @@
         </v-row>
       </v-container>
     </v-main>
-    <v-footer style="background: #edeef0" app absolute> <Footer /></v-footer>
+    <v-footer class="background_main"> <Footer /></v-footer>
   </v-app>
 </template>
 

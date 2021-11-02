@@ -5,14 +5,12 @@
     </v-card-title>
     <v-row
       cols="12"
-      class="mt-3 pa-1 d-flex justify-center align-center"
-      style="gap: 10px"
+      class="mt-3 pa-1 d-flex justify-center align-center gap_10px"
     >
       <v-col
         cols="6"
         class="d-flex flex-column justify-center align-center"
         md="5"
-        style="gap: 2px"
         v-for="item in 4"
         :key="item.id"
       >

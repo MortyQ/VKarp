@@ -36,8 +36,7 @@
         <v-expansion-panel-content>
           <v-list color="transparent">
             <v-list-item
-              style="height: 20px; width: 90%"
-              class="ma-0 pa-0"
+              class="ma-0 pa-0 user_info-list"
               v-for="item in moreInfo"
               :key="item.id"
               v-if="item.value"
@@ -62,8 +61,7 @@
     <v-divider class="my-2"></v-divider>
     <div class="d-flex">
       <div
-        class="d-flex flex-column pa-2"
-        style="width: 20%"
+        class="d-flex flex-column pa-2 width_20"
         v-for="item in statistic"
         :key="item.id"
       >

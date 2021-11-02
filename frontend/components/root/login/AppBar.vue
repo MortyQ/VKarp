@@ -1,21 +1,13 @@
 <template>
-  <v-container
-    class="d-flex justify-end align-center"
-    style="position: relative"
-  >
+  <v-container class="d-flex justify-end align-center position-relative">
     <v-img
       max-height="35"
       max-width="35"
       src="/vklogo.png"
-      style="position: absolute; left: 10%; border-radius: 5px"
+      class="vk_logo-appbar"
     >
     </v-img>
-    <span
-      v-if="steps === 2"
-      class="title_text"
-      style="position: absolute; left: 15%; border-radius: 5px"
-      >Вконтакте</span
-    >
+    <span v-if="steps === 2" class="title_text vk_text-appbar">Вконтакте</span>
 
     <v-row class="search_user" v-if="signUser && users">
       <v-col cols="12">
@@ -55,7 +47,8 @@
                   <pre
                     class="
                       roboto_text_style
-                    ">{{ item.firstName }} {{ item.lastName }}      <span class="opacity_nice_text">online</span></pre>
+                    ">{{ item.firstName }} {{ item.lastName }}     
+                     <span class="opacity_nice_text">online</span></pre>
                 </v-col>
               </v-row>
             </v-list-item>
@@ -90,7 +83,6 @@ export default class AppBar extends Vue {
   signUser!: UserType
   search: string | null = ''
 
-  @Prop() process
   getStrapiMedia = getStrapiMedia
   image = ''
   imageUrl = ''

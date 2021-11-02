@@ -32,18 +32,14 @@
             </ValidationProvider>
             <div class="d-flex justify-space-between align-center">
               <v-btn
-                class="mt-2"
+                class="mt-2 btn_sign"
                 type="submit"
                 :disabled="!formValid"
                 :loading="loading"
-                style="background: #5181b8; color: white"
               >
                 Войти
               </v-btn>
-              <nuxt-link
-                to="/login"
-                class="pt-3"
-                style="font-size: 16px; text-decoration: none; color: #2a5885"
+              <nuxt-link to="/login" class="pt-3 forget_password"
                 >Забыл пароль ?</nuxt-link
               >
             </div>

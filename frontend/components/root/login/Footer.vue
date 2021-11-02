@@ -2,46 +2,21 @@
   <v-container>
     <v-row>
       <v-col cols="4">
-        <nuxt-link
-          to="/login"
-          style="text-decoration: none; color: #2a5885; font-size: 14px"
-          >ВКонтакте</nuxt-link
+        <nuxt-link to="/login" class="footer_text">ВКонтакте</nuxt-link>
+        <span class="footer_year-text"
+          >© 2006–{{ new Date().getFullYear() }}</span
         >
-        <span style="font-size: 14px; color: #6f7985"> © 2006–2021</span>
       </v-col>
       <v-col cols="4">
-        <nuxt-link
-          to="/login"
-          class="ml-3"
-          style="text-decoration: none; color: #2a5885; font-size: 14px"
-          >О ВКонтакте</nuxt-link
-        >
-        <nuxt-link
-          to="/login"
-          class="ml-3"
-          style="text-decoration: none; color: #2a5885; font-size: 14px"
-          >Правила</nuxt-link
-        >
-        <nuxt-link
-          to="/login"
-          class="ml-3"
-          style="text-decoration: none; color: #2a5885; font-size: 14px"
+        <nuxt-link to="/login" class="ml-3 footer_text">О ВКонтакте</nuxt-link>
+        <nuxt-link to="/login" class="ml-3 footer_text">Правила</nuxt-link>
+        <nuxt-link to="/login" class="ml-3 footer_text"
           >Разработчикам</nuxt-link
         >
       </v-col>
       <v-col cols="4">
-        <nuxt-link
-          to="/login"
-          class="ml-3"
-          style="text-decoration: none; color: #2a5885; font-size: 14px"
-          >Українська</nuxt-link
-        >
-        <nuxt-link
-          to="/login"
-          class="ml-3"
-          style="text-decoration: none; color: #2a5885; font-size: 14px"
-          >English</nuxt-link
-        >
+        <nuxt-link to="/login" class="ml-3 footer_text">Українська</nuxt-link>
+        <nuxt-link to="/login" class="ml-3 footer_text">English</nuxt-link>
       </v-col>
     </v-row>
   </v-container>

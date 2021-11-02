@@ -5,8 +5,7 @@
         md="3"
         xl="3"
         cols="3"
-        class="d-flex flex-column justify-md-start align-md-start"
-        style="max-width: 210px"
+        class="d-flex flex-column justify-md-start align-md-start width_210"
       >
         <Photo />
         <Gifts />

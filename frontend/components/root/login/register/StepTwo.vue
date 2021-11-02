@@ -1,29 +1,12 @@
 <template>
   <v-row
-    class="mt-10 d-flex justify-center align-center"
+    class="mt-10 d-flex justify-center align-center step_two_component"
     cols="8"
-    style="max-width: 740px; min-width: 740px; width: 100%"
   >
-    <v-col
-      cols="6"
-      style="
-        max-height: 663px;
-        min-height: 663px;
-        height: 100%;
-        background: #f7f8fa;
-      "
-    >
+    <v-col cols="6" class="step_two_component-left">
       <ManyServices />
     </v-col>
-    <v-col
-      cols="6"
-      style="
-        max-height: 663px;
-        min-height: 663px;
-        height: 100%;
-        background: white;
-      "
-    >
+    <v-col cols="6" class="step_two_component-right">
       <v-card flat tile>
         <PhoneNumber />
       </v-card>
