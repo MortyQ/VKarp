@@ -8,7 +8,7 @@
     min-width="320px"
     max-width="320px"
   >
-    <div class="d-flex flex-column" style="text-align: center">
+    <div class="d-flex flex-column text_center">
       <span class="font_vk_mobile_h1 mt-5"> Впервые ВКонтакте? </span>
       <span class="font_vk_mobile_p mb-5"> Моментальная регистрация </span>
     </div>
@@ -52,19 +52,18 @@
                   <v-btn
                     color="black"
                     text
-                    class="pa-1 font_vk_mobile_p"
+                    class="pa-1 font_vk_mobile_p register_info_btn"
                     height="20px"
                     width="100%"
                     min-width="20px"
                     max-width="20px"
-                    style="border: 1px solid #626d7a; border-radius: 50%"
                     v-bind="attrs"
                     v-on="on"
                   >
                     <span class="font_vk_mobile_p"> ? </span>
                   </v-btn>
                 </template>
-                <span style="color: black"
+                <span class="text_black"
                   ><b>Заполненная дата рождения</b> позволит друзьям легче найти
                   вас, а также подбирать для вас интересные материалы.<br />Вы
                   сможете всегда настроить видимость вашей даты рождения в
@@ -148,14 +147,10 @@
                   :disabled="!formValid"
                   @click="firstStep()"
                 >
-                  <span style="color: white; font-size: 12px !important">
-                    Продолжить регистрацию
-                  </span>
+                  <span class="sign_next_step"> Продолжить регистрацию </span>
                 </v-btn>
                 <v-btn width="262" height="38" color="#1b6dd1" depressed>
-                  <span style="color: white; font-size: 12px !important">
-                    Войти через Facebook
-                  </span>
+                  <span class="sign_next_step"> Войти через Facebook </span>
                 </v-btn>
               </v-col>
             </v-row>

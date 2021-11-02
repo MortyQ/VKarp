@@ -8,12 +8,15 @@ import {
 
 import axios from 'axios'
 import $axios from '@nuxtjs/axios'
+import qs from 'qs'
 
-import { UserType } from '@/helpers/userType'
+import { UserType, Post } from '@/helpers/userType'
 
 @Module({ name: 'mainPage', stateFactory: true, namespaced: true })
 export default class MainPage extends VuexModule {
   public user: UserType | null = null
+  public users: UserType[] | null = null
+  public posts: Post[] | Post | null = null
   userGallery: File[] | null = null
 
   @Mutation
@@ -148,6 +151,43 @@ export default class MainPage extends VuexModule {
       )
 
       return data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  @Mutation
+  private _SEARCH_USER_BY_FIRST_NAME(payload) {
+    this.users = payload
+  }
+
+  @Action({ commit: '_SEARCH_USER_BY_FIRST_NAME' })
+  public async SEARCH_USER_BY_FIRST_NAME(payload: string) {
+    try {
+      let res = await axios.get(
+        `http://localhost:1337/users?firstName_contains=${payload}`
+      )
+      return res.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  @Mutation
+  private _TAKE_POST_BY_USER(payload) {
+    this.posts = payload
+  }
+
+  @Action({ commit: '_TAKE_POST_BY_USER' })
+  public async TAKE_POST_BY_USER(payload) {
+    const query = qs.stringify({
+      _where: [{ user: payload.id }],
+    })
+    console.log(payload)
+
+    try {
+      let res = await axios.get(`http://localhost:1337/posts?${query}`)
+      return res.data
     } catch (e) {
       console.log(e)
     }

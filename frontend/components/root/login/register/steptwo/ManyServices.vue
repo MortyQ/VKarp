@@ -1,16 +1,16 @@
 <template>
   <v-card flat tile color="#f7f8fa">
-    <v-card-title class="d-flex" style="gap: 5px">
+    <v-card-title class="d-flex">
       <v-img
         max-width="20px"
-        style="border-radius: 5px"
         height="20px"
         width="20px"
+        class="border_radius-5"
         src="/vklogo.png"
         lazy-src="/vklogo.png"
       >
       </v-img>
-      <span>ID</span>
+      <span class="ml-2">ID</span>
     </v-card-title>
     <v-card-text>
       <span class="title_text">
@@ -24,16 +24,12 @@
         </v-icon>
       </v-col>
       <v-col cols="10" class="ml-1">
-        <span style="color: #626d7a">
+        <span class="font_vk_mobile_p">
           {{ item.text }}
         </span>
       </v-col>
     </v-row>
-    <nuxt-link
-      class="ml-3"
-      style="text-decoration: none; color: #2a5885; font-size: 14px"
-      to="/login"
-    >
+    <nuxt-link class="ml-3 footer_text" to="/login">
       Подробнее о VK ID
     </nuxt-link>
   </v-card>

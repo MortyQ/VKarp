@@ -150,7 +150,7 @@
             </v-col>
             <v-col cols="7">
               <v-select
-                style="max-width: 270px; min-width: 270px; width: 100%"
+                class="where_girl"
                 :items="statuses"
                 v-model="settingUserInfo.statuses"
                 outlined
@@ -248,10 +248,9 @@
           <v-divider class="my-2"></v-divider>
         </ValidationObserver>
         <v-btn
-          class="mt-2"
+          class="mt-2 btn_sign"
           :loading="loading"
           @click="changeUserInfo()"
-          style="background: #5181b8; color: white"
         >
           Сохранить изминения
         </v-btn>

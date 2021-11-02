@@ -1,18 +1,20 @@
 <template>
   <v-card class="mt-5 pa-1">
     <div class="d-flex justify-space-between align-start" v-if="user.gallery">
-      <span class="ml-3 d-flex justify-start" style="gap: 10px"
+      <span class="ml-3 d-flex justify-start gap_10px"
         >Мои фотографии
-        <span style="color: #cccccc">{{ this.user.gallery.length }}</span></span
+        <span class="color_ccc">{{ this.user.gallery.length }}</span></span
       >
-      <div
-        class="d-flex justify-end align-end text_gallery"
-        style="color: #cccccc"
-      >
+      <div class="d-flex justify-end align-end text_gallery color_ccc">
         Показать на карте
       </div>
     </div>
-    <v-row cols="10" class="mt-3 pa-0 ma-0" v-if="user && !galleryStatus">
+    <v-row
+      cols="10"
+      class="mt-3 pa-0 ma-0"
+      v-if="user && !galleryStatus"
+      key="user"
+    >
       <v-col
         cols="3"
         class="d-flex justify-center align-center mt-3"
@@ -26,6 +28,7 @@
           solo
           class="photo_input"
           @change="load()"
+          :loading="loading"
         >
         </v-file-input>
       </v-col>
@@ -76,7 +79,7 @@ export default class Gallery extends Vue {
   image = ''
   imageUrl = ''
   files: File | null = null
-
+  loading: boolean = false
   galleryStatus: boolean = false
   changeStatus() {
     this.galleryStatus = !this.galleryStatus
@@ -88,6 +91,7 @@ export default class Gallery extends Vue {
   }
 
   load() {
+    this.loading = true
     let formdata = new FormData()
     if (this.files) {
       formdata.append('files', this.files)
@@ -96,6 +100,11 @@ export default class Gallery extends Vue {
       formdata,
       id: this.signUser.id,
     })
+    setTimeout(() => {
+      this.files = null
+      this.loading = false
+      window.location.reload()
+    }, 1000)
   }
 }
 </script>

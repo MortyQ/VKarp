@@ -4,6 +4,7 @@
       cols="12"
       class="d-flex flex-column justify-center align-center mt-5"
     >
+      <h1 v-if="errorLogin">Error</h1>
       <v-col cols="10" class="pt-5 pt-5 pb-5 mt-2">
         <ValidationObserver ref="form" v-slot="{ valid: formValid }">
           <v-form @submit.prevent="signIn">
@@ -31,18 +32,14 @@
             </ValidationProvider>
             <div class="d-flex justify-space-between align-center">
               <v-btn
-                class="mt-2"
+                class="mt-2 btn_sign"
                 type="submit"
                 :disabled="!formValid"
                 :loading="loading"
-                style="background: #5181b8; color: white"
               >
                 Войти
               </v-btn>
-              <nuxt-link
-                to="/login"
-                class="pt-3"
-                style="font-size: 16px; text-decoration: none; color: #2a5885"
+              <nuxt-link to="/login" class="pt-3 forget_password"
                 >Забыл пароль ?</nuxt-link
               >
             </div>
@@ -61,26 +58,39 @@ import { mapState } from 'vuex'
 
 @Component({
   components: { ValidationObserver, ValidationProvider },
-  computed: {},
+  computed: {
+    ...mapState('register', ['steps']),
+  },
 })
 export default class SignIn extends Vue {
   identifier: string | null = ''
   password: string | null = ''
+  steps!: number
+  errorLogin: boolean = false
 
   showPassword: boolean = false
   loading: boolean = false
   public async signIn() {
     this.loading = true
-    const { user } = await this['$store'].dispatch('register/LOGIN', {
-      identifier: this.identifier,
-      password: this.password,
-    })
-    console.log(user)
+    try {
+      const { user } = await this['$store'].dispatch('register/LOGIN', {
+        identifier: this.identifier,
+        password: this.password,
+      })
+      console.log('user', user)
 
-    if (user && user.id) {
-      this['$router'].push(`/${user.id}`)
+      if (user && user.id) {
+        this['$router'].push(`/${user.id}`)
+      }
+      this.loading = false
+      this['$store'].dispatch('register/CHANGE_STEP_PAGE', 2)
+    } catch (e) {
+      this.errorLogin = true
+      console.log(e)
+      setTimeout(() => {
+        this.loading = false
+      }, 2000)
     }
-    this.loading = false
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-card tile class="pa-2" style="max-width: 100%" v-if="user">
+  <v-card tile class="pa-2" v-if="user">
     <v-dialog
       v-model="dialog"
       min-width="500px"
@@ -68,7 +68,6 @@
                 v-model="avatar"
                 solo
                 outlined
-                style="max-width: 250px"
               />
             </div>
             <v-btn
@@ -79,9 +78,7 @@
               :loading="loading"
               @click="changeAvatar()"
             >
-              <span style="font-size: 10px !important">
-                Загрузить новый аватар
-              </span>
+              <span class="font_10"> Загрузить новый аватар </span>
             </v-btn>
           </v-col>
         </v-row>
@@ -102,10 +99,16 @@
           color="#a9d1ff"
           to="/setting"
         >
-          <span style="font-size: 10px !important"> Редактировать </span>
+          <span class="font_10"> Редактировать </span>
         </v-btn>
       </v-col>
-      <v-col v-if="$vuetify.breakpoint.width > 1300" cols="12" lg="4">
+      <v-col
+        v-if="$vuetify.breakpoint.width > 1300"
+        cols="12"
+        lg="4"
+        xl="4"
+        class="d-flex justify-center align-center"
+      >
         <v-btn
           max-width="40px"
           width="100%"
@@ -120,14 +123,8 @@
     </v-row>
     <v-row v-else>
       <v-col cols="12">
-        <v-btn
-          height="35px"
-          width="100%"
-          depressed
-          color="#a9d1ff"
-          to="/setting"
-        >
-          <span style="font-size: 10px !important"> Написать </span>
+        <v-btn height="35px" width="100%" depressed color="#a9d1ff">
+          <span class="font_10"> Написать </span>
         </v-btn>
       </v-col>
     </v-row>
@@ -174,10 +171,6 @@ export default class Photo extends Vue {
       formdata,
       id: this.signUser.id,
     })
-
-    setTimeout(() => {
-      this.loading = false
-    }, 2000)
   }
 
   mounted() {}

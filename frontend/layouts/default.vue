@@ -8,18 +8,18 @@
         <v-row>
           <v-col
             v-if="$vuetify.breakpoint.width > 1000"
-            cols="3"
+            cols="2"
+            md="2"
+            lg="4"
             class="d-flex justify-end"
           >
             <v-sheet
               rounded="lg"
-              class="d-flex justify-space-around"
-              style="background: #edeef0"
+              class="d-flex justify-space-around background_main"
             >
               <v-list color="transparent">
                 <v-list-item
-                  style="height: 20px; width: 100%"
-                  class="ma-0 pa-0"
+                  class="ma-0 pa-0 user_info-list"
                   v-for="item in mainNav"
                   :key="item.id"
                   link
@@ -33,10 +33,10 @@
                       <v-icon class="mr-3" small color="#5181b8">{{
                         item.icon
                       }}</v-icon>
-                      <span style="font-size: 14px">
+                      <span class="post_user_name">
                         {{ item.name }}
                       </span>
-                      <div style="position: absolute; left: 80%; top: 25%">
+                      <div class="position_dots_nav-message">
                         <v-badge
                           v-if="item.message != ''"
                           :content="item.message"
@@ -50,8 +50,7 @@
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
-                  style="height: 20px; width: 100%"
-                  class="ma-0 pa-0"
+                  class="ma-0 pa-0 user_info-list"
                   v-for="item in secondNav"
                   :key="item.id"
                   link
@@ -63,10 +62,10 @@
                       <v-icon class="mr-3" color="#5181b8" small>{{
                         item.icon
                       }}</v-icon>
-                      <span style="font-size: 14px">
+                      <span class="post_user_name">
                         {{ item.name }}
                       </span>
-                      <div style="position: absolute; left: 100%">
+                      <div class="position_dots_nav">
                         <v-badge
                           v-if="item.message != ''"
                           :content="item.message"
@@ -79,8 +78,7 @@
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
-                  style="height: 20px; width: 90%"
-                  class="ma-0 pa-0"
+                  class="ma-0 pa-0 user_info-list"
                   v-for="item in lastNav"
                   :key="item.id"
                   link
@@ -92,10 +90,10 @@
                       <v-icon class="mr-3" color="#5181b8" small>{{
                         item.icon
                       }}</v-icon>
-                      <span style="font-size: 14px">
+                      <span class="post_user_name">
                         {{ item.name }}
                       </span>
-                      <div style="position: absolute; left: 100%">
+                      <div class="position_dots_nav">
                         <v-badge
                           v-if="item.message != ''"
                           :content="item.message"
@@ -109,22 +107,19 @@
             </v-sheet>
           </v-col>
 
-          <v-col cols="12" md="9">
+          <v-col
+            cols="12"
+            md="10"
+            lg="8"
+            class="d-flex justify-center align-center"
+          >
             <nuxt />
           </v-col>
         </v-row>
       </v-container>
     </v-main>
+    <v-footer class="background_main"> <Footer /></v-footer>
   </v-app>
-  <v-row v-else class="d-flex justify-center align-center">
-    <v-col
-      cols="12"
-      class="d-flex justify-center align-center"
-      style="height: 100vh; border: 1px solid"
-    >
-      <v-btn text to="/login"> Зайти в Систему </v-btn>
-    </v-col>
-  </v-row>
 </template>
 
 <script lang="ts">
@@ -133,6 +128,7 @@ import AppBar from '@/components/root/login/AppBar.vue'
 import Footer from '@/components/root/login/Footer.vue'
 import { mapState } from 'vuex'
 import { UserType } from '@/helpers/userType'
+import axios from 'axios'
 
 @Component({
   components: { AppBar, Footer },
