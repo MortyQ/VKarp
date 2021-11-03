@@ -45,13 +45,6 @@
             :lazy-src="getStrapiMedia(item.url)"
           >
           </v-img>
-          <!-- <v-img
-          height="190px"
-          width="100%"
-          src="/default-image.jpeg"
-          lazy-src="/default-image.jpeg"
-        >
-        </v-img> -->
         </div>
       </v-col>
     </v-row>
@@ -74,21 +67,13 @@ import { mapState } from 'vuex'
 export default class Gallery extends Vue {
   user!: UserType
   signUser!: UserType
-  @Prop() process
+
   getStrapiMedia = getStrapiMedia
   image = ''
   imageUrl = ''
   files: File | null = null
   loading: boolean = false
   galleryStatus: boolean = false
-  changeStatus() {
-    this.galleryStatus = !this.galleryStatus
-    console.log('now status', this.galleryStatus)
-  }
-
-  test() {
-    console.log(this.user)
-  }
 
   load() {
     this.loading = true
@@ -103,7 +88,6 @@ export default class Gallery extends Vue {
     setTimeout(() => {
       this.files = null
       this.loading = false
-      window.location.reload()
     }, 1000)
   }
 }

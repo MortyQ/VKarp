@@ -1,0 +1,123 @@
+.nuxt-link-exact-active:hover {
+  border-bottom: 1px solid #2a5885;
+  transition: all 0.8s;
+}
+
+.v-text-field > .v-input__control > .v-input__slot > .v-text-field__slot {
+  position: initial !important;
+}
+
+.v-input__slot {
+  text-align: center !important;
+  height: 100% !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
+  box-shadow: none !important;
+
+  .v-label {
+    top: 5px !important;
+    left: 10px !important;
+  }
+}
+
+.v-input__control {
+  max-height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.v-tooltip__content,
+.v-tooltip__content .white,
+.menuable__content__active,
+.menuable__content__active .white {
+  opacity: 1 !important;
+}
+
+.v-radio {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  .v-input--selection-controls__input {
+    margin: 0 !important;
+
+    height: 40px;
+    i {
+      font-size: 14px;
+    }
+  }
+  label {
+    position: initial !important;
+    font-size: 14px !important;
+    color: black !important;
+    height: 40px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.title_text {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 400;
+  color: black;
+}
+
+.policy_register {
+  &:hover {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+}
+
+.v-dialog {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.photo_input {
+  height: 173px !important;
+  .v-input__prepend-outer {
+    display: none !important;
+  }
+  .v-input__control {
+    min-height: 173px !important ;
+    max-height: 173px !important;
+    height: 100% !important;
+    position: relative;
+
+    .v-input__slot {
+      min-height: 173px !important ;
+      max-height: 173px !important;
+      height: 100% !important;
+      position: relative;
+      .v-input__append-inner {
+        position: absolute;
+        top: 25%;
+      }
+      .v-file-input__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 50%;
+        position: absolute;
+      }
+      .v-text-field__slot {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        label {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 50px;
+        }
+      }
+    }
+  }
+}

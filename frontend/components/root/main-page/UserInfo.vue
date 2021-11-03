@@ -115,9 +115,9 @@ export default class UserInfo extends Vue {
     return [
       { title: 'Друзей', value: '87' },
       { title: 'Подписчиков', value: '931' },
-      { title: 'Фотографии', value: '3' },
+      { title: 'Фотографии', value: this.user.gallery.length },
       { title: 'Отметки', value: '9235' },
-      { title: 'Видеозаписи', value: '1' },
+      { title: 'Постов', value: this.user.posts.length },
     ]
   }
 }

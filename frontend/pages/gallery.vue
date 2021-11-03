@@ -5,10 +5,11 @@
       <span class="ml-4"> ({{ signUser.gallery.length }} фото) </span>
     </v-card-title>
     <v-divider class="my-2"></v-divider>
-    <!-- <v-row>
+    <v-row>
       <v-col cols="12">
-        <v-carousel v-if="signUser && signUser.gallery">
+        <v-carousel v-if="signUser && signUser.gallery.reverse()">
           <v-carousel-item
+            :show-arrows-on-hover="true"
             v-for="item in this.signUser.gallery"
             :key="item.id"
             :src="getStrapiMedia(item.url)"
@@ -18,7 +19,7 @@
           ></v-carousel-item>
         </v-carousel>
       </v-col>
-    </v-row> -->
+    </v-row>
     <v-row>
       <v-col
         v-for="item in this.signUser.gallery"

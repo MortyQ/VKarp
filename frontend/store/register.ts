@@ -46,8 +46,6 @@ export default class Register extends VuexModule {
     this.registerInfo.password = payload.password
     this.registerInfo.email = payload.email
     this.registerInfo.username = payload.username
-    console.log(this.registerInfo)
-    // this.registerInfo.phoneNumber = payload
   }
 
   @Action({ commit: '_SECOND_STEP_REGISTER' })
@@ -78,7 +76,6 @@ export default class Register extends VuexModule {
     try {
       const res = await axios.post('http://localhost:1337/auth/local/', login)
       localStorage.setItem('jwt', `${res?.data?.jwt}`)
-      console.log(res.data)
 
       return res.data
     } catch (e) {

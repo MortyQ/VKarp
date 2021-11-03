@@ -7,6 +7,7 @@ export interface AppSuperstore {
   register: Register
   mainPage: MainPage
 }
+export const strict = false
 
 export let register!: Register
 export let mainPage!: MainPage

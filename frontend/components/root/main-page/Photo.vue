@@ -171,6 +171,7 @@ export default class Photo extends Vue {
       formdata,
       id: this.signUser.id,
     })
+    this.dialog = false
   }
 
   mounted() {}
