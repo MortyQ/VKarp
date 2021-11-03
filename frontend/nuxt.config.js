@@ -23,7 +23,11 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  css: ['@/assets/global.scss'],
+  css: [
+    '@/assets/global.scss',
+    '@/assets/login-position.scss',
+    '@/assets/vuetify-custom.scss',
+  ],
 
   plugins: [
     { src: '~/plugins/uikit.js', ssr: false },

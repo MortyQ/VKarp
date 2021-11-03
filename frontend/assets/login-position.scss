@@ -1,0 +1,121 @@
+.vk-image-positions {
+  position: relative;
+  display: flex;
+  margin-top: 10%;
+  &-left {
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+  }
+  &-right {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+  }
+  @media (max-width: 1250px) {
+    .vk-image-positions {
+      &-left {
+        display: none;
+      }
+    }
+  }
+}
+
+.vk-image-text {
+  position: relative;
+  margin-top: 20px;
+  height: 60px;
+
+  width: 100%;
+
+  .android {
+    position: absolute;
+    top: -25%;
+    left: 34%;
+  }
+  .iphone {
+    position: absolute;
+    top: -25%;
+    left: 60%;
+  }
+  .all_product {
+    margin-top: 20px;
+    top: 10%;
+    position: absolute;
+    left: 49%;
+  }
+
+  span {
+    button {
+      span {
+        text-decoration: none;
+        color: #2a5885;
+        font-size: 12px !important;
+      }
+    }
+  }
+
+  @media (max-width: 1700px) {
+    .android {
+      left: 25%;
+    }
+  }
+
+  @media (max-width: 1250px) {
+    .android {
+      left: 30%;
+    }
+  }
+  @media (max-width: 999px) {
+    .android {
+      display: none;
+    }
+    .iphone {
+      display: none;
+    }
+    .all_product {
+      left: 35%;
+    }
+  }
+}
+
+.forget_password {
+  font-size: 16px;
+  text-decoration: none;
+  color: #2a5885 !important;
+}
+
+.step_two_component {
+  max-width: 740px;
+  min-width: 740px;
+  width: 100%;
+  &-left {
+    max-height: 663px;
+    min-height: 663px;
+    height: 100%;
+    background: #f7f8fa;
+  }
+  &-right {
+    max-height: 663px;
+    min-height: 663px;
+    height: 100%;
+    background: white;
+  }
+}
+
+.step_two_phone-number {
+  max-width: 60%;
+  color: #656565;
+  font-size: 14px;
+}
+
+.step_two-policy-text {
+  font-size: 13px;
+  color: #939393;
+  max-width: 70%;
+  text-align: center;
+  &-link {
+    color: #939393 !important;
+    font-size: 13px;
+  }
+}
