@@ -111,7 +111,7 @@
             cols="12"
             md="10"
             lg="8"
-            class="d-flex justify-center align-center"
+            class="d-flex justify-start align-center"
           >
             <nuxt />
           </v-col>

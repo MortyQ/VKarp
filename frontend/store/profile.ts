@@ -99,7 +99,7 @@ export default class MainPage extends VuexModule {
     if (payload && this.user) {
       this.user = {
         ...this.user,
-        gallery: [payload, this.user?.gallery],
+        gallery: [payload, this.user.gallery],
       }
     }
   }

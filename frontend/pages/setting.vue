@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mt-8" v-if="signUser">
+  <v-card class="mt-5" v-if="signUser" width="700px">
     <v-card-title> Основные </v-card-title>
 
     <v-divider class="my-2"></v-divider>
