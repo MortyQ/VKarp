@@ -4,8 +4,19 @@
       cols="12"
       class="d-flex flex-column justify-center align-center mt-5"
     >
-      <h1 v-if="errorLogin">Error</h1>
       <v-col cols="10" class="pt-5 pt-5 pb-5 mt-2">
+        <v-alert
+          v-if="errorLogin"
+          color="red"
+          outlined
+          prominent
+          shaped
+          text
+          type="success"
+        >
+          Не правильный логин или пароль</v-alert
+        >
+
         <ValidationObserver ref="form" v-slot="{ valid: formValid }">
           <v-form @submit.prevent="signIn">
             <ValidationProvider rules="required">

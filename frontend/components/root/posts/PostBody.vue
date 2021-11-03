@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mt-4 pa-5" v-if="user.posts && posts">
+  <v-card class="mt-4 pa-5">
     <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
       <v-tab v-for="item in tabs" :key="item.id">
         {{ item }}
@@ -8,7 +8,7 @@
     <v-row
       cols="12"
       class="d-flex justify-center align-center"
-      v-if="posts.length"
+      v-if="posts && user && sortDate"
     >
       <v-tabs-items class="mt-8" v-model="tab">
         <v-tab-item v-for="item in 2" :key="item.id">
@@ -79,7 +79,6 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import PostMain from './PostsMain.vue'
-import trottle from '@/helpers/trottle'
 import { mapState } from 'vuex'
 import qs from 'qs'
 import { UserType, Post } from '~/helpers/userType'
@@ -121,7 +120,12 @@ export default class PostComponent extends Vue {
       limit: this.page,
     })
 
-    if (response.length > 1 && response.length <= this.posts.length) {
+    if (
+      response &&
+      this.posts &&
+      response.length > 1 &&
+      response.length <= this.posts.length
+    ) {
       response.forEach((i, index, array) => {
         if (index === array.length - 1) {
           $state.loaded()
