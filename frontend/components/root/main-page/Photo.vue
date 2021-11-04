@@ -11,6 +11,7 @@
         <v-img
           v-if="userAvatar"
           height="400px"
+          class="object-fit-cover"
           width="100%"
           :src="getStrapiMedia(userAvatar)"
           :lazy-src="getStrapiMedia(userAvatar)"
@@ -176,6 +177,7 @@ export default class Photo extends Vue {
       formdata,
       id: this.signUser.id,
     })
+    this.loading = false
     this.dialog = false
   }
 

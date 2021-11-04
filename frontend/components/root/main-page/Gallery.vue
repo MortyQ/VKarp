@@ -33,14 +33,16 @@
         </v-file-input>
       </v-col>
       <v-col
+        v-if="index <= 2"
         cols="3"
         v-for="(item, index) in user.gallery.slice().reverse()"
         :key="item.id"
       >
-        <div v-if="index <= 2">
+        <div>
           <v-img
             height="190px"
             width="100%"
+            class="object-fit-cover"
             :src="getStrapiMedia(item.url)"
             :lazy-src="getStrapiMedia(item.url)"
           >

@@ -5,7 +5,7 @@ import MainPage from './profile'
 
 export interface AppSuperstore {
   register: Register
-  mainPage: MainPage
+  profile: MainPage
 }
 export const strict = false
 

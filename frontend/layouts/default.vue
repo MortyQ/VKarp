@@ -146,12 +146,6 @@ export default class DefaultLayout extends Vue {
     console.log(this.signUser)
   }
 
-  get photoCount() {
-    if (this.signUser && this.signUser.gallery) {
-      return this.signUser.gallery.length
-    } else return 7
-  }
-
   get mainNav() {
     return [
       {
@@ -187,7 +181,7 @@ export default class DefaultLayout extends Vue {
       {
         icon: 'mdi-image-multiple-outline',
         name: 'Фотографии',
-        message: this.photoCount,
+        message: this.user?.gallery?.length,
         to: '/gallery',
       },
       { icon: 'mdi-music', name: 'Музыка', message: '', to: `/setting` },

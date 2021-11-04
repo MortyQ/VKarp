@@ -10,7 +10,7 @@ import $axios from '@nuxtjs/axios'
 import qs from 'qs'
 import { UserType, Post } from '@/helpers/userType'
 
-@Module({ name: 'mainPage', stateFactory: true, namespaced: true })
+@Module({ name: 'profile', stateFactory: true, namespaced: true })
 export default class MainPage extends VuexModule {
   public user: UserType | null = null
   public users: UserType[] | null = null
@@ -22,6 +22,19 @@ export default class MainPage extends VuexModule {
     if (payload) {
       this.user = payload
     }
+  }
+
+  @Mutation
+  private _LOGOUT_USER(payload) {
+    console.log('LOGOUT', payload)
+    this.user = payload
+  }
+
+  @Action({ commit: '_LOGOUT_USER' })
+  public LOGOUT_USER() {
+    console.log('ACTION LOGOUT PROFILE')
+
+    return null
   }
 
   @Action({ commit: '_GET_USER_BY_ID' })
@@ -61,8 +74,6 @@ export default class MainPage extends VuexModule {
 
   @Mutation
   private _UPDATE_USER(payload) {
-    console.log('AVATAR', payload)
-
     if (payload) {
       this.user = payload
     }
@@ -124,7 +135,10 @@ export default class MainPage extends VuexModule {
         },
         { headers: { Authorization: `Bearer ${token}` } }
       )
-      return await undefined
+      this.store.dispatch('register/TAKE_SIGH_USER', data)
+      console.log('PROFILE', data)
+
+      return await data
     } catch (e) {
       console.log(e)
       return null
@@ -133,11 +147,12 @@ export default class MainPage extends VuexModule {
 
   @Mutation
   private _CREATE_POST(payload) {
-    if (payload && this.user) {
+    if (payload && this.user && this.posts) {
       this.user = {
         ...this.user,
         posts: [payload, ...this.user.posts],
       }
+      this.posts = [payload, ...this.posts]
     }
   }
 

@@ -15,7 +15,7 @@
           flat
           tile
           v-model="search"
-          v-if="steps === 2"
+          v-if="steps === 2 && signUser"
           solo
           hide-details
           class="ma-0 pa-0"
@@ -92,12 +92,14 @@ export default class AppBar extends Vue {
   }
 
   get trottledSave() {
-    let DELAY = 1000
-    return trottle(this.searchUser, DELAY)
+    if (this.signUser) {
+      let DELAY = 1000
+      return trottle(this.searchUser, DELAY)
+    }
   }
 
   async searchUser() {
-    if (this.users) {
+    if (this.users && this.signUser) {
       await this['$store'].dispatch(
         'profile/SEARCH_USER_BY_FIRST_NAME',
         this.search
