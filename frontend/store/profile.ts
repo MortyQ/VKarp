@@ -61,7 +61,9 @@ export default class MainPage extends VuexModule {
 
   @Mutation
   private _UPDATE_USER(payload) {
-    if (payload && this.user) {
+    console.log('AVATAR', payload)
+
+    if (payload) {
       this.user = payload
     }
   }

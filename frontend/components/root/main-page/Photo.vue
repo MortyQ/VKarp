@@ -9,17 +9,17 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-img
-          v-if="user.avatar"
+          v-if="userAvatar"
           height="400px"
           width="100%"
-          :src="getStrapiMedia(user.avatar.url)"
-          :lazy-src="getStrapiMedia(user.avatar.url)"
+          :src="getStrapiMedia(userAvatar)"
+          :lazy-src="getStrapiMedia(userAvatar)"
           v-bind="attrs"
           v-on="on"
         >
         </v-img>
         <v-img
-          v-if="!user.avatar"
+          v-else
           height="400px"
           width="100%"
           lazy-src="/default-image.jpeg"
@@ -158,6 +158,11 @@ export default class Photo extends Vue {
     if (!this.avatar) return null
     console.log(this.avatar)
     return URL.createObjectURL(this.avatar)
+  }
+
+  get userAvatar() {
+    if (!this.user?.avatar?.url) return null
+    return this.user.avatar.url
   }
 
   changeAvatar() {
