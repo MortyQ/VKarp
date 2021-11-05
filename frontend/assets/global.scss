@@ -196,8 +196,13 @@
 
 .user_info-list {
   height: 20px;
+  width: 100%;
+}
+.nav-list {
+  height: 20px;
   width: 200px;
 }
+
 
 .position_dots_nav {
   position: absolute;
@@ -210,8 +215,8 @@
   top: 25%;
 }
 
-.width_210 {
-  max-width: 210px !important;
+.width_290 {
+  max-width: 290px !important;
 }
 
 .object-fit-cover{

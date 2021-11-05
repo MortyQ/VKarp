@@ -18,7 +18,7 @@
             >
               <v-list color="transparent">
                 <v-list-item
-                  class="ma-0 pa-0 user_info-list"
+                  class="ma-0 pa-0 nav-list"
                   v-for="item in mainNav"
                   :key="item.id"
                   link
@@ -49,7 +49,7 @@
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
-                  class="ma-0 pa-0 user_info-list"
+                  class="ma-0 pa-0 nav-list"
                   v-for="item in secondNav"
                   :key="item.id"
                   link
@@ -77,7 +77,7 @@
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
-                  class="ma-0 pa-0 user_info-list"
+                  class="ma-0 pa-0 nav-list"
                   v-for="item in lastNav"
                   :key="item.id"
                   link
