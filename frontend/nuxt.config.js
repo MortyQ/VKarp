@@ -1,5 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 const strapiBaseUri = process.env.API_URL || 'http://localhost:1337'
+
 // import { i18n } from './localization/i18n'
 export default {
   target: 'static',
@@ -41,22 +42,22 @@ export default {
   strapi: {
     url: strapiBaseUri,
     entities: [
-      {
-        name: 'authors',
-        type: 'collection',
-      },
-      {
-        name: 'categories',
-        type: 'collection',
-      },
-      {
-        name: 'homepage',
-        type: 'single',
-      },
-      {
-        name: 'global',
-        type: 'single',
-      },
+      // {
+      //   name: 'authors',
+      //   type: 'collection',
+      // },
+      // {
+      //   name: 'categories',
+      //   type: 'collection',
+      // },
+      // {
+      //   name: 'homepage',
+      //   type: 'single',
+      // },
+      // {
+      //   name: 'global',
+      //   type: 'single',
+      // },
     ],
   },
 
@@ -73,6 +74,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/dayjs',
+    '@nuxtjs/toast',
     //  '@nuxtjs/i18n'
   ],
 
@@ -80,7 +82,6 @@ export default {
 
   axios: {},
 
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {

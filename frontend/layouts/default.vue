@@ -11,11 +11,10 @@
             cols="2"
             md="2"
             lg="4"
-            class="d-flex justify-end"
+            class="d-flex justify-end pr-6"
           >
             <v-sheet
-              rounded="lg"
-              class="d-flex justify-space-around background_main"
+              class="d-flex justify-space-around background_main nav-bar"
             >
               <v-list color="transparent">
                 <v-list-item
@@ -136,6 +135,7 @@ import axios from 'axios'
     ...mapState('register', ['signUser']),
     ...mapState('profile', ['user']),
   },
+  middleware: 'redirect',
 })
 export default class DefaultLayout extends Vue {
   steps!: number

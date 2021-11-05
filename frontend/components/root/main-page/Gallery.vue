@@ -32,10 +32,14 @@
         >
         </v-file-input>
       </v-col>
-      <v-col cols="3" v-for="item in gallery" :key="item.id">
-        <div>
+      <v-col
+        cols="3"
+        v-for="(item, index) in gallery"
+        :key="item.id"
+        v-if="index <= 2"
+      >
+        <div v-if="user.gallery">
           <v-img
-            v-if="user.gallery"
             height="190px"
             width="100%"
             :src="getStrapiMedia(item.url)"
@@ -72,12 +76,15 @@ export default class Gallery extends Vue {
   galleryStatus: boolean = false
 
   get gallery() {
-    return this.user?.gallery
+    if (!this.user?.gallery) return null
+    return this.user?.gallery.reverse()
   }
 
   load() {
     this.loading = true
     let formdata = new FormData()
+    console.log(this.files)
+
     if (this.files) {
       formdata.append('files', this.files)
     }
@@ -86,8 +93,8 @@ export default class Gallery extends Vue {
       id: this.signUser.id,
     })
     setTimeout(() => {
-      this.files = null
       this.loading = false
+      this.files = null
     }, 1000)
   }
 }

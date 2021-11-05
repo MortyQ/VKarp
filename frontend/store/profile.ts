@@ -110,10 +110,7 @@ export default class MainPage extends VuexModule {
   @Mutation
   private _ADD_PHOTO_TO_GALLERY(payload) {
     if (payload && this.user) {
-      this.user = {
-        ...this.user,
-        gallery: [payload, this.user.gallery],
-      }
+      this.user = payload
     }
   }
 
@@ -136,7 +133,6 @@ export default class MainPage extends VuexModule {
         { headers: { Authorization: `Bearer ${token}` } }
       )
       this.store.dispatch('register/TAKE_SIGH_USER', data)
-      console.log('PROFILE', data)
 
       return await data
     } catch (e) {

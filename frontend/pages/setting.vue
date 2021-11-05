@@ -300,10 +300,12 @@ export default class Login extends Vue {
 
   async changeUserInfo() {
     this.loading = true
+    let succ = this.$toast.success('Ваша информация изменена успешно !')
+    succ.goAway(1500)
     await this['$store'].dispatch('profile/EDIT_PROFILE', this.settingUserInfo)
     setTimeout(() => {
       this.loading = false
-    }, 3000)
+    }, 2000)
   }
 }
 </script>

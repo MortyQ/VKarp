@@ -146,10 +146,8 @@ import { UserType } from '@/helpers/userType'
 export default class Photo extends Vue {
   user!: UserType
   signUser!: UserType
-  @Prop() process
+
   getStrapiMedia = getStrapiMedia
-  image = ''
-  imageUrl = ''
 
   avatar: File | null = null
   loading: boolean = false
