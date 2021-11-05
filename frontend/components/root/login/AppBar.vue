@@ -9,7 +9,7 @@
     </v-img>
     <span v-if="steps === 2" class="title_text vk_text-appbar">Вконтакте</span>
 
-    <v-row class="search_user" v-if="signUser && users">
+    <v-row class="search_user" v-if="signUser">
       <v-col cols="12">
         <v-text-field
           flat
@@ -107,6 +107,10 @@ export default class AppBar extends Vue {
     }
   }
 
+  get allUsers() {
+    if (this.users && this.users.length >= 1) return this.users
+  }
+
   logout() {
     this['$store'].dispatch('register/LOGOUT')
     this['$store'].dispatch('register/CHANGE_STEP_PAGE', 0)
@@ -119,7 +123,7 @@ export default class AppBar extends Vue {
 
   mounted() {
     this.search = null
-    // this['$store'].dispatch('profile/SEARCH_USER_BY_FIRST_NAME', null)
+    this['$store'].dispatch('profile/SEARCH_USER_BY_FIRST_NAME', null)
   }
 }
 </script>
