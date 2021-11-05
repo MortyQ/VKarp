@@ -71,6 +71,9 @@
         <v-btn @click="$vuetify.goTo(0)" icon :ripple="false">
           <v-icon large> mdi-arrow-up-bold-circle</v-icon>
         </v-btn>
+      </div>
+      <div slot="no-results">
+        На данный момент нету больше постов !
       </div></infinite-loading
     >
   </v-card>

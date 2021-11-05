@@ -32,17 +32,12 @@
         >
         </v-file-input>
       </v-col>
-      <v-col
-        v-if="index <= 2"
-        cols="3"
-        v-for="(item, index) in user.gallery.slice().reverse()"
-        :key="item.id"
-      >
+      <v-col cols="3" v-for="item in gallery" :key="item.id">
         <div>
           <v-img
+            v-if="user.gallery"
             height="190px"
             width="100%"
-            class="object-fit-cover"
             :src="getStrapiMedia(item.url)"
             :lazy-src="getStrapiMedia(item.url)"
           >
@@ -71,11 +66,14 @@ export default class Gallery extends Vue {
   signUser!: UserType
 
   getStrapiMedia = getStrapiMedia
-  image = ''
-  imageUrl = ''
+
   files: File | null = null
   loading: boolean = false
   galleryStatus: boolean = false
+
+  get gallery() {
+    return this.user?.gallery
+  }
 
   load() {
     this.loading = true
