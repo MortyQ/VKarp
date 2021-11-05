@@ -97,6 +97,7 @@
                       ></v-text-field>
                     </ValidationProvider>
                   </template>
+
                   <v-date-picker
                     v-model="date"
                     :active-picker.sync="activePicker"

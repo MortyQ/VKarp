@@ -20,6 +20,55 @@
   }
 }
 
+.phone_number_style{
+    
+  
+    .theme--light.v-input{
+      .v-input__control{
+        
+        .v-input__slot:nth-last-child(1)  {
+          
+          border-radius: 0 !important;
+          fieldset{
+            border-left: none !important;
+            background-color: transparent;
+
+          }
+
+          .v-text-field__slot{
+            input {
+
+              background-color: transparent !important;
+            }
+          }
+        }
+      }
+    }
+    
+    .country-code{
+      margin-top: 8px;
+     
+        .v-input__control{ 
+          .v-input__slot{
+            position: relative;
+            border-radius: 0 !important;
+            fieldset{
+              border-right: 1px dashed  !important;
+            }
+            .v-input__append-inner{
+              position: absolute;
+              right: 1%;
+              bottom: 10%;
+
+            }
+           }
+        }
+      
+    }
+      
+    
+}
+
 .v-input__control {
   max-height: 40px;
   display: flex;

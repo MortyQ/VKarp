@@ -12,15 +12,18 @@
           Номер вашего телефона будет использоваться для входа в аккаунт
         </span>
 
-        <ValidationProvider rules="required|phone" v-slot="{ errors }">
+        <ValidationProvider
+          rules="required|phone"
+          v-slot="{ errors }"
+          mode="eager"
+        >
           <VueTelInputVuetify
-            class="secondStep_register-input mt-3 mb-3"
+            hide-details="AAAAA"
+            class="secondStep_register-input mb-3 pa-2 phone_number_style"
             v-model="phone"
-            passive
             :error-messages="errors"
             label="Страна/Регион"
-            solo
-            :disabledFetchingCountry="true"
+            mode="international"
             outlined
             :input-options="{ showDialCode: true, tabIndex: 0 }"
             defaultCountry="Ukraine"
@@ -40,13 +43,17 @@
             type="required"
           ></v-text-field>
         </ValidationProvider>
-        <ValidationProvider v-slot="{ errors }" rules="required|email">
+        <ValidationProvider v-slot="{ errors }" rules="required|customEmail">
           <v-text-field
             class="secondStep_register-input mt-3 mb-3"
             v-model="email"
             required
             passive
-            :error-messages="errors"
+            :error-messages="
+              emailError
+                ? ['Введите валидный email существующей страны', ...errors]
+                : errors
+            "
             outlined
             solo
             placeholder="Ваша электронная почта"
@@ -93,7 +100,7 @@
       </v-col>
       <v-col cols="12" class="d-flex flex-column justify-end align-center">
         <v-btn
-          :disabled="!formValid"
+          :disabled="!formValid || emailError"
           @click="register()"
           class="mb-5"
           height="35px"
@@ -134,6 +141,7 @@ import {
   ValidationObserver,
   ValidationProvider,
 } from 'vee-validate'
+import { email } from 'vee-validate/dist/rules'
 @Component({
   components: { ValidationObserver, ValidationProvider, VueTelInputVuetify },
   computed: { ...mapState('register', ['steps']) },
@@ -141,12 +149,23 @@ import {
 export default class PhoneNumber extends Vue {
   steps!: number
   phone: string = ''
-  email: string = ''
+  emailInternal: string = ''
   password: string = ''
   username: string = ''
   confirmPassword: string = ''
   showPassword: boolean = false
   loading: boolean = false
+  emailError: boolean = false
+
+  get email(): string {
+    return this.emailInternal
+  }
+  set email(newValue: string) {
+    if (newValue.includes('.ru')) {
+      this.emailError = true
+    } else this.emailError = false
+    this.emailInternal = newValue
+  }
 
   async register() {
     this.loading = true

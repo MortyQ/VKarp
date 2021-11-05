@@ -119,7 +119,7 @@ export default class AppBar extends Vue {
 
   mounted() {
     this.search = null
-    this['$store'].dispatch('profile/SEARCH_USER_BY_FIRST_NAME', null)
+    // this['$store'].dispatch('profile/SEARCH_USER_BY_FIRST_NAME', null)
   }
 }
 </script>
