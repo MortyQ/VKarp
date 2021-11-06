@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { extend } from 'vee-validate'
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
+import VeeValidate from 'vee-validate'
 import {
   required,
   email,
@@ -43,9 +44,18 @@ extend('confirmed', {
   message: 'Must be required ',
 })
 
+const customEmail =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
+
+extend('customEmail', {
+  validate: (value: any) => customEmail.test(value),
+  message: `Пожалуйста введите свою почту в формате почта@сервис.домен`,
+})
+
 const strongRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*\-,._?])(?=.{8,})/
-const mobile = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g
+
+const mobile = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/
 
 extend('strongPassword', {
   validate: (value: any) => strongRegex.test(value),

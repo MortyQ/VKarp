@@ -1,26 +1,27 @@
 <template>
-  <v-card class="pa-8" v-if="signUser && signUser.gallery">
+  <v-card class="pa-8" width="800px" v-if="signUser && signUser.gallery">
     <v-card-title>
       Моя галерея
-      <span class="ml-4"> ({{ signUser.gallery.length }} фото) </span>
+      <span class="ml-4"> ({{ galleryPhoto.length }} фото) </span>
     </v-card-title>
     <v-divider class="my-2"></v-divider>
-    <v-row>
+    <v-row v-if="galleryPhoto">
       <v-col cols="12">
-        <v-carousel v-if="signUser && signUser.gallery.reverse()">
+        <v-carousel v-if="signUser && signUser.gallery">
           <v-carousel-item
             :show-arrows-on-hover="true"
-            v-for="item in this.signUser.gallery"
+            v-for="item in galleryPhoto"
             :key="item.id"
             :src="getStrapiMedia(item.url)"
             :lazy-src="getStrapiMedia(item.url)"
             reverse-transition="fade-transition"
             transition="fade-transition"
-          ></v-carousel-item>
+          >
+          </v-carousel-item>
         </v-carousel>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row v-if="galleryPhoto">
       <v-col
         v-for="item in this.signUser.gallery"
         :key="item.id"
@@ -42,6 +43,11 @@
             </v-row>
           </template>
         </v-img>
+      </v-col>
+      <v-col class="d-flex justify-center align-center">
+        <v-btn @click="$vuetify.goTo(0)" icon :ripple="false">
+          <v-icon large> mdi-arrow-up-bold-circle</v-icon>
+        </v-btn>
       </v-col>
     </v-row>
   </v-card>
@@ -65,25 +71,19 @@ import { mapState } from 'vuex'
 export default class GalleryPage extends Vue {
   user!: UserType
   signUser!: UserType
-  @Prop() process
+
   getStrapiMedia = getStrapiMedia
-  image = ''
-  imageUrl = ''
-  files: File | null = null
+  // image = ''
+  // imageUrl = ''
+
+  get galleryPhoto() {
+    if (this.signUser) {
+      return this.signUser.gallery
+    }
+  }
 
   test() {
     console.log(this.signUser)
   }
-
-  //   load() {
-  //     let formdata = new FormData()
-  //     if (this.files) {
-  //       formdata.append('files', this.files)
-  //     }
-  //     this.$store.dispatch('profile/ADD_PHOTO_TO_GALLERY', {
-  //       formdata,
-  //       id: this.$route.params.id,
-  //     })
-  //   }
 }
 </script>

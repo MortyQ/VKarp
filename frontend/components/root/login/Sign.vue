@@ -21,7 +21,7 @@
           <v-form @submit.prevent="signIn">
             <ValidationProvider rules="required">
               <v-text-field
-                v-model="identifier"
+                v-model="login.identifier"
                 outlined
                 placeholder="Ваш Логин"
                 solo
@@ -31,7 +31,7 @@
             </ValidationProvider>
             <ValidationProvider name="password" rules="required|strongPassword">
               <v-text-field
-                v-model="password"
+                v-model="login.password"
                 outlined
                 placeholder="Пароль"
                 solo
@@ -64,6 +64,7 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
+import { RegisterType, LoginSignIn } from '@/helpers/loginType'
 
 import { mapState } from 'vuex'
 
@@ -71,13 +72,20 @@ import { mapState } from 'vuex'
   components: { ValidationObserver, ValidationProvider },
   computed: {
     ...mapState('register', ['steps']),
+    ...mapState('register', ['registerInfo']),
   },
 })
 export default class SignIn extends Vue {
-  identifier: string | null = ''
-  password: string | null = ''
   steps!: number
   errorLogin: boolean = false
+  registerInfo!: RegisterType
+
+  get login() {
+    return {
+      identifier: this.registerInfo?.username,
+      password: '',
+    }
+  }
 
   showPassword: boolean = false
   loading: boolean = false
@@ -85,8 +93,8 @@ export default class SignIn extends Vue {
     this.loading = true
     try {
       const { user } = await this['$store'].dispatch('register/LOGIN', {
-        identifier: this.identifier,
-        password: this.password,
+        identifier: this.login.identifier,
+        password: this.login.password,
       })
       console.log('user', user)
 

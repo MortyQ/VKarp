@@ -34,7 +34,7 @@
           </div>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          <v-list color="transparent">
+          <v-list color="transparent" width="100%">
             <v-list-item
               class="ma-0 pa-0 user_info-list"
               v-for="item in moreInfo"

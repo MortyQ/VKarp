@@ -77,36 +77,34 @@
                   ref="menu"
                   v-model="menu"
                   :close-on-content-click="false"
-                  :return-value.sync="date"
                   transition="scale-transition"
                   offset-y
-                  outlined
                   min-width="auto"
                 >
                   <template v-slot:activator="{ on, attrs }">
                     <ValidationProvider v-slot="{ errors }" rules="required">
                       <v-text-field
+                        :error-messages="errors"
                         v-model="date"
-                        readonly
                         passive
                         outlined
-                        :error-messages="errors"
-                        v-bind="attrs"
                         label="Дата рождения"
+                        prepend-icon="mdi-calendar"
+                        readonly
                         solo
+                        v-bind="attrs"
                         v-on="on"
                       ></v-text-field>
                     </ValidationProvider>
                   </template>
-                  <v-date-picker v-model="date" no-title scrollable>
-                    <v-spacer></v-spacer>
-                    <v-btn text color="primary" @click="menu = false">
-                      Отмена
-                    </v-btn>
-                    <v-btn text color="primary" @click="$refs.menu.save(date)">
-                      OK
-                    </v-btn>
-                  </v-date-picker>
+
+                  <v-date-picker
+                    v-model="date"
+                    :active-picker.sync="activePicker"
+                    :max="MaxDate"
+                    min="1950-01-01"
+                    @change="save"
+                  ></v-date-picker>
                 </v-menu>
               </v-col>
               <v-col cols="12" class="pt-0 pb-0">
@@ -162,7 +160,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue, Watch } from 'nuxt-property-decorator'
 import { mapState } from 'vuex'
 import {
   localeChanged,
@@ -181,6 +179,24 @@ export default class StepOne extends Vue {
   steps!: number
   menu: boolean = false
   date: string | null = null
+
+  activePicker: string | null = null
+
+  @Watch('menu')
+  WatchMeny(val) {
+    val && setTimeout(() => (this.activePicker = 'YEAR'))
+  }
+  save(date) {
+    this.date = date
+    this.menu = false
+  }
+
+  get MaxDate() {
+    let date = new Date()
+    date.setDate(date.getDate() - 6575)
+    let max = this.$dayjs(date).format('YYYY-MM-DD')
+    return max
+  }
 
   public async firstStep() {
     await this['$store'].dispatch('register/CHANGE_STEP_PAGE', 1)

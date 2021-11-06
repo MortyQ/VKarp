@@ -11,7 +11,7 @@ import axios from 'axios'
 import { StepsPage } from '@/helpers/enum'
 import { RegisterType, LoginSignIn } from '@/helpers/loginType'
 
-config.rawError = true
+// config.rawError = true
 
 @Module({ name: 'register', stateFactory: true, namespaced: true })
 export default class Register extends VuexModule {
@@ -68,7 +68,9 @@ export default class Register extends VuexModule {
   @Mutation
   private _LOGIN(payload) {
     this.signUser = payload.user
-    this.jwt = payload.jwt
+    if (payload.jwt) {
+      this.jwt = payload.jwt
+    }
   }
 
   @Action({ commit: '_LOGIN' })
@@ -83,12 +85,40 @@ export default class Register extends VuexModule {
     }
   }
 
-  @MutationAction({ mutate: ['signUser', 'jwt'] })
-  public async LOGOUT() {
+  @Action({ commit: '_LOGIN' })
+  public async TAKE_SIGH_USER(user) {
+    console.log('ACTION', user)
+
+    return { user }
+  }
+
+  // @MutationAction({ mutate: ['signUser', 'jwt'] })
+  // public async LOGOUT() {
+  //   localStorage.removeItem('jwt')
+  //   console.log('THIS', this)
+
+  //   // this.store.dispatch('profile/LOGOUT_USER', null)
+  //   return {
+  //     signUser: null,
+  //     jwt: null,
+  //   }
+  // }
+
+  @Mutation
+  private _LOGOUT(payload) {
+    console.log('MUTATION', payload)
+
+    this.signUser = payload
+    this.jwt = payload
+  }
+
+  @Action({ commit: '_LOGOUT' })
+  public LOGOUT() {
+    console.log('ACTION')
+    console.log('THIS', this)
+
     localStorage.removeItem('jwt')
-    return {
-      signUser: null,
-      jwt: null,
-    }
+    this.store.dispatch('profile/LOGOUT_USER')
+    return null
   }
 }

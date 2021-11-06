@@ -11,15 +11,14 @@
             cols="2"
             md="2"
             lg="4"
-            class="d-flex justify-end"
+            class="d-flex justify-end pr-6"
           >
             <v-sheet
-              rounded="lg"
-              class="d-flex justify-space-around background_main"
+              class="d-flex justify-space-around background_main nav-bar"
             >
               <v-list color="transparent">
                 <v-list-item
-                  class="ma-0 pa-0 user_info-list"
+                  class="ma-0 pa-0 nav-list"
                   v-for="item in mainNav"
                   :key="item.id"
                   link
@@ -50,7 +49,7 @@
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
-                  class="ma-0 pa-0 user_info-list"
+                  class="ma-0 pa-0 nav-list"
                   v-for="item in secondNav"
                   :key="item.id"
                   link
@@ -78,7 +77,7 @@
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
-                  class="ma-0 pa-0 user_info-list"
+                  class="ma-0 pa-0 nav-list"
                   v-for="item in lastNav"
                   :key="item.id"
                   link
@@ -136,6 +135,7 @@ import axios from 'axios'
     ...mapState('register', ['signUser']),
     ...mapState('profile', ['user']),
   },
+  middleware: 'redirect',
 })
 export default class DefaultLayout extends Vue {
   steps!: number
@@ -144,12 +144,6 @@ export default class DefaultLayout extends Vue {
 
   test() {
     console.log(this.signUser)
-  }
-
-  get photoCount() {
-    if (this.signUser && this.signUser.gallery) {
-      return this.signUser.gallery.length
-    } else return 7
   }
 
   get mainNav() {
@@ -187,7 +181,7 @@ export default class DefaultLayout extends Vue {
       {
         icon: 'mdi-image-multiple-outline',
         name: 'Фотографии',
-        message: this.photoCount,
+        message: this.user?.gallery?.length,
         to: '/gallery',
       },
       { icon: 'mdi-music', name: 'Музыка', message: '', to: `/setting` },

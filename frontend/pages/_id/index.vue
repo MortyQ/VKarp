@@ -2,16 +2,16 @@
   <v-container>
     <v-row cols="12" v-if="user" :key="user.id">
       <v-col
-        md="3"
-        xl="3"
-        cols="3"
-        class="d-flex flex-column justify-md-start align-md-start width_210"
+        md="4"
+        xl="4"
+        cols="4"
+        class="d-flex flex-column justify-md-start align-md-start width_290"
       >
         <Photo />
         <Gifts />
         <Friends />
       </v-col>
-      <v-col cols="8" md="8" xl="8">
+      <v-col cols="7" md="7" xl="7">
         <UserInfo />
         <Gelery />
         <CreatePost />

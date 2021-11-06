@@ -20,7 +20,12 @@ export interface UserType extends RegisterType {
   book: string
   music: string
   statusProfile: string
-  avatar: File | null
-  gallery: File[]
+  avatar: Image | null
+  gallery: Image[]
   posts: Post[]
+}
+
+type Image = {
+  url: string
+  id: string
 }

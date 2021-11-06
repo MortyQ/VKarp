@@ -34,10 +34,11 @@
       </v-col>
       <v-col
         cols="3"
-        v-for="(item, index) in user.gallery.slice().reverse()"
+        v-for="(item, index) in gallery"
         :key="item.id"
+        v-if="index <= 2"
       >
-        <div v-if="index <= 2">
+        <div v-if="user.gallery">
           <v-img
             height="190px"
             width="100%"
@@ -69,15 +70,21 @@ export default class Gallery extends Vue {
   signUser!: UserType
 
   getStrapiMedia = getStrapiMedia
-  image = ''
-  imageUrl = ''
+
   files: File | null = null
   loading: boolean = false
   galleryStatus: boolean = false
 
+  get gallery() {
+    if (!this.user?.gallery) return null
+    return this.user?.gallery.reverse()
+  }
+
   load() {
     this.loading = true
     let formdata = new FormData()
+    console.log(this.files)
+
     if (this.files) {
       formdata.append('files', this.files)
     }
@@ -86,8 +93,8 @@ export default class Gallery extends Vue {
       id: this.signUser.id,
     })
     setTimeout(() => {
-      this.files = null
       this.loading = false
+      this.files = null
     }, 1000)
   }
 }

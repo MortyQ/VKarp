@@ -1,5 +1,11 @@
 <template>
-  <v-card tile class="pa-2" v-if="user">
+  <v-card
+    tile
+    v-if="user"
+    class="d-flex flex-column justify-space-between align-space-between"
+    width="100%"
+    height="500"
+  >
     <v-dialog
       v-model="dialog"
       min-width="500px"
@@ -9,18 +15,19 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-img
-          v-if="user.avatar"
-          height="400px"
+          v-if="userAvatar"
+          height="400"
+          class="object-fit-cover"
           width="100%"
-          :src="getStrapiMedia(user.avatar.url)"
-          :lazy-src="getStrapiMedia(user.avatar.url)"
+          :src="getStrapiMedia(userAvatar)"
+          :lazy-src="getStrapiMedia(userAvatar)"
           v-bind="attrs"
           v-on="on"
         >
         </v-img>
         <v-img
-          v-if="!user.avatar"
-          height="400px"
+          v-else
+          height="200"
           width="100%"
           lazy-src="/default-image.jpeg"
           src="/default-image.jpeg"
@@ -85,13 +92,15 @@
       </v-card>
     </v-dialog>
 
-    <div class="ranks mt-2 mb-2">833943</div>
     <v-row
       cols="12"
-      class="d-flex justify-space-between align-center"
+      class="d-flex justify-space-between align-center ma-0 pa-0"
       v-if="signUser.id === user.id"
     >
-      <v-col cols="12" lg="8" v-if="user && user.id">
+      <v-col cols="12">
+        <div class="ranks">833943</div>
+      </v-col>
+      <v-col cols="12" lg="8" v-if="user && user.id" class="pa-0 mb-6 ml-3">
         <v-btn
           height="35px"
           width="100%"
@@ -105,9 +114,9 @@
       <v-col
         v-if="$vuetify.breakpoint.width > 1300"
         cols="12"
-        lg="4"
-        xl="4"
-        class="d-flex justify-center align-center"
+        lg="3"
+        xl="3"
+        class="d-flex justify-center align-center pa-0 mb-6"
       >
         <v-btn
           max-width="40px"
@@ -145,10 +154,8 @@ import { UserType } from '@/helpers/userType'
 export default class Photo extends Vue {
   user!: UserType
   signUser!: UserType
-  @Prop() process
+
   getStrapiMedia = getStrapiMedia
-  image = ''
-  imageUrl = ''
 
   avatar: File | null = null
   loading: boolean = false
@@ -158,6 +165,11 @@ export default class Photo extends Vue {
     if (!this.avatar) return null
     console.log(this.avatar)
     return URL.createObjectURL(this.avatar)
+  }
+
+  get userAvatar() {
+    if (!this.user?.avatar?.url) return null
+    return this.user.avatar.url
   }
 
   changeAvatar() {
@@ -171,6 +183,7 @@ export default class Photo extends Vue {
       formdata,
       id: this.signUser.id,
     })
+    this.loading = false
     this.dialog = false
   }
 
