@@ -6,7 +6,7 @@
     </v-card-title>
     <v-divider class="my-2"></v-divider>
     <v-row v-if="galleryPhoto">
-      <v-col cols="12">
+      <!-- <v-col cols="12">
         <v-carousel v-if="signUser && signUser.gallery">
           <v-carousel-item
             :show-arrows-on-hover="true"
@@ -19,6 +19,33 @@
           >
           </v-carousel-item>
         </v-carousel>
+      </v-col> -->
+      <v-col cols="12">
+        <VueSlickCarousel ref="c1" :asNavFor="$refs.c2" :focusOnSelect="true">
+          <v-img
+            width="100%"
+            height="500px"
+            v-for="item in galleryPhoto"
+            :key="item.id"
+            :src="getStrapiMedia(item.url)"
+            :lazy-src="getStrapiMedia(item.url)"
+          ></v-img>
+        </VueSlickCarousel>
+        <VueSlickCarousel
+          ref="c2"
+          :asNavFor="$refs.c1"
+          :slidesToShow="4"
+          :focusOnSelect="true"
+        >
+          <v-img
+            width="100%"
+            height="100px"
+            v-for="item in galleryPhoto"
+            :key="item.id"
+            :src="getStrapiMedia(item.url)"
+            :lazy-src="getStrapiMedia(item.url)"
+          ></v-img>
+        </VueSlickCarousel>
       </v-col>
     </v-row>
     <v-row v-if="galleryPhoto">
@@ -57,11 +84,14 @@
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import { UserType } from '@/helpers/userType'
 import { getStrapiMedia } from '@/utils/medias'
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
 import { mapState } from 'vuex'
 
 @Component({
-  components: {},
+  components: { VueSlickCarousel },
   computed: {
     ...mapState('profile', ['user']),
     ...mapState('register', ['signUser']),
@@ -73,8 +103,6 @@ export default class GalleryPage extends Vue {
   signUser!: UserType
 
   getStrapiMedia = getStrapiMedia
-  // image = ''
-  // imageUrl = ''
 
   get galleryPhoto() {
     if (this.signUser) {
