@@ -87,36 +87,17 @@ export default class Register extends VuexModule {
 
   @Action({ commit: '_LOGIN' })
   public async TAKE_SIGH_USER(user) {
-    console.log('ACTION', user)
-
     return { user }
   }
 
-  // @MutationAction({ mutate: ['signUser', 'jwt'] })
-  // public async LOGOUT() {
-  //   localStorage.removeItem('jwt')
-  //   console.log('THIS', this)
-
-  //   // this.store.dispatch('profile/LOGOUT_USER', null)
-  //   return {
-  //     signUser: null,
-  //     jwt: null,
-  //   }
-  // }
-
   @Mutation
   private _LOGOUT(payload) {
-    console.log('MUTATION', payload)
-
     this.signUser = payload
     this.jwt = payload
   }
 
   @Action({ commit: '_LOGOUT' })
   public LOGOUT() {
-    console.log('ACTION')
-    console.log('THIS', this)
-
     localStorage.removeItem('jwt')
     this.store.dispatch('profile/LOGOUT_USER')
     return null
