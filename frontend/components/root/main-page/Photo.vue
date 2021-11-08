@@ -131,9 +131,20 @@
       </v-col>
     </v-row>
     <v-row v-else>
-      <v-col cols="12">
-        <v-btn height="35px" width="100%" depressed color="#a9d1ff">
+      <v-col
+        cols="12"
+        class="ma-0 mt-4 pa-0 d-flex justify-center align-center"
+      >
+        <v-btn height="35px" width="80%" depressed color="#a9d1ff">
           <span class="font_10"> Написать </span>
+        </v-btn>
+      </v-col>
+      <v-col
+        cols="12"
+        class="ma-0 mb-4 pa-0 d-flex justify-center align-center"
+      >
+        <v-btn height="35px" width="80%" depressed color="#a9d1ff">
+          <span class="font_10"> Добавить в друзья </span>
         </v-btn>
       </v-col>
     </v-row>
