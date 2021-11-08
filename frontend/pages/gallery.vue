@@ -1,27 +1,14 @@
 <template>
   <v-card class="pa-8" width="800px" v-if="signUser && signUser.gallery">
-    <v-card-title>
+    <v-card-title v-if="galleryPhoto && galleryPhoto.length">
       Моя галерея
       <span class="ml-4"> ({{ galleryPhoto.length }} фото) </span>
     </v-card-title>
+    <v-card-title v-else> Пустая галерея </v-card-title>
     <v-divider class="my-2"></v-divider>
-    <v-row v-if="galleryPhoto">
-      <!-- <v-col cols="12">
-        <v-carousel v-if="signUser && signUser.gallery">
-          <v-carousel-item
-            :show-arrows-on-hover="true"
-            v-for="item in galleryPhoto"
-            :key="item.id"
-            :src="getStrapiMedia(item.url)"
-            :lazy-src="getStrapiMedia(item.url)"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
-          >
-          </v-carousel-item>
-        </v-carousel>
-      </v-col> -->
-      <v-col cols="12">
-        <VueSlickCarousel ref="c1" :asNavFor="$refs.c2" :focusOnSelect="true">
+    <v-row v-if="galleryPhoto && galleryPhoto.length">
+      <v-col cols="12" v-if="signUser && signUser.gallery">
+        <VueSlickCarousel ref="main" v-bind="settingsMain">
           <v-img
             width="100%"
             height="500px"
@@ -31,24 +18,9 @@
             :lazy-src="getStrapiMedia(item.url)"
           ></v-img>
         </VueSlickCarousel>
-        <VueSlickCarousel
-          ref="c2"
-          :asNavFor="$refs.c1"
-          :slidesToShow="4"
-          :focusOnSelect="true"
-        >
-          <v-img
-            width="100%"
-            height="100px"
-            v-for="item in galleryPhoto"
-            :key="item.id"
-            :src="getStrapiMedia(item.url)"
-            :lazy-src="getStrapiMedia(item.url)"
-          ></v-img>
-        </VueSlickCarousel>
       </v-col>
     </v-row>
-    <v-row v-if="galleryPhoto">
+    <v-row v-if="galleryPhoto && galleryPhoto.length" class="mt-5">
       <v-col
         v-for="item in this.signUser.gallery"
         :key="item.id"
@@ -103,6 +75,20 @@ export default class GalleryPage extends Vue {
   signUser!: UserType
 
   getStrapiMedia = getStrapiMedia
+
+  public settingsMain = {
+    focusOnSelect: true,
+    fade: true,
+    infinite: true,
+    dots: true,
+    autoplay: true,
+    speed: 2500,
+    autoplaySpeed: 2000,
+    cssEase: 'linear',
+    pauseOnDotsHover: true,
+    pauseOnFocus: true,
+    pauseOnHover: true,
+  }
 
   get galleryPhoto() {
     if (this.signUser) {

@@ -35,12 +35,20 @@
               @click="updatePage()"
             >
               <v-row>
-                <v-col cols="2">
+                <v-col cols="2" v-if="item.avatar">
                   <v-img
                     height="30px"
                     width="30px"
                     :src="getStrapiMedia(item.avatar.url)"
                     :lazy-src="getStrapiMedia(item.avatar.url)"
+                  ></v-img>
+                </v-col>
+                <v-col cols="2" v-else>
+                  <v-img
+                    height="30px"
+                    width="30px"
+                    src="/default-image.jpeg"
+                    lazy-src="/default-image.jpeg"
                   ></v-img>
                 </v-col>
                 <v-col cols="12" md="7">

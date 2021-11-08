@@ -233,3 +233,17 @@
   
 }
 
+.slick-slide, .slick-active, .slick-current{
+
+  .v-image__image{
+    background-repeat: no-repeat !important;
+    background-size:contain !important;
+    max-height: 95% !important;
+  }
+
+  
+}
+.slick-arrow {
+  background: #6488b1 !important;
+  border-radius: 50px;
+}
