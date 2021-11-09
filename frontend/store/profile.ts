@@ -26,14 +26,11 @@ export default class MainPage extends VuexModule {
 
   @Mutation
   private _LOGOUT_USER(payload) {
-    console.log('LOGOUT', payload)
     this.user = payload
   }
 
   @Action({ commit: '_LOGOUT_USER' })
   public LOGOUT_USER() {
-    console.log('ACTION LOGOUT PROFILE')
-
     return null
   }
 
